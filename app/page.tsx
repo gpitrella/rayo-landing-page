@@ -11,6 +11,7 @@ import { SponsorsSection } from "@/components/layout/sections/sponsors";
 import { TeamSection } from "@/components/layout/sections/team";
 import { TestimonialSection } from "@/components/layout/sections/testimonial";
 
+
 export const metadata = {
   title: "Rayo - Landing template",
   description: "RAYO landing page",
@@ -40,6 +41,7 @@ export const metadata = {
 };
 
 export default function Home() {
+
   return (
     <>
       <HeroSection />
