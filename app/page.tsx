@@ -13,6 +13,7 @@ import { TestimonialSection } from "@/components/layout/sections/testimonial";
 import { Banner } from "@/components/layout/sections/banner";
 
 
+
 export const metadata = {
   title: "Rayo - Landing template",
   description: "RAYO landing page",
