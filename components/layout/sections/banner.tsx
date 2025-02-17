@@ -20,7 +20,7 @@ export const Banner = () => {
 
             <div className="max-w-screen-sm mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
               <h1 className="leading-tight">
-                Lava tu vehículo donde y cuando quieras con la app RAYO
+                Lava tu vehículo donde y cuando quieras con la app <span className="font-black italic">RAYO</span> 
               </h1>
             </div>
 
