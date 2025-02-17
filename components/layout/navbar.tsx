@@ -23,7 +23,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ToggleTheme } from "./toogle-theme";
 import { useTheme } from "next-themes";
-
 interface RouteProps {
   href: string;
   label: string;
@@ -71,19 +70,26 @@ const featureList: FeatureProps[] = [
 ];
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const { setTheme } = useTheme();
-
-  useEffect(() => {
-    setTheme('light'); // Initial Light theme
-  }, []);
+  const [isOpen, setIsOpen] = React.useState(false);  
+  const { theme } = useTheme();
 
   return (
-    <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center py-2 px-6 bg-card">
-      <Link href="/" className="font-black text-3xl flex items-center italic">
-        {/* <ChevronsDown className="bg-gradient-to-tr border-secondary  from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" /> */}
-        RAYO
+    <header className="shadow-inner bg-opacity-50 w-[90%] md:w-[90%] lg:w-[90%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center py-3 px-6 bg-card">
+      <Link href="/" className="font-black text-2xl flex items-center italic">
+        {theme == 'light' ? <Image
+          width={35}
+          height={35}
+          src="/LogoRayoBlack.png"
+          alt="Logo Rayo Black"
+          className="relative inset-0 ml-auto object-cover object-center"
+        /> : <Image
+          width={35}
+          height={35}
+          src="/LogoRayoWhite.png"
+          alt="Logo Rayo White"
+          className="relative inset-0 ml-auto object-cover object-center"
+        /> }
+        <span className="relative top-[7px] ">RAYO</span>
       </Link>
       {/* <!-- Mobile --> */}
       <div className="flex items-center lg:hidden">
