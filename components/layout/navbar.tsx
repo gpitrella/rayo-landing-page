@@ -188,16 +188,6 @@ export const Navbar = () => {
 
       <div className="hidden lg:flex">
         <ToggleTheme />
-
-        <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
-          <Link
-            aria-label="View on GitHub"
-            href="https://github.com/nobruf/shadcn-landing-page.git"
-            target="_blank"
-          >
-            <Github className="size-5" />
-          </Link>
-        </Button>
       </div>
     </header>
   );
