@@ -20,13 +20,13 @@ export const Banner = () => {
 
             <div className="max-w-screen-sm mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
               <h1 className="leading-tight">
-                Lava tu vehículo donde y cuando quieras con la app RAYO
+                Lava tu vehículo donde y cuando quieras con la app <span className="font-black italic">RAYO</span> 
               </h1>
             </div>
 
             <p className="max-w-screen-sm mx-auto text-lg mb-8 text-muted-foreground">
               {`¿No crees que el lavado de tu vehículo debería ser una experiencia más cómoda y sin complicaciones? 
-              Simplifica el lavado de manera eficiente, cómoda y ecológica usando la app Rayo.`}
+              Simplifica el lavado de manera eficiente, cómoda y ecológica usando la app RAYO.`}
             </p>
 
             <div className="max-w-screen-sm mx-auto">

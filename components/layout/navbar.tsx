@@ -74,22 +74,16 @@ export const Navbar = () => {
   const { theme } = useTheme();
 
   return (
-    <header className="shadow-inner bg-opacity-50 w-[90%] md:w-[90%] lg:w-[90%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center py-3 px-6 bg-card">
+    <header className="shadow-inner bg-opacity-50 w-[90%] md:w-[90%] lg:w-[90%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center py-3 px-12 bg-card">
       <Link href="/" className="font-black text-2xl flex items-center italic">
-        {theme == 'light' ? <Image
+        <Image
           width={35}
           height={35}
-          src="/LogoRayoBlack.png"
-          alt="Logo Rayo Black"
+          src={theme == 'light' ? '/LogoRayoBlack.png' : '/LogoRayoWhite.png'}
+          alt={theme == 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
           className="relative inset-0 ml-auto object-cover object-center"
-        /> : <Image
-          width={35}
-          height={35}
-          src="/LogoRayoWhite.png"
-          alt="Logo Rayo White"
-          className="relative inset-0 ml-auto object-cover object-center"
-        /> }
-        <span className="relative top-[7px] ">RAYO</span>
+        /> 
+        {/* <span className="relative top-[7px] ">RAYO</span> */}
       </Link>
       {/* <!-- Mobile --> */}
       <div className="flex items-center lg:hidden">
