@@ -44,7 +44,7 @@ export const Process = () => {
       ],
     },
     {
-      imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1739961098/uze2f4clksfrqr87899n.png",
+      imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1739970846/qhrivdgrszwacnm41uzq.png",
       firstName: "Selecciona un washer",
       lastName: "",
       positions: ["Busca en la app RAYO el washer más cercano a tu vehículo para que realice el lavado"],
@@ -88,15 +88,16 @@ export const Process = () => {
   };
 
   return (
-    <section id="team" className="container lg:w-[75%] py-24 sm:py-32">
+    <section id="team" className="container lg:w-[75%] py-24 sm:py-16">
       <div className="text-center mb-8">
-        <h2 className="text-2xl text-primary text-center mb-2 tracking-wider">
-          Servicio de RAYO
-        </h2>
 
-        <h2 className="text-2xl text-center font-bold">
-          Realiza el lavado de tu vehículo en tres simples pasos
+        <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
+          Servicios de RAYO      
         </h2>
+        <h3 className="md:w-3/2 mx-auto text-xl text-center text-muted-foreground mb-8">
+          Realiza el lavado de tu vehículo en tres simples pasos:
+        </h3>
+        
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-8">

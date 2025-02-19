@@ -48,11 +48,11 @@ export default function Home() {
   return (
     <>
       <Banner />
+      <FeaturesSection />
       <Process />
-      <HeroSection />
+      <HeroSection />      
       <SponsorsSection />
       <BenefitsSection />
-      <FeaturesSection />
       <ServicesSection />
       <TestimonialSection />
       <TeamSection />

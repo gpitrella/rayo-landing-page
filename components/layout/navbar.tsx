@@ -73,7 +73,7 @@ export const Navbar = () => {
   }, [])
 
   return (
-    <header className="shadow-inner bg-opacity-50 w-[90%] md:w-[90%] lg:w-[90%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center py-3 px-12 bg-card">
+    <header className="shadow-inner bg-opacity-50 w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-3 px-12 bg-card">
       <Link href="/" className="font-black text-2xl flex items-center italic">
         <Image
           width={35}
