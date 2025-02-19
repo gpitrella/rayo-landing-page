@@ -60,7 +60,7 @@ export const FeaturesSection = () => {
 
       <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground mb-8">
         Lavamos tu vehículo de manera eficiente, cómoda y ecológica, con tres simples pasos lavamos tu 
-        vehículo sin moverte del lugar donde estes mientras seguis con tus actividades.
+        vehículo sin que tengas que moverte del lugar donde estes, mientras seguis con tus actividades.
       </h3>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -49,7 +49,7 @@ export const SponsorsSection = () => {
   return (
     <section id="sponsors" className="max-w-[75%] mx-auto pb-24 sm:pb-32">
       <h2 className="text-lg md:text-xl text-center mb-6">
-        Medios de Pago
+        Medios de pago disponibles
       </h2>
 
       <div className="mx-auto">
