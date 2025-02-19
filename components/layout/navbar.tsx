@@ -54,24 +54,23 @@ const routeList: RouteProps[] = [
 
 const featureList: FeatureProps[] = [
   {
-    title: "Showcase Your Value ",
-    description: "Highlight how your product solves user problems.",
+    title: "Misión",
+    description: 'Simplificar la vida de las personas, mediante una plataforma para el mantenimiento del vehículo de manera eficiente, cómoda y ecológica. Revolucionando la forma en que las personas cuidan su vehículo.',
   },
   {
-    title: "Build Trust",
+    title: "Visión",
     description:
-      "Leverages social proof elements to establish trust and credibility.",
-  },
-  {
-    title: "Capture Leads",
-    description:
-      "Make your lead capture form visually appealing and strategically.",
-  },
+      "Ser la plataforma de cuidado del vehículo mas grande y confiable del mundo, operando en todas las ciudades y ofreciendo una amplia gama de servicios de mantenimiento automotor.",
+  }
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);  
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme('light')
+  }, [])
 
   return (
     <header className="shadow-inner bg-opacity-50 w-[90%] md:w-[90%] lg:w-[90%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center py-3 px-12 bg-card">
@@ -79,8 +78,8 @@ export const Navbar = () => {
         <Image
           width={35}
           height={35}
-          src={theme == 'light' ? '/LogoRayoBlack.png' : '/LogoRayoWhite.png'}
-          alt={theme == 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
+          src={theme === 'light' ? '/LogoRayoBlack.png' : '/LogoRayoWhite.png'}
+          alt={theme === 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
           className="relative inset-0 ml-auto object-cover object-center"
         /> 
         {/* <span className="relative top-[7px] ">RAYO</span> */}
@@ -136,37 +135,6 @@ export const Navbar = () => {
       {/* <!-- Desktop --> */}
       <NavigationMenu className="hidden lg:block mx-auto">
         <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="bg-card text-base">
-              Features
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <div className="grid w-[600px] grid-cols-2 gap-5 p-4">
-                <Image
-                  src="https://avatars.githubusercontent.com/u/75042455?v=4"
-                  alt="RadixLogo"
-                  className="h-full w-full rounded-md object-cover"
-                  width={600}
-                  height={600}
-                />
-                <ul className="flex flex-col gap-2">
-                  {featureList.map(({ title, description }) => (
-                    <li
-                      key={title}
-                      className="rounded-md p-3 text-sm hover:bg-muted"
-                    >
-                      <p className="mb-1 font-semibold leading-none text-foreground">
-                        {title}
-                      </p>
-                      <p className="line-clamp-2 text-muted-foreground">
-                        {description}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
 
           <NavigationMenuItem>
             {routeList.map(({ href, label }) => (
@@ -177,6 +145,39 @@ export const Navbar = () => {
               </NavigationMenuLink>
             ))}
           </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className="bg-card text-base">
+              Misión
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <div className="grid w-[650px] grid-cols-2 gap-5 p-4">
+                <Image
+                  src={theme === 'light' ? '/LogoNegativo.png' : '/LogoPositivo.png'}
+                  alt={theme === 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
+                  className="h-full w-full rounded-md object-cover p-12"
+                  width={100}
+                  height={100}
+                />
+                <ul className="flex flex-col gap-2">
+                  {featureList.map(({ title, description }) => (
+                    <li
+                      key={title}
+                      className="rounded-md p-3 text-sm hover:bg-muted h-auto"
+                    >
+                      <p className="mb-1 font-semibold leading-none text-foreground">
+                        {title}
+                      </p>
+                      <p className="text-muted-foreground">
+                        {description}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+
         </NavigationMenuList>
       </NavigationMenu>
 
