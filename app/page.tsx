@@ -11,6 +11,7 @@ import { SponsorsSection } from "@/components/layout/sections/sponsors";
 import { TeamSection } from "@/components/layout/sections/team";
 import { TestimonialSection } from "@/components/layout/sections/testimonial";
 import { Banner } from "@/components/layout/sections/banner";
+import { Process } from "@/components/layout/sections/process";
 
 
 
@@ -47,15 +48,16 @@ export default function Home() {
   return (
     <>
       <Banner />
-      <HeroSection />
-      <SponsorsSection />
-      <BenefitsSection />
       <FeaturesSection />
-      <ServicesSection />
+      <Process />
+      <HeroSection />      
+      <SponsorsSection />
+      {/* <BenefitsSection /> */}
+      {/* <ServicesSection /> */}
       <TestimonialSection />
-      <TeamSection />
-      <CommunitySection />
-      <PricingSection />
+      {/* <TeamSection /> */}
+      {/* <CommunitySection /> */}
+      {/* <PricingSection /> */}
       <ContactSection />
       <FAQSection />
       <FooterSection />

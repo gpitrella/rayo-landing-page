@@ -8,60 +8,59 @@ interface FeaturesProps {
   description: string;
 }
 
-const featureList: FeaturesProps[] = [
+const featureList: FeaturesProps[] = [  
   {
-    icon: "TabletSmartphone",
-    title: "Mobile Friendly",
+    icon: "Clock",
+    title: "Ahorro de tiempo",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, consectetur.",
-  },
-  {
-    icon: "BadgeCheck",
-    title: "Social Proof",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Natus consectetur, odio ea accusamus aperiam.",
+      "Olvídate de llevar tu auto al lavadero y esperar horas. Nosotros vamos a donde estés, ahorrándote valiosos minutos para lo que realmente importa.",
   },
   {
     icon: "Goal",
-    title: "Targeted Content",
+    title: "Comodidad a domicilio",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. odio ea accusamus aperiam.",
+      "No te preocupes por el tráfico ni por cargar con productos de limpieza. Nosotros nos encargamos de todo.",
   },
   {
-    icon: "PictureInPicture",
-    title: "Strong Visuals",
+    icon: "TabletSmartphone",
+    title: "Fácil de usar desde tu celular",
     description:
-      "Lorem elit. A odio velit cum aliquam. Natus consectetur dolores, odio ea accusamus aperiam.",
+      "Con nuestra app intuitiva, puedes programar tu lavado en minutos, elegir el día y la hora que más te convenga, y realizar el pago de forma segura.",
   },
   {
-    icon: "MousePointerClick",
-    title: "Clear CTA",
+    icon: "Star",
+    title: "Resultados impecables",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing. odio ea accusamus consectetur.",
+      "Nuestro equipo de profesionales utiliza técnicas especializadas para garantizar una limpieza profunda y detallada, dejando tu auto reluciente.",
   },
   {
-    icon: "Newspaper",
-    title: "Clear Headline",
+    icon: "Globe",
+    title: "Cuidado del medio ambiente",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur.",
+      "Utilizamos productos de limpieza biodegradables y ecológicos que no dañan el suelo, el agua ni la fauna.",
+  },
+  {
+    icon: "Sun",
+    title: "Ahorro de agua",
+    description:
+      "Reducimos drásticamente el consumo de agua en comparación con los lavados tradicionales, contribuyendo a la conservación de este recurso vital.",
   },
 ];
 
 export const FeaturesSection = () => {
   return (
-    <section id="features" className="container py-24 sm:py-32">
+    <section id="features" className="w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto mt-10 pt-28 pb-12 sm:py-32">
       <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-        Features
+        Beneficios
       </h2>
 
       <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-        What Makes Us Different
+        Que nos hace diferentes
       </h2>
 
       <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground mb-8">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem
-        fugiat, odit similique quasi sint reiciendis quidem iure veritatis optio
-        facere tenetur.
+        Lavamos tu vehículo de manera eficiente, cómoda y ecológica, con tres simples pasos lavamos tu 
+        vehículo sin que tengas que moverte del lugar donde estes, mientras seguis con tus actividades.
       </h3>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -27,65 +27,65 @@ interface ReviewProps {
 const reviewList: ReviewProps[] = [
   {
     image: "https://github.com/shadcn.png",
-    name: "John Doe",
-    userName: "Product Manager",
+    name: "Valeria Ruiz",
+    userName: "Colegiales, CABA",
     comment:
-      "Wow NextJs + Shadcn is awesome!. This template lets me change colors, fonts and images to match my brand identity. ",
+      "Quedé muy satisfecho con el servicio, mi auto está impecable y el personal fue muy amable. ¡Sin duda volveré a contratarlos, gracias por el excelente servicio!",
     rating: 5.0,
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Sophia Collins",
-    userName: "Cybersecurity Analyst",
+    name: "Martín Díaz",
+    userName: "Villa Martelli, Bs As",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. ",
-    rating: 4.8,
+      "Confío plenamente en este servicio, son profesionales y cuidan los autos. Siempre dejan mi auto impecable, ¡los recomiendo con total confianza!",
+    rating: 5,
   },
 
   {
     image: "https://github.com/shadcn.png",
-    name: "Adam Johnson",
-    userName: "Chief Technology Officer",
+    name: "Laura Fernández",
+    userName: "Núñez, CABA",
     comment:
-      "Lorem ipsum dolor sit amet,exercitation. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    rating: 4.9,
+      "El servicio fue rápido y eficiente, mi auto quedó como nuevo en poco tiempo. ¡Muy profesionales y cumplieron con los tiempos acordados!",
+    rating: 5,
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Ethan Parker",
-    userName: "Data Scientist",
+    name: "Luis González",
+    userName: "Retiro, CABA",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "El lavado fue muy minucioso, mi auto quedó impecable por dentro y por fuera. ¡Gracias por el excelente trabajo y la atención al detalle!",
     rating: 5.0,
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Ava Mitchell",
-    userName: "IT Project Manager",
+    name: "Sofía Martínez",
+    userName: "Puerto Madero, CABA",
     comment:
-      "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud incididunt consectetur adipiscing elit.",
+      "La reserva fue muy sencilla y la atención al cliente fue excelente, ¡muy amables! Recomiendo este servicio por su rapidez y la facilidad para reservar.",
     rating: 5.0,
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Isabella Reed",
-    userName: "DevOps Engineer",
+    name: "Pedro Sánchez",
+    userName: "Avellaneda, Bs As",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    rating: 4.9,
+      "Excelente servicio a un precio razonable, ¡muy buena relación calidad-precio! Volveré a contratarlos sin duda, ¡quedé muy satisfecho!",
+    rating: 5,
   },
 ];
 
 export const TestimonialSection = () => {
   return (
-    <section id="testimonials" className="container py-24 sm:py-32">
+    <section id="testimonials" className="container pt-8 pb-8 sm:pt-10 sm:pb-14">
       <div className="text-center mb-8">
-        <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
+        <h2 className="text-lg md:text-xl text-primary text-center mb-2 tracking-wider">
           Testimonials
         </h2>
 
         <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-          Hear What Our 1000+ Clients Say
+          Lo que dicen nuestros clientes
         </h2>
       </div>
 
@@ -115,13 +115,13 @@ export const TestimonialSection = () => {
 
                 <CardHeader>
                   <div className="flex flex-row items-center gap-4">
-                    <Avatar>
+                    {/* <Avatar>
                       <AvatarImage
                         src="https://avatars.githubusercontent.com/u/75042455?v=4"
                         alt="radix"
                       />
                       <AvatarFallback>SV</AvatarFallback>
-                    </Avatar>
+                    </Avatar> */}
 
                     <div className="flex flex-col">
                       <CardTitle className="text-lg">{review.name}</CardTitle>

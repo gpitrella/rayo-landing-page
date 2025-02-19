@@ -58,50 +58,50 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="container py-24 sm:py-32">
+    <section id="contact" className="w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto py-24 sm:py-32">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <div className="mb-4">
             <h2 className="text-lg text-primary mb-2 tracking-wider">
-              Contact
+              Customer Services
             </h2>
 
-            <h2 className="text-3xl md:text-4xl font-bold">Connect With Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Contactanos</h2>
           </div>
           <p className="mb-8 text-muted-foreground lg:w-5/6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-            ipsam sint enim exercitationem ex autem corrupti quas tenetur
+          Estamos aquí para ayudarte! Explora nuestras preguntas frecuentes 
+          o contáctanos si tienes alguna duda o necesitas asistencia.
           </p>
 
           <div className="flex flex-col gap-4">
             <div>
               <div className="flex gap-2 mb-1">
                 <Building2 />
-                <div className="font-bold">Find us</div>
+                <div className="font-bold">Encontranos</div>
               </div>
 
-              <div>742 Evergreen Terrace, Springfield, IL 62704</div>
+              <div>Villa Urquiza, Ciudad Autonoma de Buenos Aires</div>
             </div>
 
             <div>
               <div className="flex gap-2 mb-1">
                 <Phone />
-                <div className="font-bold">Call us</div>
+                <div className="font-bold">Número</div>
               </div>
 
-              <div>+1 (619) 123-4567</div>
+              <div>+54 (261) 460-7020</div>
             </div>
 
             <div>
               <div className="flex gap-2 mb-1">
                 <Mail />
-                <div className="font-bold">Mail US</div>
+                <div className="font-bold">Mail</div>
               </div>
 
-              <div>leomirandadev@gmail.com</div>
+              <div>services@rayo.com</div>
             </div>
 
-            <div>
+            {/* <div>
               <div className="flex gap-2">
                 <Clock />
                 <div className="font-bold">Visit us</div>
@@ -111,7 +111,7 @@ export const ContactSection = () => {
                 <div>Monday - Friday</div>
                 <div>8AM - 4PM</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -129,7 +129,7 @@ export const ContactSection = () => {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>First Name</FormLabel>
+                        <FormLabel>Nombre</FormLabel>
                         <FormControl>
                           <Input placeholder="Leopoldo" {...field} />
                         </FormControl>
@@ -142,7 +142,7 @@ export const ContactSection = () => {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>Last Name</FormLabel>
+                        <FormLabel>Apellido</FormLabel>
                         <FormControl>
                           <Input placeholder="Miranda" {...field} />
                         </FormControl>
@@ -178,7 +178,7 @@ export const ContactSection = () => {
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Subject</FormLabel>
+                        <FormLabel>Tema</FormLabel>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
@@ -190,17 +190,16 @@ export const ContactSection = () => {
                           </FormControl>
                           <SelectContent>
                             <SelectItem value="Web Development">
-                              Web Development
+                              Customer Services
                             </SelectItem>
                             <SelectItem value="Mobile Development">
-                              Mobile Development
+                              Servicios Coorporativos
                             </SelectItem>
                             <SelectItem value="Figma Design">
-                              Figma Design
+                              Legal 
                             </SelectItem>
-                            <SelectItem value="REST API">REST API</SelectItem>
                             <SelectItem value="FullStack Project">
-                              FullStack Project
+                              Washer Services
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -216,11 +215,11 @@ export const ContactSection = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>Mensaje</FormLabel>
                         <FormControl>
                           <Textarea
                             rows={5}
-                            placeholder="Your message..."
+                            placeholder="Mensaje..."
                             className="resize-none"
                             {...field}
                           />
@@ -232,7 +231,7 @@ export const ContactSection = () => {
                   />
                 </div>
 
-                <Button className="mt-4">Send message</Button>
+                <Button className="mt-4">Enviar Mensaje</Button>
               </form>
             </Form>
           </CardContent>

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export const Banner = () => {
   return (
-    <div className="!flex h-auto w-[90%] md:w-[90%] lg:w-[90%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
+    <div className="!flex h-auto w-[85%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
       <Image
         width={1200}
         height={1200}
