@@ -88,7 +88,7 @@ export const Process = () => {
   };
 
   return (
-    <section id="team" className="container lg:w-[75%] py-24 sm:py-16">
+    <section id="team" className="w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto pt-24 pb-10 sm:pt-24 sm:pb-0">
       <div className="text-center mb-8">
 
         <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
