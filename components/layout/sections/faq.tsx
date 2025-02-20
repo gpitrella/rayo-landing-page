@@ -45,13 +45,13 @@ const FAQList: FAQProps[] = [
     question:
       "¿Cómo debo preparar mi auto para el servicio de lavado a domicilio?",
     answer: "No necesitas hacer nada especial. Solo asegúrate de que tu auto esté estacionado en un lugar accesible.",
-    value: "item-5",
+    value: "item-6",
   },
   {
     question:
       "¿Qué garantía ofrecen si no estoy satisfecho con el servicio?",
     answer: "Si por alguna razón no estás satisfecho con nuestro servicio, por favor contáctanos y haremos todo lo posible para solucionar el problema. Tu satisfacción es nuestra prioridad.",
-    value: "item-5",
+    value: "item-7",
   }
 ];
 
