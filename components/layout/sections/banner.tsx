@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 
 export const Banner = () => {
@@ -30,10 +31,12 @@ export const Banner = () => {
             </p>
 
             <div className="max-w-screen-sm mx-auto">
-              <Button className="w-auto font-bold group/arrow">
+            <Link href="#process" passHref legacyBehavior>
+              <Button className="w-auto font-bold group/arrow" > 
                 Empezar
                 <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
               </Button>
+            </Link>
             </div>
           </div>       
           

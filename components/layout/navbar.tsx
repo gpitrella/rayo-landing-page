@@ -68,12 +68,8 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);  
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    setTheme('light')
-  }, [])
-
   return (
-    <header className="shadow-inner bg-opacity-50 w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-3 px-12 bg-card">
+    <header className="shadow-inner bg-opacity-50 w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-12 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-3 px-6 bg-card">
       <Link href="/" className="font-black text-2xl flex items-center italic">
         <Image
           width={35}
@@ -101,9 +97,9 @@ export const Navbar = () => {
             <div>
               <SheetHeader className="mb-4 ml-4">
                 <SheetTitle className="flex items-center">
-                  <Link href="/" className="flex items-center">
-                    <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-                    Shadcn
+                  <Link href="/" className="flex items-center font-black italic">
+                    {/* <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" /> */}
+                    RAYO
                   </Link>
                 </SheetTitle>
               </SheetHeader>

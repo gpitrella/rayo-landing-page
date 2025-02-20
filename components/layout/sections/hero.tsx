@@ -12,16 +12,17 @@ export const HeroSection = () => {
     
     <section className="w-screen m-auto mt-10 pt-20 bg-[#282929]">
       <div className="grid place-items-center lg:max-w-screen-x2 gap-8 mx-auto pt-2 pb-0 md:pt-4 md:pb-0 mb-24">
-        <div className="text-center space-y-8 mb-24">
+        <div className="text-center space-y-8 mb-10 sm:mb-24">
 
-          <div className="max-w-screen-md mx-auto text-center text-5xl md:text-4xl font-bold text-[#fff] w-[550px]">
-            <h1>
-              
+          <div className="max-w-screen-md mx-auto text-center text-5xl md:text-4xl font-bold text-[#fff] sm:w-[550px] w-full sm:px-5">
+
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="px-2 font-black italic bg-clip-text text-[#fff]">
                 RAYO
-              </span>
+              </span> 
               es la primera superapp de lavado a domicilio.
-            </h1>
+            </h2>
+
           </div>
 
           <p className="max-w-screen-sm mx-auto text-xl text-[#fff]">
@@ -50,7 +51,7 @@ export const HeroSection = () => {
           </div> */}
         </div> 
 
-        <div className="relative h-[550px] w-screen">
+        <div className="relative h-[250px] w-screen lg:h-[550px] sm:h-[350px]">
           <Image
             src="/BannerRayo1.jpg" // Reemplaza con la ruta de tu imagen
             alt="Imagen de fondo"
