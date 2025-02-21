@@ -121,7 +121,7 @@ export const FeaturesSection = () => {
         plugins={[
           Autoplay({
             delay: 4000
-          }),
+          })
         ]}        
         className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
       >
