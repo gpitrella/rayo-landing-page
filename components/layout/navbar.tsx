@@ -1,5 +1,8 @@
 "use client";
 import { ChevronsDown, Github, Menu } from "lucide-react";
+
+import { checkUserLoggedIn } from '../../app/services/auth.service'
+import { useRouter } from 'next/navigation'
 import React, { useEffect } from "react";
 import {
   Sheet,
@@ -67,6 +70,17 @@ const featureList: FeatureProps[] = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);  
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
+
+  // useEffect(()=>{
+  //   const isAuthenticated = checkUserLoggedIn();
+  //   if(isAuthenticated){
+  //     router.push('/home')
+  //   }
+  //   else{
+  //     router.push('/auth/login')
+  //   }
+  // })
 
   return (
     <header className="shadow-inner bg-opacity-50 w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-3 px-6 bg-card">
@@ -177,7 +191,11 @@ export const Navbar = () => {
         </NavigationMenuList>
       </NavigationMenu>
 
-      <div className="hidden lg:flex">
+      <div className="hidden lg:flex">         
+
+        <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base'>
+          Login
+        </Button>
         <ToggleTheme />
       </div>
     </header>
