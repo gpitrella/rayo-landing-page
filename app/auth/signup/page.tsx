@@ -8,6 +8,7 @@ import '../../styles/auth.css'
 import { register } from "@/app/store/auth/authSlice";
 import { useRouter } from "next/navigation";
 import BtnLoader from "@/components/btnLoader";
+import { Button } from "../../../components/ui/button";
 import Error from "@/components/error";
 import { RootState, useAppDispatch } from "@/app/store/store";
 import { useSelector } from "react-redux";
@@ -55,7 +56,7 @@ const Page = () => {
     return ( 
         <>
         <div className='hero-section'>
-            <div className="main-container md:w-[55%] sm:w-screen h-[100vh] flex flex-col justify-center items-center bg-[white] ">
+            <div className="main-container md:w-[55%] sm:w-screen h-[100vh] flex flex-col justify-center items-center bg-[white] dark:bg-card">
                 <div className="main-container2 lg:w-[50%] sm:w-full mx-auto sm:px-4 md:px-0">
                     <h1 className="font-semibold text-lightblue text-[2rem] mb-0 ">Signup</h1> 
                 <div className="mt-4">
@@ -75,27 +76,27 @@ const Page = () => {
                     <Form>
                         <div className="flex w-full gap-3">
                             <div className="flex flex-col w-full">
-                                <label className="text-base font-medium mb-1 ">Firstname</label>
+                                <label className="text-base font-medium mb-1 dark:text-white">Firstname</label>
                                 <Field name="firstName" type="text" placeholder="Firstname" />
                                 {errors.firstName && touched.firstName ? (<span className="text-[#ec4242] text-sm mt-1">{errors.firstName}</span>) : null}
                             </div>
                             <div className="flex flex-col w-full">
-                                <label className="text-base font-medium mb-1 ">Lastname</label>
+                                <label className="text-base font-medium mb-1 dark:text-white">Lastname</label>
                                 <Field name="lastName" type="text" placeholder="Lastname" />
                                 {errors.lastName && touched.lastName ? (<span className="text-[#ec4242] text-sm mt-1">{errors.lastName}</span>) : null}
                             </div>
                         </div>
                         <div className="flex flex-col mt-3">
-                            <label className="text-base font-medium mb-1 ">Email</label>
+                            <label className="text-base font-medium mb-1 dark:text-white">Email</label>
                             <Field name="email" type="text" placeholder="Email" />
                             {errors.email && touched.email ? (<span className="text-[#ec4242] text-sm mt-1">{errors.email}</span>) : null}
                         </div>
                         <div className="flex flex-col mt-3">
-                            <label className="text-base font-medium mb-1">Password</label>
+                            <label className="text-base font-medium mb-1 dark:text-white">Password</label>
                             <Field name="password" type="password" placeholder="Password" />
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
-                        <button className={loading ? 'button-disabled' : 'button'} type="submit" disabled={loading}>{ loading ? <BtnLoader /> : 'Signup' }</button>
+                        <Button className={loading ? 'button-disabled mt-5' : 'button mt-5'} type="submit" disabled={loading} >{ loading ? <BtnLoader /> : 'Signup' }</Button>
                     </Form>
                         )}
                     </Formik>

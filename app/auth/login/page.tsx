@@ -57,7 +57,7 @@ const Page = () => {
         <>
         <div className='hero-section'>
             <div className="main-container md:w-[55%] sm:w-screen  h-[100vh] flex flex-col justify-center items-center bg-[white] dark:bg-card">
-                <div className="main-container2 lg:w-[50%] sm:w-full mx-auto sm:px-4 md:px-0">
+                <div className="main-container2 p-5 rounded-xl dark:border-white dark:black lg:w-[50%] sm:w-full mx-auto">
                     <h1 className="font-semibold text-lightblue text-[2rem] mb-0">Login</h1> 
                 <div className="mt-4">
                 <Formik
