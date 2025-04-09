@@ -34,7 +34,14 @@ const nextConfig = {
       }
     ],
   },
+  webpack: (config) => {
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true, // Soporte para await en el nivel superior
+      layers: true, // Habilita soporte para capas, necesario para algunos paquetes modernos
+    };
+    return config;
+  },
 };
 
 export default nextConfig;
-
