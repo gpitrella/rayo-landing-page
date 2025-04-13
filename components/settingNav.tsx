@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import Navbar from './navbar'
 import { usePathname } from 'next/navigation'
-import '../styles/setting.css'
+import '../app/styles/setting.css'
 
 function SettingNav() {
 
