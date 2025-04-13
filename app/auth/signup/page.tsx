@@ -8,11 +8,13 @@ import '../../styles/auth.css'
 import { register } from "@/app/store/auth/authSlice";
 import { useRouter } from "next/navigation";
 import BtnLoader from "@/components/btnLoader";
-import { Button } from "../../../components/ui/button";
+// import { Button } from "../../../components/ui/button";
 import Error from "@/components/error";
 import { RootState, useAppDispatch } from "@/app/store/store";
 import { useSelector } from "react-redux";
 import toast from 'react-hot-toast';
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export interface SignupProp {
     firstName: string,
@@ -53,14 +55,26 @@ const Page = () => {
         dispatch(register({email, password, firstName, lastName}));
     }
    
-    return ( 
-        <>
-        <div className='hero-section'>
-            <div className="main-container md:w-[55%] sm:w-screen h-[100vh] flex flex-col justify-center items-center bg-[white] dark:bg-card">
-                <div className="main-container2 lg:w-[50%] sm:w-full mx-auto sm:px-4 md:px-0">
-                    <h1 className="font-semibold text-lightblue text-[2rem] mb-0 ">Signup</h1> 
-                <div className="mt-4">
-                    <Formik
+    return (
+        <div className="!flex h-auto w-[85%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
+        <Image
+            width={1200}
+            height={1200}
+            src="/BG_Rayo.png"
+            alt="bg-img"
+            className="absolute inset-0 ml-auto w-[770px] h-[580px] rounded-bl-[100px] object-cover object-center"
+        />
+        <div className="container mx-auto px-0 w-full mt-[20px]">
+            <div className="grid grid-cols-12 text-left lg:text-left">
+            <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">
+    
+                <div className="max-w-screen-sm mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
+                    <h1 className="leading-tight">
+                        Signup 
+                    </h1>
+                </div>
+    
+                <Formik
                         initialValues={{
                             firstName: '',
                             lastName: '',
@@ -102,14 +116,13 @@ const Page = () => {
                     </Formik>
                     <div className="mt-3">
                         <p className="text-center text-dark mt-2 text-base ">Already have an account? <Link href={"/auth/login"}><span className="font-semibold text-lightblue ">Login</span></Link></p>
-                    </div>
-                </div>
-                </div>  
-            </div>
+                    </div>  
+
+                </div>    
+             </div>
         </div>
-        </>
-        
-     );
+      </div>
+    );    
 }
 
  
