@@ -63,7 +63,7 @@ const Page = () => {
              alt="bg-img"
              className="absolute inset-0 ml-auto w-[770px] h-[580px] rounded-bl-[100px] object-cover object-center"
            />
-           <div className="container mx-auto px-0 w-full mt-[20px]">
+           <div className="container ml-0 px-0 w-[85%] mt-[20px]">
              <div className="grid grid-cols-12 text-left lg:text-left">
                <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">
      

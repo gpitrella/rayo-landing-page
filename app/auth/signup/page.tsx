@@ -64,7 +64,7 @@ const Page = () => {
             alt="bg-img"
             className="absolute inset-0 ml-auto w-[770px] h-[580px] rounded-bl-[100px] object-cover object-center"
         />
-        <div className="container mx-auto px-0 w-full mt-[20px]">
+        <div className="container mx-auto ml-0 px-0 w-[85%] mt-[20px]">
             <div className="grid grid-cols-12 text-left lg:text-left">
             <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">
     
@@ -91,23 +91,23 @@ const Page = () => {
                         <div className="flex w-full gap-3">
                             <div className="flex flex-col w-full">
                                 <label className="text-base font-medium mb-1 dark:text-white">Firstname</label>
-                                <Field name="firstName" type="text" placeholder="Firstname" />
+                                <Field name="firstName" type="text" placeholder="Firstname" className="px-4"/>
                                 {errors.firstName && touched.firstName ? (<span className="text-[#ec4242] text-sm mt-1">{errors.firstName}</span>) : null}
                             </div>
                             <div className="flex flex-col w-full">
                                 <label className="text-base font-medium mb-1 dark:text-white">Lastname</label>
-                                <Field name="lastName" type="text" placeholder="Lastname" />
+                                <Field name="lastName" type="text" placeholder="Lastname" className="px-4"/>
                                 {errors.lastName && touched.lastName ? (<span className="text-[#ec4242] text-sm mt-1">{errors.lastName}</span>) : null}
                             </div>
                         </div>
                         <div className="flex flex-col mt-3">
                             <label className="text-base font-medium mb-1 dark:text-white">Email</label>
-                            <Field name="email" type="text" placeholder="Email" />
+                            <Field name="email" type="text" placeholder="Email" className="px-4"/>
                             {errors.email && touched.email ? (<span className="text-[#ec4242] text-sm mt-1">{errors.email}</span>) : null}
                         </div>
                         <div className="flex flex-col mt-3">
                             <label className="text-base font-medium mb-1 dark:text-white">Password</label>
-                            <Field name="password" type="password" placeholder="Password" />
+                            <Field name="password" type="password" placeholder="Password" className="px-4"/>
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
                         <Button className={loading ? 'button-disabled mt-5' : 'button mt-5'} type="submit" disabled={loading} >{ loading ? <BtnLoader /> : 'Signup' }</Button>
