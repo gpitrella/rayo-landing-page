@@ -29,7 +29,7 @@ function DesktopNav(props: any) {
                     <div>
                          <ul>
                             <li>
-                                <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home'>
+                                <Link className={`${pathname === '/' ? 'active' : ''}`} href='/'>
                                 <div id='link'>
                                     <RiHomeLine className="text-[1.4rem] " />
                                     <span>Home</span>

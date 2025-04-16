@@ -11,9 +11,11 @@ import routeGuard from '@/app/guard/routeGuard'
 import SnackBar from '@/components/snackBar'
 import { fetchUser } from '@/app/store/user/userSlice'
 import { createAppointmentEffect } from '@/app/store/appointment/appointmentActions'
-import Navbar from '@/components/navbar'
+// import Navbar from '@/components/navbar'
 import { BsFillCalendarMinusFill } from 'react-icons/bs'
 import toast from 'react-hot-toast'
+import { Button } from "@/components/ui/button";
+
 
 
 function Page() {
@@ -75,25 +77,29 @@ function Page() {
 
   return (
     <>
-      <Navbar />
-      <div className='bg-[#fafafa] text-dark w-[100%] pt-8 lg:px-[70px] sm:px-[20px] min-h-screen'>
+      {/* <Navbar /> */}
+      <div className='w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-0 top-5 mx-auto z-40 py-0 px-0 mt-12'>
       { createAppointmentBtn && <CreateAppointment showCreateAppt={showCreateAppointmentComponent} loading={isLoading} createAppt={handleCreateAppointment} /> }
-      <div className='main-card w-full h-[250px] bg-[#ffffff] flex flex-col justify-center items-center mt-4 rounded-[6px]'>
-          <button onClick={showCreateAppointmentComponent} className='bg-lightblue hover:bg-[#1da5a0] sm:px-4 md:px-6 py-4 text-[white] flex items-center justify-center sm:text-base  md:text-lg rounded-[12px] transition-all ease-in-out'>
-            <BiCalendarPlus className='md:text-[30px] sm:text-[20px] ' /><span className='ml-3 font-semibold md:text-base sm:text-sm'>Book Appointment</span>
-          </button>
+      <div className="container mx-auto px-0 w-full mt-[20px]">        
+          <Button onClick={showCreateAppointmentComponent} className='w-auto font-bold group/arrow items-center justify-center transition-all ease-in-out'>
+            <BiCalendarPlus className='md:text-[30px] sm:text-[20px] ' /><span className='ml-3 font-semibold md:text-base sm:text-sm'>Agendar Lavado</span>
+          </Button>
       </div>
-      <div className='main-card w-full h-auto bg-[#ffffff] mt-8 rounded-[6px] lg:p-8 sm:px-4 sm:py-8'>
-        <h1 className='lg:text-2xl sm:text-lg font-medium'>Upcomming Appointments</h1>
+      <div className="container mx-auto px-0 w-full mt-[20px]">
+        <div className="grid grid-cols-12 text-left lg:text-left">
+          <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">        
+            <h1 className='lg:text-2xl sm:text-lg font-medium'>Lavados agendados</h1>
 
-        <div className='appt-container'>
-          {(data?.length === 0 ) && (
-            <div className='w-full bg-[white] px-8 py-16 mt-4 flex flex-col justify-center items-center'>
-              <BsFillCalendarMinusFill className="text-[#858585] text-[4rem] " />
-              <p className='mt-3 sm:text-base md:text-xl text-[#858585] text-center leading-snug'>You do not have any upcoming appointments</p>
+            <div className='appt-container'>
+              {(data?.length === 0 ) && (
+                <div className='w-full bg-[white] px-8 py-16 mt-4 flex flex-col justify-center items-center'>
+                  <BsFillCalendarMinusFill className="text-[#858585] text-[4rem] " />
+                  <p className='mt-3 sm:text-base md:text-xl text-[#858585] text-center leading-snug'>No cuentas con ningún lavado agendado</p>
+                </div>
+              )}
+              { data?.length > 0 && <Table setFetchData={setFetchData} data={data}/>}
             </div>
-          )}
-          { data?.length > 0 && <Table setFetchData={setFetchData} data={data}/>}
+          </div>
         </div>
       </div>
 

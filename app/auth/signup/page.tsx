@@ -110,7 +110,9 @@ const Page = () => {
                             <Field name="password" type="password" placeholder="Password" className="px-4"/>
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
-                        <Button className={loading ? 'button-disabled mt-5' : 'button mt-5'} type="submit" disabled={loading} >{ loading ? <BtnLoader /> : 'Signup' }</Button>
+                        <Button className={loading ? 'button-disabled mt-5' : 'button mt-5'} disabled={loading} >{ loading ? <BtnLoader /> : 'Signup' }</Button>
+                        {/* Removi el type="submit" del BUTTON estaba generando problemas de estilos*/}
+
                     </Form>
                         )}
                     </Formik>

@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className)}>
-      <ThemeProvider >
+      <ThemeProvider>
         <Toaster
           position="top-center"
           reverseOrder={false}
@@ -40,11 +40,11 @@ export default function RootLayout({
             },
           }}
         />         
-          <Providers>            
+          <Providers>             
             <Navbar />
             {children}            
           </Providers> 
-        </ThemeProvider>       
+        </ThemeProvider>        
       </body>
     </html>
   );
