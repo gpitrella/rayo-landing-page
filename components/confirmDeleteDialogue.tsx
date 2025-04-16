@@ -22,7 +22,7 @@ const ConfirmDialogueBox: React.FC<any> = (props) => {
                         <p className='md:text-[1.2rem] sm:text-base font-bold text-[#272727] '>Cancel?</p>
                         <MdClear onClick={closeDialogue} className="md:text-[1.3rem] sm:text-[1.1rem] cursor-pointer" />
                     </div>
-                    <p className='mt-2 md:text-base sm:text-sm '>Are you sure you want to cancel this appointment? Actions carried out cannot be undone!</p>
+                    <p className='mt-2 md:text-base sm:text-sm '>¿Está seguro de que desea cancelar este lavado? ¡Las acciones realizadas son irreversibles!</p>
                     <div className='flex w-full gap-4 mt-3'>
                         <button onClick={()=> {
                             closeDialogue();

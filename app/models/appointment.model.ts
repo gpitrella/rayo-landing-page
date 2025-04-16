@@ -1,7 +1,9 @@
 export interface AppointmentModel {
     user_id: string,
     appointment_id: string,
-    title: string,
+    modelo: string,
+    patente: string,
+    color: string,
     date: string,
     time: string,
     description: string,
@@ -13,7 +15,9 @@ export interface AppointmentModel {
 
 export interface AppointmentRequest {
     user_id: string,
-    title: string,
+    modelo: string,
+    patente: string,
+    color: string,
     date: string,
     time: string,
     description: string,
