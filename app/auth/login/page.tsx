@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -15,6 +15,8 @@ import BtnLoader from "@/components/btnLoader";
 import toast from 'react-hot-toast';
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+
 
 
 
@@ -63,7 +65,7 @@ const Page = () => {
              alt="bg-img"
              className="absolute inset-0 ml-auto w-[770px] h-[580px] rounded-bl-[100px] object-cover object-center"
            />
-           <div className="container mx-auto px-0 w-full mt-[20px]">
+           <div className="container ml-0 px-0 w-[85%] mt-[20px]">
              <div className="grid grid-cols-12 text-left lg:text-left">
                <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">
      
@@ -84,7 +86,7 @@ const Page = () => {
                     }}
                     >
                         {({ errors, touched, isSubmitting }) => (
-                        <Form>
+                    <Form>
                         <div className="flex flex-col">
                             <label className="text-base font-medium mb-1 dark:text-white">Email</label>
                             <Field name="email" placeholder="Enter your email" className="px-4"/>
@@ -96,7 +98,8 @@ const Page = () => {
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
                         <Link href={"/forgot-password"}><p className="font-medium text-lightblue text-right mt-2">Forgot Password?</p></Link>
-                        <Button className={loading ? 'button-disabled' : 'button'} type="submit" disabled={loading}>{ loading ? <BtnLoader /> : 'Login' }</Button>
+                        <Button className={loading ? 'button-disabled' : 'button w-auto font-bold group/arrow'}  disabled={loading}>{ loading ? <BtnLoader /> : 'Login' }</Button> 
+                        {/* Removi el type="submit" del BUTTON estaba generando problemas de estilos*/}
                     </Form>
                         )}
                 </Formik>

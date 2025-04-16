@@ -10,7 +10,7 @@ import { RootState, useAppDispatch } from '@/app/store/store';
 import { useSelector } from 'react-redux';
 import routeGuard from '@/app/guard/routeGuard';
 import { AppointmentModel } from '@/app/models/appointment.model';
-import Navbar from '@/components/navbar';
+// import Navbar from '@/components/navbar';
                                                                                                                                                                                                                                                                                                                                        
 
 const Page = () => {
@@ -44,7 +44,7 @@ const Page = () => {
 
     return ( 
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <div className='bg-darkSecondary min-h-screen  pt-8 lg:px-[70px] sm:px-[20px] w-screen'>
               <h1 className='lg:text-[28px] sm:text-xl font-medium'>All Appointments</h1>
                   <div className='appt-container  mt-8'>

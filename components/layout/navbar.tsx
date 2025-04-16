@@ -2,8 +2,8 @@
 import { ChevronsDown, Github, Menu } from "lucide-react";
 
 import { checkUserLoggedIn } from '../../app/services/auth.service'
-import { useRouter } from 'next/navigation'
-import React, { useEffect } from "react";
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 import {
   Sheet,
   SheetContent,
@@ -26,6 +26,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { ToggleTheme } from "./toogle-theme";
 import { useTheme } from "next-themes";
+import { FiBell } from 'react-icons/fi';
+import { IoIosArrowDown } from 'react-icons/io';
+import { useSelector } from 'react-redux';
+import MobileNav from '../../components/mobileNav';
+import DesktopNav from '../../components/desktopNav';
+import { User } from '../../app/models/user.model';
+import { RootState } from '../../app/store/store';
+
 interface RouteProps {
   href: string;
   label: string;
@@ -69,8 +77,39 @@ const featureList: FeatureProps[] = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);  
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme(); 
+  const { user } = useSelector((state: RootState) => state.user);
   const router = useRouter();
+  const[dropDown, setDropDown] = useState<boolean>(false);
+  const[width, setWidth] = useState<number>(0);
+  const[shortUsername, setShortUsername] = useState<string>('')
+  
+      useEffect(()=> {
+          if(user != null){
+              const User = user as User
+              const shortName = User.firstName.charAt(0) + User.lastName.charAt(0)
+              setShortUsername(shortName.toUpperCase());
+          }
+  
+      },[user])
+  
+      useEffect(()=>{
+          function checkWindowWidth() {
+              const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+              setWidth(windowWidth)
+          }
+  
+          checkWindowWidth()
+  
+          window.addEventListener('resize', checkWindowWidth);
+          return () => {
+              window.removeEventListener('click', checkWindowWidth);
+          };
+      })
+  
+      function closeDropDown(){
+          setDropDown(false)
+      }
 
   // useEffect(()=>{
   //   const isAuthenticated = checkUserLoggedIn();
@@ -83,7 +122,7 @@ export const Navbar = () => {
   // })
 
   return (
-    <header className="shadow-inner bg-opacity-50 w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-3 px-6 bg-card">
+    <header className="shadow-inner bg-opacity-50 w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-0 px-6 bg-card">
       <Link href="/" className="font-black text-2xl flex items-center italic">
         <Image
           width={35}
@@ -191,12 +230,31 @@ export const Navbar = () => {
         </NavigationMenuList>
       </NavigationMenu>
 
-      <div className="hidden lg:flex">         
+      <div className="hidden lg:flex items-center">         
 
-        <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base'>
-          Login
-        </Button>
+        { !user ? 
+          <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base'>
+            Login
+          </Button> : <></>}
+          { user ? 
+            <><div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
+              <div onClick={()=> setDropDown(!dropDown)} className='flex justify-start items-center hover:bg-darkSecondary rounded-[7px] cursor-pointer px-4 transition-all ease-in-out'>
+                  <div className='notification mr-4 rounded-[50%] bg-lightgrey w-12 h-12 flex justify-center items-center'>
+                      <span className='font-medium'>{shortUsername}</span>
+                  </div>
+                  <div className='flex justify-start items-center'>
+                      <span className='mr-2 w-max sm:invisible sm:hidden lg:block lg:visible '>{user?.firstName} {user?.lastName}</span>
+                      <IoIosArrowDown />
+                  </div>
+              </div>
+            </div>
+            
+            {dropDown && (width < 720) && <MobileNav user={user} closeDropDown={closeDropDown} />}
+            {dropDown && (width > 720) && <DesktopNav user={user} setDropDwon={setDropDown} />  }
+            </>
+          : <></>}
         <ToggleTheme />
+             
       </div>
     </header>
   );
