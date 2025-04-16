@@ -26,7 +26,9 @@ const Table: React.FC<DocumentData> = (props): JSX.Element  => {
                         <thead>
                             <tr>
                                 <td>Appointment ID</td>
-                                <td>Title</td>
+                                <td>Marca y Modelo</td>
+                                <td>Color</td>
+                                <td>Patente</td>
                                 <td>Date</td>
                                 <td>Time</td>
                                 <td>Status</td>
@@ -40,8 +42,14 @@ const Table: React.FC<DocumentData> = (props): JSX.Element  => {
                                 <td className="id">
                                     <p>{appt.appointment_id}</p>
                                 </td>
-                                <td className="title">
-                                    <p>{appt.title}</p>
+                                <td className="modelo">
+                                    <p>{appt.modelo}</p>
+                                </td>
+                                <td className="color">
+                                    <p>{appt.color}</p>
+                                </td>
+                                <td className="patente">
+                                    <p>{appt.patente}</p>
                                 </td>
                                 <td className="date">
                                     <p>{appt.date}</p>
