@@ -90,9 +90,11 @@ export const Navbar = () => {
               const shortName = User.firstName.charAt(0) + User.lastName.charAt(0)
               setShortUsername(shortName.toUpperCase());
           }
-  
+          setDropDown(false)
+
       },[user])
   
+      console.log('user: ', user)
       useEffect(()=>{
           function checkWindowWidth() {
               const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;

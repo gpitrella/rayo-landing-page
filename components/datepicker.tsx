@@ -29,7 +29,8 @@ function Datepicker(props: any) {
         timeCaption="time"
         maxDate={addDays(new Date(), 5)}
         dateFormat="MMMM d, yyyy h:mm aa"
-        placeholderText="Please select a date and time"
+        placeholderText="Por favor seleccione una fecha y hora"
+        className="dark:text-black"
         />
     );
 }

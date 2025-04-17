@@ -3,6 +3,9 @@ import { AppointmentModel } from '../app/models/appointment.model';
 import { DocumentData } from 'firebase/firestore';
 import ConfirmDialogueBox from './confirmDeleteDialogue';
 import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Icon } from "@/components/ui/icon";
+import { icons } from "lucide-react";
 import SnackBar from '@/components/snackBar'
 
 
@@ -17,67 +20,56 @@ const Table: React.FC<DocumentData> = (props): JSX.Element  => {
         setFetchData(true)
         setConfirmDelete(false)
     }
-
+    const icon = "Sparkle"
     return ( 
         <>
-            <div className="w-full mt-4 bg-[#ffffff] rounded-[7px]">
-                <div className="table-container lg:w-[100%] sm:w-full">
-                    <table className="">
-                        <thead>
-                            <tr>
-                                <td>Appointment ID</td>
-                                <td>Marca y Modelo</td>
-                                <td>Color</td>
-                                <td>Patente</td>
-                                <td>Date</td>
-                                <td>Time</td>
-                                <td>Status</td>
-                                <td>Action</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data?.map((appt: AppointmentModel, index: number)=>{
-                                return(
-                            <tr key={index}>
-                                <td className="id">
-                                    <p>{appt.appointment_id}</p>
-                                </td>
-                                <td className="modelo">
-                                    <p>{appt.modelo}</p>
-                                </td>
-                                <td className="color">
-                                    <p>{appt.color}</p>
-                                </td>
-                                <td className="patente">
-                                    <p>{appt.patente}</p>
-                                </td>
-                                <td className="date">
-                                    <p>{appt.date}</p>
-                                </td>
-                                <td className="time">
-                                    <p>{appt.time}</p>
-                                </td>
-                                <td className="status completed">
-                                    <p>{appt.status}</p>
-                                </td>
-                                <td className="action">
-                                    <span onClick={() =>{ 
-                                        setConfirmDelete(true)
-                                        setAppointmentID(appt.appointment_id) 
-                                        }} 
-                                        className=" text-lightblue cursor-pointer text-[1.5rem]"
-                                        >
-                                            <MdDeleteOutline />
-                                        </span>
-                                </td>
-                            </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-            </div>
-                {confirmDelete && <ConfirmDialogueBox closeDialogue={closeDialogue} id={appointmentID} />}
-            </div>
+        <div className="grid lg:grid-cols-4 gap-4 w-full">
+          {data.map((appt: AppointmentModel, index: number) => (
+            <Card
+              key={index}
+              className="bg-muted/50 dark:bg-card hover:bg-background transition-all delay-75 group/number"              
+            >
+              <CardHeader>
+                <div className="flex justify-between">
+                  <Icon
+                    name={icon as keyof typeof icons}
+                    size={32}
+                    color="hsl(var(--primary))"
+                    className="mb-6 text-primary"
+                  />
+                  <span className="text-5xl text-muted-foreground/15 font-medium transition-all delay-75 group-hover/number:text-muted-foreground/30">
+                    0{index + 1}
+                  </span>
+                  <div className="action">
+                    <span onClick={() =>{ 
+                        setConfirmDelete(true)
+                        setAppointmentID(appt.appointment_id) 
+                        }} 
+                        className=" text-lightblue cursor-pointer text-[1.5rem]"
+                        >
+                            <MdDeleteOutline />
+                        </span>
+                   </div>
+                </div>
+
+                <CardTitle>Lavado Reservado</CardTitle>
+              </CardHeader>
+
+              <CardContent className="text-muted-foreground flex flex-col"> 
+                 <span> Modelo: {appt.modelo} </span>                
+                 <span> Color: {appt.color} </span>
+                 <span> Patente: {appt.patente} </span>                 
+                 <span> Fecha/Hora: {appt.date} {appt.time} </span>
+                 <span> Estado: {appt.status} </span>
+                 <span> Descripción: {appt.description} </span>
+                 <span> ID Lavado: {appt.appointment_id} </span>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        <div className="w-full mt-4 bg-[#ffffff] rounded-[7px]">
+            {confirmDelete && <ConfirmDialogueBox closeDialogue={closeDialogue} id={appointmentID} />}
+        </div>
 
         </>
      );

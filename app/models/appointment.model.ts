@@ -9,7 +9,7 @@ export interface AppointmentModel {
     description: string,
     createdAt: string,
     updatedAt: string,
-    status: 'ACTIVE' | 'PENDING' | 'COMPLETED'
+    status: 'ACTIVO' | 'PENDIENTE' | 'COMPLETADO'
 }
 
 
