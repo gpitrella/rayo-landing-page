@@ -67,7 +67,7 @@ async function Logout(){
 }
 
 
-async function handleGoogleLogin (email: string, password: string): Promise<{uid: string, accessToken: string} | undefined>{
+async function handleGoogleLogin (): Promise<{uid: string, accessToken: string} | undefined>{
     try {
         const res: UserCredential = await signInWithPopup(auth, providers.GOOGLE);
         if(!res){
