@@ -24,7 +24,7 @@ function DesktopNav(props: any) {
     <div className='drop-down bg-[white] w-[400px] h-[350px] rounded-[12px] absolute top-24 right-16 p-6 flex flex-col justify-start'>
                     <div className='mb-6 flex justify-between items-center'>
                         <h3 className='font-semibold text-lg'>{props.user?.firstName} {props.user?.lastName}</h3>
-                        <button onClick={()=> router.push('/settings/profile')} className='rounded-[20px] text-[white] font-semibold bg-lightblue px-4 py-1 text-sm   '>Details</button>
+                        {/* <button onClick={()=> router.push('/settings/profile')} className='rounded-[20px] text-[white] font-semibold bg-lightblue px-4 py-1 text-sm   '>Details</button> */}
                     </div>
                     <div>
                          <ul>
@@ -37,14 +37,14 @@ function DesktopNav(props: any) {
                                 </Link>
                             </li>
                             <li>
-                                <Link className={`${pathname === '/appointments' ? 'active' : ''}`} href='/appointments'>
+                                <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home'>
                                 <div id='link'>
                                     <PiCalendarBlank className="text-[1.4rem] " />
-                                    <span>Appointments</span>
+                                    <span>Lavados</span>
                                 </div>
                                 </Link>
                             </li>
-                            <li><Link className={`${pathname === '/settings' ? 'active' : ''}`} href='/settings'>
+                            <li><Link className={`${pathname === '/settings/profile' ? 'active' : ''}`} href='/settings/profile'>
                                 <div id='link'>
                                     <IoSettingsOutline className="text-[1.4rem] "/>
                                     <span>Settings</span>

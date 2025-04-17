@@ -22,7 +22,9 @@ function Page() {
 
   interface AppointmentRequest {
     user_id: string;
-    title: string;
+    modelo: string;
+    patente: string;
+    color: string;
     date: string;
     time: string;
     description: string;
@@ -43,11 +45,11 @@ function Page() {
   const handleCreateAppointment = async(data: AppointmentRequest) => {
     try {
         await dispatch(createAppointmentEffect(data));  
-        toast.success('Created successfully!')
+        toast.success('Lavado agendado!')
         setFetchData(true)
         setCreateAppointmentBtn(false)
     } catch (error) {
-        toast.error('Error creating appointment!')
+        toast.error('Error al agendar un lavado!')
     }
   }
 
@@ -86,9 +88,9 @@ function Page() {
           </Button>
       </div>
       <div className="container mx-auto px-0 w-full mt-[20px]">
-        <div className="grid grid-cols-12 text-left lg:text-left">
-          <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">        
-            <h1 className='lg:text-2xl sm:text-lg font-medium'>Lavados agendados</h1>
+        <div className="text-left lg:text-left">
+          <div className="col-span-full xl:col-span-7">        
+            <h1 className='lg:text-2xl sm:text-lg font-medium mb-8 text-center'>Lavados agendados</h1>
 
             <div className='appt-container'>
               {(data?.length === 0 ) && (

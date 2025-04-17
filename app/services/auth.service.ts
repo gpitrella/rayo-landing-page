@@ -1,11 +1,15 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential, signOut, ProviderId, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../config/firebase";
 import jwtDecode, { JwtPayload } from "jwt-decode";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
+const providers = {
+  GOOGLE: new GoogleAuthProvider(),
+};
 
 async function Signup(email: string, password: string){
     try {
@@ -63,4 +67,23 @@ async function Logout(){
 }
 
 
-export {Signup, Login, Logout, checkUserLoggedIn}
+async function handleGoogleLogin (email: string, password: string): Promise<{uid: string, accessToken: string} | undefined>{
+    try {
+        const res: UserCredential = await signInWithPopup(auth, providers.GOOGLE);
+        if(!res){
+            throw ('Invalid Credentials');
+        }
+        const accessToken =  await res.user.getIdToken();
+        const uid = res.user.uid;
+        localStorage.setItem('atk', accessToken);
+        return ({
+            uid,
+            accessToken
+        })
+    } catch (error: any) {
+        throw error.message;
+    }
+};
+
+
+export {Signup, Login, Logout, checkUserLoggedIn, handleGoogleLogin}

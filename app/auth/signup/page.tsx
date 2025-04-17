@@ -70,7 +70,7 @@ const Page = () => {
     
                 <div className="max-w-screen-sm mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
                     <h1 className="leading-tight">
-                        Signup 
+                        Registrarse 
                     </h1>
                 </div>
     
@@ -90,12 +90,12 @@ const Page = () => {
                     <Form>
                         <div className="flex w-full gap-3">
                             <div className="flex flex-col w-full">
-                                <label className="text-base font-medium mb-1 dark:text-white">Firstname</label>
+                                <label className="text-base font-medium mb-1 dark:text-white">Nombre</label>
                                 <Field name="firstName" type="text" placeholder="Firstname" className="px-4"/>
                                 {errors.firstName && touched.firstName ? (<span className="text-[#ec4242] text-sm mt-1">{errors.firstName}</span>) : null}
                             </div>
                             <div className="flex flex-col w-full">
-                                <label className="text-base font-medium mb-1 dark:text-white">Lastname</label>
+                                <label className="text-base font-medium mb-1 dark:text-white">Apellido</label>
                                 <Field name="lastName" type="text" placeholder="Lastname" className="px-4"/>
                                 {errors.lastName && touched.lastName ? (<span className="text-[#ec4242] text-sm mt-1">{errors.lastName}</span>) : null}
                             </div>
@@ -110,14 +110,14 @@ const Page = () => {
                             <Field name="password" type="password" placeholder="Password" className="px-4"/>
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
-                        <Button className={loading ? 'button-disabled mt-5' : 'button mt-5'} disabled={loading} >{ loading ? <BtnLoader /> : 'Signup' }</Button>
+                        <Button className={loading ? 'button-disabled mt-5' : 'button mt-5'} disabled={loading} >{ loading ? <BtnLoader /> : 'Registrarse' }</Button>
                         {/* Removi el type="submit" del BUTTON estaba generando problemas de estilos*/}
 
                     </Form>
                         )}
                     </Formik>
                     <div className="mt-3">
-                        <p className="text-center text-dark mt-2 text-base ">Already have an account? <Link href={"/auth/login"}><span className="font-semibold text-lightblue ">Login</span></Link></p>
+                        <p className="text-center text-dark mt-2 text-base ">Ya tienes una cuenta? <Link href={"/auth/login"}><span className="font-semibold text-lightblue ">Login</span></Link></p>
                     </div>  
 
                 </div>    

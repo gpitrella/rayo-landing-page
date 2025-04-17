@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { Login, checkUserLoggedIn } from "@/app/services/auth.service";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import '../../styles/auth.css'
+import '../../styles/auth.css';
+import LoginWithGoogle from './googleLogin';
 import Error from "@/components/error";
 import { RootState, useAppDispatch } from "@/app/store/store";
 import { login, reset } from "@/app/store/auth/authSlice";
@@ -93,18 +94,23 @@ const Page = () => {
                             {errors.email && touched.email ? (<span className="text-[#ec4242] text-sm mt-1">{errors.email}</span>) : null}
                         </div>
                         <div className="flex flex-col mt-3">
-                            <label className="text-base font-medium mb-1 dark:text-white">Password</label>
+                        <label className="text-base font-medium mb-1 dark:text-white">Password</label>
                             <Field type='password' name="password" placeholder="Enter your password" className="px-4"/>
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
-                        <Link href={"/forgot-password"}><p className="font-medium text-lightblue text-right mt-2">Forgot Password?</p></Link>
+                        <Link href={"/forgot-password"}><p className="font-medium text-lightblue text-right mt-2">Olvidaste el password?</p></Link>
                         <Button className={loading ? 'button-disabled' : 'button w-auto font-bold group/arrow'}  disabled={loading}>{ loading ? <BtnLoader /> : 'Login' }</Button> 
                         {/* Removi el type="submit" del BUTTON estaba generando problemas de estilos*/}
                     </Form>
                         )}
                 </Formik>
+                <div className="mt-2">
+                    <p className="text-left text-dark mt-2 text-base mb-2">o</p>
+                    <LoginWithGoogle />    
+                </div> 
+                
                 <div className="mt-3">
-                    <p className="text-center text-dark mt-2 text-base ">Do not have an account? <Link href={"/auth/signup"}><span className="font-semibold text-lightblue ">Sign up</span></Link></p>
+                    <p className="text-center text-dark mt-2 text-base ">No tienes una cuenta? <Link href={"/auth/signup"}><span className="font-semibold text-lightblue ">Registrarse</span></Link></p>
                 </div>     
 
                </div>       
