@@ -68,12 +68,12 @@ export default function Home() {
       <Process />
       <HeroSection />      
       <SponsorsSection />
-      <BenefitsSection />
-      <ServicesSection />
+      {/* <BenefitsSection /> */}
+      {/* <ServicesSection /> */}
       <TestimonialSection />
-      <TeamSection />
-      <CommunitySection />
-      <PricingSection />
+      {/* <TeamSection /> */}
+      {/* <CommunitySection /> */}
+      {/* <PricingSection /> */}
       <ContactSection />
       <FAQSection />
       <FooterSection />
