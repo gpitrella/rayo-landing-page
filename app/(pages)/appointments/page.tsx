@@ -50,7 +50,7 @@ const Page = () => {
                   <div className='appt-container  mt-8'>
                     {loading ? <Loader /> : ''}
                     {(data?.length === 0 && !loading ) && (
-                      <div className='w-full bg-[white] p-16 mt-4 flex flex-col justify-center items-center'>
+                      <div className='w-full p-16 mt-4 flex flex-col justify-center items-center '>
                         <BsFillCalendarMinusFill className="text-[#858585] text-[4rem] " />
                         <p className='mt-3 sm:text-base md:text-xl text-[#858585] text-center leading-snug'>You have not booked any appointment</p>
                       </div>

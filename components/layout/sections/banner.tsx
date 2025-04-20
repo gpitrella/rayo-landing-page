@@ -2,10 +2,20 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from 'next/navigation'
 import Link from "next/link";
 import Image from "next/image";
 
 export const Banner = () => {
+
+  const router = useRouter();
+
+      const startAppointment = ()=> {
+          router.push('/home')
+        }
+      
+
+  
   return (
     <div className="!flex h-auto w-[85%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
       <Image
@@ -31,12 +41,12 @@ export const Banner = () => {
             </p>
 
             <div className="max-w-screen-sm mx-auto">
-            <Link href="#process" passHref legacyBehavior>
-              <Button className="w-auto font-bold group/arrow" > 
-                Empezar
+            {/* <Link href="#process" passHref legacyBehavior> */}
+              <Button className="w-auto font-bold group/arrow" onClick={startAppointment}> 
+                Agendar Lavado
                 <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
               </Button>
-            </Link>
+            {/* </Link> */}
             </div>
           </div>       
           

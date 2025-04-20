@@ -63,7 +63,9 @@ export default function Home() {
 
   return (
     <>
+      
       <Banner />
+      <CommunitySection />
       <FeaturesSection />
       <Process />
       <HeroSection />      
@@ -72,7 +74,7 @@ export default function Home() {
       {/* <ServicesSection /> */}
       <TestimonialSection />
       {/* <TeamSection /> */}
-      {/* <CommunitySection /> */}
+      
       {/* <PricingSection /> */}
       <ContactSection />
       <FAQSection />

@@ -1,12 +1,13 @@
 
-input{
+input, select {
     width: 100%;
-    height: 46px;
+    height: 42px;
     outline: none;
-    padding: 27px 12px;
+    padding: 22px 12px;
     font-size: 1rem;
-    border-radius: 5px;
-    background-color: rgb(243, 243, 243);
+    border-radius: 7px;
+    /* background-color: rgb(243, 243, 243); */
+    border: 1px solid rgb(185, 185, 185);
 }
 
 .text-area:focus{
@@ -20,7 +21,7 @@ input{
 }
 
 label{
-    color: #121212;
+    color: #3b3b3b;
 }
 
 .text-area{
