@@ -23,9 +23,9 @@ function Datepicker(props: any) {
         showTimeSelect
         timeFormat="HH:mm"
         timeIntervals={60}
-        minTime={setHours(setMinutes(new Date(), 0), 9)}
+        minTime={setHours(setMinutes(new Date(), 0), 8)}
         maxTime={setHours(setMinutes(new Date(), 30), 22)}
-        excludeDates={[new Date()]}
+        excludeDates={[]}
         timeCaption="time"
         maxDate={addDays(new Date(), 5)}
         dateFormat="MMMM d, yyyy h:mm aa"

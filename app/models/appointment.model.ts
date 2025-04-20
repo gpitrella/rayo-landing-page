@@ -4,12 +4,15 @@ export interface AppointmentModel {
     modelo: string,
     patente: string,
     color: string,
+    telefono: string,
+    place: string,
+    terms: boolean,
     date: string,
     time: string,
     description: string,
     createdAt: string,
     updatedAt: string,
-    status: 'ACTIVO' | 'PENDIENTE' | 'COMPLETADO'
+    status: 'ACTIVE' | 'PENDING' | 'COMPLETED'
 }
 
 
@@ -18,6 +21,9 @@ export interface AppointmentRequest {
     modelo: string,
     patente: string,
     color: string,
+    telefono: string,
+    place: string,
+    terms: boolean,
     date: string,
     time: string,
     description: string,

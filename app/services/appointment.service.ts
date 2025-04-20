@@ -42,7 +42,17 @@ async function getUpcomingAppointment(): Promise<unknown>{
         U.push(doc.data())
     });
     return U;
+}
 
+async function getAllAppointment(): Promise<unknown>{
+    const U: any = []
+    const q = query(collection(db, "appointments"));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        U.push(doc.data())
+    });
+    return U;
 }
 
 async function createAppointment(data: AppointmentRequest) : Promise<void>{
@@ -86,5 +96,6 @@ export {
     deleteAppointment,
     getSingleAppointment,
     createAppointment,
-    getUpcomingAppointment
+    getUpcomingAppointment,
+    getAllAppointment
 }

@@ -4,7 +4,7 @@ import * as React from 'react'
 import { BiCalendarPlus } from 'react-icons/bi'
 import Table from '@/components/table'
 import CreateAppointment from '../../../components/createAppointment'
-import { getUpcomingAppointment } from '@/app/services/appointment.service'
+import { getUpcomingAppointment, getAllAppointment } from '@/app/services/appointment.service'
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from '@/app/store/store'
 import routeGuard from '@/app/guard/routeGuard'
@@ -25,6 +25,9 @@ function Page() {
     modelo: string;
     patente: string;
     color: string;
+    telefono: string,
+    place: string;
+    terms: boolean;
     date: string;
     time: string;
     description: string;
@@ -35,6 +38,7 @@ function Page() {
   const { uid } = useSelector((state: RootState) => state.auth);
   const [createAppointmentBtn, setCreateAppointmentBtn] = React.useState<boolean>(false)
   const [data, setData] = React.useState<any>([])
+  const [appointments, setAppointments] = React.useState<string>('')
   const[fetchData, setFetchData] = React.useState<boolean>(true)
   const dispatch = useAppDispatch();
   const showCreateAppointmentComponent = () => {
@@ -58,8 +62,11 @@ function Page() {
   React.useEffect(()=>{
 
     const fetchUpcomingAppointments = async()=> {
-      if(uid){
+      if(uid){        
         const res = await getUpcomingAppointment()
+        const totalAppoinment = await getAllAppointment()
+        // console.log('TOTAL: ', totalAppoinment)
+        // setAppointments(totalAppoinment.length)
         setData(res) 
         setFetchData(false);
       }
@@ -94,7 +101,7 @@ function Page() {
 
             <div className='appt-container'>
               {(data?.length === 0 ) && (
-                <div className='w-full bg-[white] px-8 py-16 mt-4 flex flex-col justify-center items-center'>
+                <div className='w-full bg-[white] px-8 py-16 mt-4 flex flex-col justify-center items-center dark:bg-[black]'>
                   <BsFillCalendarMinusFill className="text-[#858585] text-[4rem] " />
                   <p className='mt-3 sm:text-base md:text-xl text-[#858585] text-center leading-snug'>No cuentas con ningún lavado agendado</p>
                 </div>

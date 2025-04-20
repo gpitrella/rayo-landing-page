@@ -43,6 +43,24 @@ async function Login(email: string, password: string): Promise<{uid: string, acc
     }
 }
 
+async function handleGoogleLogin (): Promise<{uid: string, accessToken: string} | undefined>{
+    try {
+        const res: UserCredential = await signInWithPopup(auth, providers.GOOGLE);
+        if(!res){
+            throw ('Invalid Credentials');
+        }
+        const accessToken =  await res.user.getIdToken();
+        const uid = res.user.uid;
+        localStorage.setItem('atk', accessToken);
+        return ({
+            uid,
+            accessToken
+        })
+    } catch (error: any) {
+        throw error.message;
+    }
+};
+
 
 function checkUserLoggedIn(){
     const token = localStorage.getItem('atk');
@@ -65,25 +83,5 @@ async function Logout(){
     await signOut(auth)
     localStorage.removeItem('atk')
 }
-
-
-async function handleGoogleLogin (): Promise<{uid: string, accessToken: string} | undefined>{
-    try {
-        const res: UserCredential = await signInWithPopup(auth, providers.GOOGLE);
-        if(!res){
-            throw ('Invalid Credentials');
-        }
-        const accessToken =  await res.user.getIdToken();
-        const uid = res.user.uid;
-        localStorage.setItem('atk', accessToken);
-        return ({
-            uid,
-            accessToken
-        })
-    } catch (error: any) {
-        throw error.message;
-    }
-};
-
 
 export {Signup, Login, Logout, checkUserLoggedIn, handleGoogleLogin}

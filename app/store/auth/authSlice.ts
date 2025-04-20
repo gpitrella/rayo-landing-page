@@ -80,6 +80,27 @@ export const login = createAsyncThunk(
   }
 );
 
+export const loginGoogle = createAsyncThunk(
+  "auth-login",
+  async (formData: {}, thunkAPI) => {
+    try {
+        const response = await Auth.handleGoogleLogin()
+        if(!response){
+            return thunkAPI.rejectWithValue("Unknown error occurred");
+        }
+        const uid = response.uid
+        const accessToken = response.accessToken
+        return {
+            uid,
+            accessToken
+        };
+    } catch (error: any) {
+        const errorMessgae = handleError(error)
+        return thunkAPI.rejectWithValue(errorMessgae);
+    }
+  }
+);
+
 export const register = createAsyncThunk(
   "auth-register",
   async (formData: {email: string, password: string, firstName: string, lastName: string}, thunkAPI) => {

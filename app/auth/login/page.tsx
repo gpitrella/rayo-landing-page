@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Login, checkUserLoggedIn } from "@/app/services/auth.service";
+import { checkUserLoggedIn } from "@/app/services/auth.service";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import '../../styles/auth.css';
 import LoginWithGoogle from './googleLogin';
 import Error from "@/components/error";
 import { RootState, useAppDispatch } from "@/app/store/store";
-import { login, reset } from "@/app/store/auth/authSlice";
+import { login, loginGoogle, reset } from "@/app/store/auth/authSlice";
 import { useSelector } from "react-redux";
 import BtnLoader from "@/components/btnLoader";
 import toast from 'react-hot-toast';
@@ -87,7 +87,7 @@ const Page = () => {
                     }}
                     >
                         {({ errors, touched, isSubmitting }) => (
-                    <Form>
+                    <Form className="pb-4 border-b-2 border-b-zinc-200">
                         <div className="flex flex-col">
                             <label className="text-base font-medium mb-1 dark:text-white">Email</label>
                             <Field name="email" placeholder="Enter your email" className="px-4"/>
@@ -104,9 +104,9 @@ const Page = () => {
                     </Form>
                         )}
                 </Formik>
-                <div className="mt-2">
-                    <p className="text-left text-dark mt-2 text-base mb-2">o</p>
-                    <LoginWithGoogle />    
+                <div className="mt-2 relative">
+                    <p className="text-center text-dark mt-2 text-base mb-2 absolute bottom-10 left-[50%] bg-white px-3">o</p>
+                    <LoginWithGoogle/>    
                 </div> 
                 
                 <div className="mt-3">

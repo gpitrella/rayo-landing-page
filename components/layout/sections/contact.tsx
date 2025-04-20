@@ -129,7 +129,7 @@ export const ContactSection = () => {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>Nombre</FormLabel>
+                        <FormLabel className="dark:text-white">Nombre</FormLabel>
                         <FormControl>
                           <Input placeholder="Leopoldo" {...field} />
                         </FormControl>
@@ -142,7 +142,7 @@ export const ContactSection = () => {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>Apellido</FormLabel>
+                        <FormLabel className="dark:text-white">Apellido</FormLabel>
                         <FormControl>
                           <Input placeholder="Miranda" {...field} />
                         </FormControl>
@@ -158,7 +158,7 @@ export const ContactSection = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel className="dark:text-white">Email</FormLabel>
                         <FormControl>
                           <Input
                             type="email"
@@ -178,7 +178,7 @@ export const ContactSection = () => {
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Tema</FormLabel>
+                        <FormLabel className="dark:text-white">Tema</FormLabel>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
@@ -215,7 +215,7 @@ export const ContactSection = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Mensaje</FormLabel>
+                        <FormLabel className="dark:text-white">Mensaje</FormLabel>
                         <FormControl>
                           <Textarea
                             rows={5}
@@ -225,7 +225,7 @@ export const ContactSection = () => {
                           />
                         </FormControl>
 
-                        <FormMessage />
+                        <FormMessage/>
                       </FormItem>
                     )}
                   />
