@@ -63,19 +63,19 @@ export default function Home() {
 
   return (
     <>
-      
-      <Banner />
       <CommunitySection />
+      <Banner />
+      
       <FeaturesSection />
       <Process />
       <HeroSection />      
       <SponsorsSection />
-      {/* <BenefitsSection /> */}
-      {/* <ServicesSection /> */}
-      <TestimonialSection />
-      {/* <TeamSection /> */}
+      {/* <BenefitsSection />
+      <ServicesSection /> */}
+      {/* <TestimonialSection />
+      <TeamSection />
       
-      {/* <PricingSection /> */}
+      <PricingSection /> */}
       <ContactSection />
       <FAQSection />
       <FooterSection />

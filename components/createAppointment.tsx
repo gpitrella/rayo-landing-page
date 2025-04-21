@@ -111,7 +111,7 @@ function CreateAppointment(props: any) {
                 <div className="flex items-center mt-3">
                     <input type="checkbox" id="terms" onChange={(e)=> setTerms(e.target.checked)} required className="w-4 h-4 mr-2 accent-blue-600" />
                     <label htmlFor="terms" className="text-[0.9rem] font-medium dark:text-white">
-                        Acepto los <a href="/terms" className="text-blue-500 underline">Términos y Condiciones</a>
+                        Acepto los <a href="/terms" className="text-blue-500 underline">Términos y Condiciones del servicio de lavado RAYO.</a>
                     </label>
                 </div>
 

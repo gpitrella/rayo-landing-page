@@ -27,7 +27,7 @@ export const Process = () => {
       imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1739960501/qt9mj2okggyt8lrmos3j.jpg",
       firstName: "Decidí el momento",
       lastName: "",
-      positions: ["Definí en que momento y lugar realizar el lavado de tu vehículo"],
+      positions: ["Definí en que momento realizar el lavado de tu vehículo"],
       socialNetworks: [
         {
           name: "LinkedIn",
@@ -45,9 +45,9 @@ export const Process = () => {
     },
     {
       imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1739970846/qhrivdgrszwacnm41uzq.png",
-      firstName: "Selecciona un washer",
+      firstName: "Selecciona el lugar",
       lastName: "",
-      positions: ["Busca en la app RAYO el washer más cercano a tu vehículo para que realice el lavado"],
+      positions: ["Busca en la app RAYO el lugar donde se encuentra tu vehículo para que realicemos el lavado"],
       socialNetworks: [
         {
           name: "LinkedIn",

@@ -206,9 +206,9 @@ export const Navbar = () => {
                 <Image
                   src={theme === 'light' ? '/LogoNegativo.png' : '/LogoPositivo.png'}
                   alt={theme === 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
-                  className="h-full w-full rounded-md object-cover p-12"
-                  width={100}
-                  height={100}
+                  className="h-full w-full rounded-md object-cover p-14"
+                  width={150}
+                  height={150}
                 />
                 <ul className="flex flex-col gap-2">
                   {featureList.map(({ title, description }) => (
@@ -252,7 +252,7 @@ export const Navbar = () => {
             </div>
             
             {dropDown && (width < 720) && <MobileNav user={user} closeDropDown={closeDropDown} />}
-            {dropDown && (width > 720) && <DesktopNav user={user} setDropDwon={setDropDown} />  }
+            {dropDown && (width > 720) && <DesktopNav user={user} closeDropDown={closeDropDown} />  }
             </>
           : <></>}
         <ToggleTheme />
