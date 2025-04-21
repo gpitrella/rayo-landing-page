@@ -8,6 +8,7 @@ import { User } from '../app/models/user.model'
 import { useSelector } from 'react-redux'
 import { RootState } from '../app/store/store'
 import dayjs, { Dayjs } from 'dayjs';
+import "dayjs/locale/es";
 import BtnLoader from './btnLoader';
 import { Button } from "@/components/ui/button";
 import {
@@ -31,10 +32,14 @@ function CreateAppointment(props: any) {
     const[time, setTime] = React.useState<string | null>(null)
     const[date, setDate] = React.useState<string | null>(null)
     const[description, setDescription] = React.useState<string>('')
-    // const [selectedValue, setSelectedValue] = React.useState<string | undefined>();    
-
+    const [error, setError] = React.useState<string>("");  
+    dayjs.locale("es");
+    
     const getDateAndTime = (data: any) => {
-        const dateFormatted = dayjs(data).format('ddd, MMMM D');
+        const dateFormattedPre = dayjs(data).format("dddd, D [de] MMMM");
+        // Capitaliza la primera letra del día
+        const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+        const dateFormatted = capitalize(dateFormattedPre);
         const timeFormatted = dayjs(data).format('HH:mmA');
         setDate(dateFormatted);
         setTime(timeFormatted)  
@@ -75,7 +80,17 @@ function CreateAppointment(props: any) {
                 <div className="flex flex-row mb-3 gap-3">
                     <div className="flex flex-col w-[50%]">
                         <label className="text-[0.9rem] font-medium mb-1 dark:text-white">Color del Vehículo *</label>
-                        <input className="dark:text-black w-[100%]" onChange={(e)=> setColor(e.target.value)} type="text" placeholder="Ej.: Blanco, Negro ..." required/>
+                        <input 
+                            className="dark:text-black w-[100%]" 
+                            onChange={(e) => {
+                                const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/; // Solo letras, espacios y caracteres en español
+                                if (regex.test(e.target.value)) {
+                                  setColor(e.target.value); // Actualiza solo si pasa el regex
+                                  setError('');
+                                } else { setError('Solo se permiten letras en el campo COLOR.') }
+                              }}                          
+                            type="text" 
+                            placeholder="Ej.: Blanco, Negro ..." required/>
                     </div>
                     <div className="flex flex-col w-[50%]">
                         <label className="text-[0.9rem] font-medium mb-1 dark:text-white">Patente del Vehículo *</label>
@@ -89,7 +104,17 @@ function CreateAppointment(props: any) {
                     </div>
                     <div className="flex flex-col w-[50%]">
                         <label className="text-[0.9rem] font-medium mb-1 dark:text-white">Número de telefono *</label>
-                        <input className="dark:text-black" onChange={(e)=> setTelefono(e.target.value)} type="text" placeholder="Ej.: 11 5674 9832" required/>
+                        <input 
+                            className="dark:text-black"  
+                            onChange={(e) => {
+                                const regex = /^[0-9]*$/; // Solo letras, espacios y caracteres en español
+                                if (regex.test(e.target.value)) {
+                                  setTelefono(e.target.value); // Actualiza solo si pasa el regex
+                                  setError('');
+                                } else { setError('Solo se permiten números en el campo TELEFONO.') }
+                              }}                              
+                            type="text" 
+                            placeholder="Ej.: 11 5674 9832" required/>
                     </div>
                 </div>
                  <div className="flex flex-col mt-3">
@@ -107,11 +132,12 @@ function CreateAppointment(props: any) {
                     <label className="text-[0.9rem] font-medium mb-1 dark:text-white">Información Adicional</label>
                     <textarea onChange={(e)=> setDescription(e.target.value)} className='text-area' placeholder='Datos adicionales para poder ubicar el vehículo si es necesario.'></textarea>
                 </div>
-                
+                {/* Mensaje de error común */}
+                {error && <span className="text-red-500 text-sm mt-2">{error}</span>}
                 <div className="flex items-center mt-3">
                     <input type="checkbox" id="terms" onChange={(e)=> setTerms(e.target.checked)} required className="w-4 h-4 mr-2 accent-blue-600" />
                     <label htmlFor="terms" className="text-[0.9rem] font-medium dark:text-white">
-                        Acepto los <a href="/terms" className="text-blue-500 underline">Términos y Condiciones del servicio de lavado RAYO.</a>
+                        Acepto los <a href="/terms" className="text-blue-500 underline">Términos y Condiciones</a> del servicio de lavado RAYO.
                     </label>
                 </div>
 

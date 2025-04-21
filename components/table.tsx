@@ -13,7 +13,7 @@ import SnackBar from '@/components/snackBar'
 const Table: React.FC<DocumentData> = (props): JSX.Element  => {
 
     const {data, setFetchData} = props;
-    const [openSnackBar, setOpenSnackBar] = useState<boolean>(false)
+    // const [openSnackBar, setOpenSnackBar] = useState<boolean>(false)
     const [confirmDelete, setConfirmDelete] =  useState<boolean>(false)
     const [appointmentID, setAppointmentID] =  useState<string>('')
     const closeDialogue = () =>{
@@ -47,7 +47,7 @@ const Table: React.FC<DocumentData> = (props): JSX.Element  => {
                         }} 
                         className=" text-lightblue cursor-pointer text-[1.5rem]"
                         >
-                            <MdDeleteOutline />
+                            <MdDeleteOutline color="#ED3E3E"/>
                         </span>
                    </div>
                 </div>
@@ -59,7 +59,8 @@ const Table: React.FC<DocumentData> = (props): JSX.Element  => {
                  <span> Modelo: {appt.modelo} </span>                
                  <span> Color: {appt.color} </span>
                  <span> Patente: {appt.patente} </span>                 
-                 <span> Fecha/Hora: {appt.date} {appt.time} </span>
+                 <span> Fecha/Hora: {appt.date} - {appt.time} </span>
+                 <span> Lugar: {appt.place} </span>
                  <span> Estado: {appt.status} </span>
                  <span> Descripción: {appt.description} </span>
                  <span> ID Lavado: {appt.appointment_id} </span>
