@@ -98,7 +98,7 @@ export const ContactSection = () => {
                 <div className="font-bold">Mail</div>
               </div>
 
-              <div>services@rayo.com</div>
+              <div>info@rayolavados.com</div>
             </div>
 
             {/* <div>

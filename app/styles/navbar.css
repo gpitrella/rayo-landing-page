@@ -14,7 +14,8 @@ li{
 }
 
 .active #link {
-    color: #0895a3;
+    color: #121212;
+    font-weight: 800;
 }
 
 #link:hover{
@@ -27,7 +28,7 @@ li{
 }
 
 #nav-icon{
-    color: #0895a3;
+    color: #04c55b;
     font-size: 1.4rem;
 }
 
