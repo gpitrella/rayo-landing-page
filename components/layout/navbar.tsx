@@ -99,7 +99,7 @@ export const Navbar = () => {
               const shortName = User.firstName.charAt(0) + User.lastName.charAt(0)
               setShortUsername(shortName.toUpperCase());
           }
-          setDropDown(false)
+          // setDropDown(false)
 
       },[user])
   
@@ -117,8 +117,8 @@ export const Navbar = () => {
           };
       })
   
-      function closeDropDown(){
-          setDropDown(false)
+      function closeDropDown() {
+        setDropDown(false);
       }
 
   // useEffect(()=>{
@@ -141,7 +141,6 @@ export const Navbar = () => {
           alt={theme === 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
           className="relative inset-0 ml-auto object-cover object-center"
         /> 
-        {/* <span className="relative top-[7px] ">RAYO</span> */}
       </Link>
 
       {/* <!-- Mobile --> */}
@@ -153,13 +152,11 @@ export const Navbar = () => {
                 <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base mr-3'>
                   Login
                 </Button> : <></>}
-                { user ? 
+                { user && (width < 720) ? 
                   <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
-                    <div onClick={()=> setDropDown(!dropDown)} className='flex justify-start items-center hover:bg-darkSecondary rounded-[3px] cursor-pointer px-2 transition-all ease-in-out'>
                         <div className='notification mr-2 rounded-[50%] bg-lightgrey w-auto h-12 flex justify-center items-center'>
                             <span className='font-medium'>{shortUsername}</span>                            
                         </div>
-                    </div>
                   </div>    
                 : <></>}              
               <Menu
@@ -317,23 +314,23 @@ export const Navbar = () => {
         { !user ? 
           <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base'>
             Login
-          </Button> : <></>}
-          { user ? 
-            <><div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
-              <div onClick={()=> setDropDown(!dropDown)} className='flex justify-start items-center hover:bg-darkSecondary rounded-[7px] cursor-pointer px-4 transition-all ease-in-out'>
-                  <div className='notification mr-4 rounded-[50%] bg-lightgrey w-12 h-12 flex justify-center items-center'>
-                      <span className='font-medium'>{shortUsername}</span>
-                  </div>
-                  <div className='flex justify-start items-center'>
-                      <span className='mr-2 w-max sm:invisible sm:hidden lg:block lg:visible '>{user?.firstName} {user?.lastName}</span>
-                      <IoIosArrowDown />
-                  </div>
-              </div>
-            </div>            
-            
-            {dropDown && (width > 720) && <DesktopNav user={user} closeDropDown={closeDropDown} />  }
+          </Button> 
+          : <>
+              <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
+                <button onClick={()=> setDropDown(!dropDown)} className='flex justify-start items-center hover:bg-darkSecondary rounded-[7px] cursor-pointer px-4 transition-all ease-in-out'>
+                    <div className='notification mr-4 rounded-[50%] bg-lightgrey w-12 h-12 flex justify-center items-center'>
+                        <span className='font-medium'>{shortUsername}</span>
+                    </div>
+                    <div className='flex justify-start items-center'>
+                        <span className='mr-2 w-max sm:invisible sm:hidden lg:block lg:visible '>{user?.firstName} {user?.lastName}</span>
+                        <IoIosArrowDown />
+                    </div>
+                </button>
+              </div>            
+              {/* {dropDown && (width > 720) && <MobileNav user={user} closeDropDown={closeDropDown} />  } */}
+              {dropDown && (width > 720) && <DesktopNav user={user} closeDropDown={closeDropDown} />  }
             </>
-          : <></>}
+          }
         <ToggleTheme />
              
       </div>

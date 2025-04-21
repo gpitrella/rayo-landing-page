@@ -14,10 +14,6 @@ import { Logout } from '../app/services/auth.service'
 import { useAppDispatch } from '../app/store/store'
 import { reset } from '../app/store/auth/authSlice'
 
-// interface Props {
-//     user: { firstName: string; lastName: string };
-//     closeDropDown: () => void;
-//   }
 
 function DesktopNav(props: any) {
 
@@ -25,7 +21,7 @@ function DesktopNav(props: any) {
     const router = useRouter();
     const dispatch= useAppDispatch();
 
-    
+    console.log ('ENTRE')
   return (
     <div className='drop-down bg-[white] w-[300px] h-[350px] rounded-[12px] absolute top-20 right-0 shadow-sm p-6 flex flex-col justify-start dark:bg-card dark:border-zinc-800'>
                     <div className='mb-6 flex justify-between items-center'>
@@ -34,7 +30,7 @@ function DesktopNav(props: any) {
                     <div>
                          <ul>
                             <li>
-                                <Link className={`${pathname === '/' ? 'active' : ''}`} href='/' onClick={props.closeDropDown()}>
+                                <Link className={`${pathname === '/' ? 'active' : ''}`} href='/' onClick={() => props.closeDropDown()}>
                                 <div id='link'>
                                     <RiHomeLine className="text-[1.4rem] dark:text-white" />
                                     <span className='dark:text-white'>Home</span>
@@ -42,14 +38,14 @@ function DesktopNav(props: any) {
                                 </Link>
                             </li>
                             <li>
-                                <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home' onClick={props.closeDropDown()}>
+                                <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home' onClick={() => props.closeDropDown()}>
                                 <div id='link'>
                                     <PiCalendarBlank className="text-[1.4rem] dark:text-white" />
                                     <span className='dark:text-white'>Lavados</span>
                                 </div>
                                 </Link>
                             </li>
-                            <li><Link className={`${pathname === '/settings/profile' ? 'active' : ''}`} href='/settings/profile' onClick={props.closeDropDown()}>
+                            <li><Link className={`${pathname === '/settings/profile' ? 'active' : ''}`} href='/settings/profile' onClick={() => props.closeDropDown()}>
                                 <div id='link'>
                                     <IoSettingsOutline className="text-[1.4rem] dark:text-white"/>
                                     <span className='dark:text-white'>Settings</span>

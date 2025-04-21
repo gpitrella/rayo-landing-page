@@ -17,9 +17,9 @@ const ConfirmDialogueBox: React.FC<any> = (props) => {
     return (
         <>
             <div className='absolute md:top-[40%] md:left-[40%] sm:top-[20%] sm:left-[4%] '>
-                <div className='flex flex-col shadow-xl justify-center items-center sm:w-[300px] md:w-[350px] h-auto p-5 rounded-[6px] bg-[white] '>
+                <div className='flex flex-col shadow-xl justify-center items-center sm:w-[300px] md:w-[350px] h-auto p-5 rounded-[6px] bg-[white] dark:bg-card'>
                     <div className='w-full flex justify-between items-center'>
-                        <p className='md:text-[1.2rem] sm:text-base font-bold text-[#272727] '>Cancel?</p>
+                        <p className='md:text-[1.2rem] sm:text-base font-bold text-[#9b9b9b] '>Cancelar?</p>
                         <MdClear onClick={closeDialogue} className="md:text-[1.3rem] sm:text-[1.1rem] cursor-pointer" />
                     </div>
                     <p className='mt-2 md:text-base sm:text-sm '>¿Está seguro de que desea cancelar este lavado? ¡Las acciones realizadas son irreversibles!</p>
