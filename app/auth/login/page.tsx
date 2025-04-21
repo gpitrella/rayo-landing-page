@@ -66,11 +66,11 @@ const Page = () => {
              alt="bg-img"
              className="absolute inset-0 ml-auto w-[770px] h-[580px] rounded-bl-[100px] object-cover object-center"
            />
-           <div className="container ml-0 px-0 w-[85%] mt-[20px]">
+           <div className="container ml-0 px-0 max-w-[400px] mt-[20px]">
              <div className="grid grid-cols-12 text-left lg:text-left">
-               <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">
+               <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 p-10 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200">
      
-                 <div className="max-w-screen-sm mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
+                 <div className="w-full mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
                    <h1 className="leading-tight">
                      Login 
                    </h1>
@@ -87,7 +87,7 @@ const Page = () => {
                     }}
                     >
                         {({ errors, touched, isSubmitting }) => (
-                    <Form className="pb-4 border-b-2 border-b-zinc-200">
+                    <Form className="pb-4">
                         <div className="flex flex-col">
                             <label className="text-base font-medium mb-1 dark:text-white">Email</label>
                             <Field name="email" placeholder="Enter your email" className="px-4"/>
@@ -99,15 +99,20 @@ const Page = () => {
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
                         <Link href={"/forgot-password"}><p className="font-medium text-lightblue text-right mt-2">Olvidaste el password?</p></Link>
-                        <Button className={loading ? 'button-disabled' : 'button w-auto font-bold group/arrow'}  disabled={loading}>{ loading ? <BtnLoader /> : 'Login' }</Button> 
+                        <Button className={loading ? 'button-disabled' : 'button w-full font-bold group/arrow mt-5'}  disabled={loading}>
+                          { loading ? <BtnLoader /> : 'Iniciar Sesión' }
+                          <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
+                        </Button> 
                         {/* Removi el type="submit" del BUTTON estaba generando problemas de estilos*/}
                     </Form>
                         )}
                 </Formik>
-                <div className="mt-2 relative">
-                    <p className="text-center text-dark mt-2 text-base mb-2 absolute bottom-10 left-[50%] bg-white px-3">o</p>
-                    <LoginWithGoogle/>    
+                <div className="relative flex">
+                    <span className="border-b-2 border-b-zinc-200 w-full block mb-[14px]"></span>
+                      <p className="text-center text-dark mt-2 mb-2 px-3 leading-none">o</p>
+                    <span className="border-b-2 border-b-zinc-200 w-full block mb-[14px]"></span>                        
                 </div> 
+                <LoginWithGoogle/>
                 
                 <div className="mt-3">
                     <p className="text-center text-dark mt-2 text-base ">No tienes una cuenta? <Link href={"/auth/signup"}><span className="font-semibold text-lightblue ">Registrarse</span></Link></p>
