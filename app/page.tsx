@@ -63,9 +63,9 @@ export default function Home() {
 
   return (
     <>
-      
-      <Banner />
       <CommunitySection />
+      <Banner />
+      
       <FeaturesSection />
       <Process />
       <HeroSection />      

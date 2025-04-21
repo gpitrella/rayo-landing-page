@@ -17,7 +17,7 @@ export const Banner = () => {
 
   
   return (
-    <div className="!flex h-auto w-[85%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
+    <div className="relative !flex h-auto w-[85%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
       <Image
         width={1200}
         height={1200}
@@ -31,7 +31,7 @@ export const Banner = () => {
 
             <div className="max-w-screen-sm mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
               <h1 className="leading-tight">
-                Lava tu vehículo donde y cuando quieras con la app <span className="font-black italic">RAYO</span> 
+                Lava tu vehículo donde y cuando quieras con <span className="font-black italic">RAYO</span> 
               </h1>
             </div>
 
