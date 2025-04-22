@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const FooterSection = () => {
   return (
-    <footer id="footer" className="w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto py-24 sm:py-32">
+    <footer id="footer" className="w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto py-24 sm:py-32">
       <div className="p-10 bg-card border border-secondary rounded-2xl">
         <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5 gap-x-12 gap-y-8">
           <div className="col-span-full xl:col-span-2">

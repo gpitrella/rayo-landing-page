@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/navbar";
+import { FooterSection } from "@/components/layout/sections/footer";
 import { Providers } from "@/app/store/provider";
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from "@/components/layout/theme-provider";
@@ -42,7 +43,8 @@ export default function RootLayout({
         />         
           <Providers>             
             <Navbar />
-            {children}            
+              {children}  
+            <FooterSection />        
           </Providers> 
         </ThemeProvider>        
       </body>

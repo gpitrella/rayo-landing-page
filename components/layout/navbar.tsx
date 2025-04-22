@@ -148,7 +148,7 @@ export const Navbar = () => {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <>
-              { !user ? 
+              { !user && (width < 720) ? 
                 <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base mr-3'>
                   Login
                 </Button> : <></>}
@@ -189,7 +189,7 @@ export const Navbar = () => {
                     <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home' >
                       <div id='link'>
                           <PiCalendarBlank className="text-[1.4rem] dark:text-white" />
-                          <span className='dark:text-white'>Lavados</span>
+                          <span className='dark:text-white'>Lavados Reservados</span>
                       </div>
                     </Link>
                   </Button>
