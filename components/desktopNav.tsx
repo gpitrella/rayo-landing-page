@@ -41,7 +41,7 @@ function DesktopNav(props: any) {
                                 <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home' onClick={() => props.closeDropDown()}>
                                 <div id='link'>
                                     <PiCalendarBlank className="text-[1.4rem] dark:text-white" />
-                                    <span className='dark:text-white'>Lavados</span>
+                                    <span className='dark:text-white'>Lavados Reservados</span>
                                 </div>
                                 </Link>
                             </li>

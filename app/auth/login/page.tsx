@@ -58,7 +58,7 @@ const Page = () => {
     }
    
     return (
-         <div className="!flex h-auto w-[85%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
+         <div className="!flex h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
            <Image
              width={1200}
              height={1200}
@@ -68,7 +68,7 @@ const Page = () => {
            />
            <div className="container ml-0 px-0 max-w-[400px] mt-[20px]">
              <div className="grid grid-cols-12 text-left lg:text-left">
-               <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 p-10 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200">
+               <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-8 px-6 md:p-10 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200">
      
                  <div className="w-full mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
                    <h1 className="leading-tight">
@@ -90,18 +90,18 @@ const Page = () => {
                     <Form className="pb-4">
                         <div className="flex flex-col">
                             <label className="text-base font-medium mb-1 dark:text-white">Email</label>
-                            <Field name="email" placeholder="Enter your email" className="px-4"/>
+                            <Field name="email" placeholder="Enter your email" className="px-4 dark:text-black"/>
                             {errors.email && touched.email ? (<span className="text-[#ec4242] text-sm mt-1">{errors.email}</span>) : null}
                         </div>
                         <div className="flex flex-col mt-3">
                         <label className="text-base font-medium mb-1 dark:text-white">Password</label>
-                            <Field type='password' name="password" placeholder="Enter your password" className="px-4"/>
+                            <Field type='password' name="password" placeholder="Enter your password" className="px-4 dark:text-black"/>
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
                         <Link href={"/forgot-password"}><p className="font-medium text-lightblue text-right mt-2">Olvidaste el password?</p></Link>
-                        <Button className={loading ? 'button-disabled' : 'button w-full font-bold group/arrow mt-5'}  disabled={loading}>
+                        <Button className={loading ? 'button-disabled w-full font-bold group/arrow mt-5' : 'button w-full font-bold group/arrow mt-5'}  disabled={loading}>
                           { loading ? <BtnLoader /> : 'Iniciar Sesión' }
-                          <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
+                          { !loading ? <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" /> : <></>}
                         </Button> 
                         {/* Removi el type="submit" del BUTTON estaba generando problemas de estilos*/}
                     </Form>

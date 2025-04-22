@@ -97,7 +97,7 @@ function Page() {
       <div className="container mx-auto px-0 w-full mt-[20px]">
         <div className="text-left lg:text-left">
           <div className="col-span-full xl:col-span-7">        
-            <h1 className='lg:text-2xl sm:text-lg font-medium mb-8 text-center'>Lavados agendados</h1>
+            <h1 className='lg:text-2xl sm:text-lg font-medium mb-8 text-center'>Lavados Reservados</h1>
 
             <div className='appt-container'>
               {(data?.length === 0 ) && (
