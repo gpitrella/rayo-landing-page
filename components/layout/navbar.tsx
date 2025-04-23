@@ -53,8 +53,8 @@ interface FeatureProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "/#features",
-    label: "Beneficios",
+    href: "/auth/login",
+    label: "Reservar Lavado",
   },
   {
     href: "/#process",
@@ -91,17 +91,18 @@ export const Navbar = () => {
   const router = useRouter();
   const[dropDown, setDropDown] = useState<boolean>(false);
   const[width, setWidth] = useState<number>(0);
-  const[shortUsername, setShortUsername] = useState<string>('')
+  const[shortUsername, setShortUsername] = useState<string>('');
+  const isAuthenticated = checkUserLoggedIn();
   
       useEffect(()=> {
           if(user != null){
               const User = user as User
               const shortName = User.firstName.charAt(0) + User.lastName.charAt(0)
               setShortUsername(shortName.toUpperCase());
-          }
-          // setDropDown(false)
-
-      },[user])
+              setDropDown(false);              
+          }          
+          setDropDown(false);
+      },[])
   
       useEffect(()=>{
           function checkWindowWidth() {
@@ -117,19 +118,19 @@ export const Navbar = () => {
           };
       })
   
-      function closeDropDown() {
+      function closeDropDown(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
         setDropDown(false);
       }
 
-  // useEffect(()=>{
-  //   const isAuthenticated = checkUserLoggedIn();
-  //   if(isAuthenticated){
-  //     router.push('/home')
-  //   }
-  //   else{
-  //     router.push('/auth/login')
-  //   }
-  // })
+    useEffect(()=>{
+      if(isAuthenticated){
+        router.push('/home')
+      }
+      else{
+        router.push('/auth/login')
+      }
+    })
 
   return (
     <header className="h-[68px] shadow-inner bg-opacity-50 w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-0 px-6 bg-card">
@@ -148,11 +149,11 @@ export const Navbar = () => {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <>
-              { !user && (width < 720) ? 
+              { !isAuthenticated && (width < 720) ? 
                 <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base mr-3'>
                   Login
                 </Button> : <></>}
-                { user && (width < 720) ? 
+                { isAuthenticated && (width < 720) ? 
                   <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
                         <div className='notification mr-2 rounded-[50%] bg-lightgrey w-auto h-12 flex justify-center items-center'>
                             <span className='font-medium'>{shortUsername}</span>                            
@@ -171,7 +172,7 @@ export const Navbar = () => {
             className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary"
           >
             <div>
-            { user ? <>
+            { isAuthenticated ? <>
               <SheetHeader className="mb-4 ml-4">
                 <SheetTitle className="flex items-center">                                                         
                      <h3 className='font-semibold text-lg'>{user?.firstName} {user?.lastName}</h3>            
@@ -208,14 +209,15 @@ export const Navbar = () => {
                     </Button>
                     <Button
                       key='profile'
-                      onClick={() => setIsOpen(false)}
+                      // onClick={() => setIsOpen(false)}
                       asChild
                       variant="ghost"
                       className="justify-start text-base">
                       <span onClick={()=>{
-                          Logout()
+                          setDropDown(false);
+                          Logout();                          
                           dispatch(reset())
-                          router.push('/')                                
+                          // router.push('/')                                
                       }}>
                           <div id='link'>
                               <IoLogOutOutline className="text-[1.6rem] dark:text-white" />
@@ -311,7 +313,7 @@ export const Navbar = () => {
 
       <div className="hidden lg:flex items-center">         
 
-        { !user ? 
+        { !isAuthenticated ? 
           <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base'>
             Login
           </Button> 

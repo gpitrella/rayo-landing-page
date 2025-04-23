@@ -114,6 +114,20 @@ export const loginGoogle = createAsyncThunk(
   }
 );
 
+
+export const resetPassword = createAsyncThunk(
+  "auth/resetPassword",
+  async (email: string, thunkAPI) => {
+    console.log('ENTRE EN RESETpASWWORD')
+    try {
+      await Auth.resetPasswordUser(email);
+      return `Se ha enviado un enlace de restablecimiento a ${email}`;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const register = createAsyncThunk(
   "auth-register",
   async (formData: {email: string, password: string, firstName: string, lastName: string}, thunkAPI) => {

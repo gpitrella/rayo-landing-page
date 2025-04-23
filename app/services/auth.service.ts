@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential, signOut, ProviderId, signInWithPopup } from "firebase/auth";
+import { getAuth, sendPasswordResetEmail, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential, signOut, ProviderId, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../config/firebase";
 import jwtDecode, { JwtPayload } from "jwt-decode";
@@ -63,6 +63,18 @@ async function handleGoogleLogin (): Promise<{uid: string, accessToken: string} 
     }
 };
 
+
+async function resetPasswordUser(email: string): Promise<void> {
+    
+  try {
+    await sendPasswordResetEmail(auth, email);
+    console.log(`Se ha enviado un enlace de restablecimiento a ${email}`);
+  } catch (error: any) {
+    console.error("Error al enviar el correo de recuperación:", error.message);
+    throw error;
+  }
+}
+
 function checkUserLoggedIn(){
     const token = localStorage.getItem('atk');
     if(!token) return false;
@@ -85,4 +97,4 @@ async function Logout(){
     localStorage.removeItem('atk')
 }
 
-export {Signup, Login, Logout, checkUserLoggedIn, handleGoogleLogin}
+export {Signup, Login, Logout, checkUserLoggedIn, handleGoogleLogin, resetPasswordUser}
