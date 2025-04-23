@@ -21,16 +21,24 @@ function DesktopNav(props: any) {
     const router = useRouter();
     const dispatch= useAppDispatch();
 
-    console.log ('ENTRE')
+    const handleLogoutClick = (event: React.MouseEvent<HTMLLIElement>) => {
+        event.preventDefault(); 
+        props.closeDropDown(event); 
+        router.push('/');
+        Logout(); 
+        dispatch(reset());          
+    };      
+
+ 
   return (
-    <div className='drop-down bg-[white] w-[300px] h-[350px] rounded-[12px] absolute top-20 right-0 shadow-sm p-6 flex flex-col justify-start dark:bg-card dark:border-zinc-800'>
+    <div className='drop-down bg-[white] w-[300px] h-[300px] rounded-[12px] absolute top-20 right-0 shadow-sm p-6 flex flex-col justify-start dark:bg-card dark:border-zinc-800'>
                     <div className='mb-6 flex justify-between items-center'>
                         <h3 className='font-semibold text-lg'>{props.user?.firstName} {props.user?.lastName}</h3>
                     </div>
                     <div>
                          <ul>
                             <li>
-                                <Link className={`${pathname === '/' ? 'active' : ''}`} href='/' onClick={() => props.closeDropDown()}>
+                                <Link className={`${pathname === '/' ? 'active' : ''}`} href='/' onClick={(event) => props.closeDropDown(event)}>
                                 <div id='link'>
                                     <RiHomeLine className="text-[1.4rem] dark:text-white" />
                                     <span className='dark:text-white'>Home</span>
@@ -38,25 +46,21 @@ function DesktopNav(props: any) {
                                 </Link>
                             </li>
                             <li>
-                                <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home' onClick={() => props.closeDropDown()}>
+                                <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home' onClick={(event) => props.closeDropDown(event)}>
                                 <div id='link'>
                                     <PiCalendarBlank className="text-[1.4rem] dark:text-white" />
                                     <span className='dark:text-white'>Lavados Reservados</span>
                                 </div>
                                 </Link>
                             </li>
-                            <li><Link className={`${pathname === '/settings/profile' ? 'active' : ''}`} href='/settings/profile' onClick={() => props.closeDropDown()}>
+                            <li><Link className={`${pathname === '/settings/profile' ? 'active' : ''}`} href='/settings/profile' onClick={(event) => props.closeDropDown(event)}>
                                 <div id='link'>
                                     <IoSettingsOutline className="text-[1.4rem] dark:text-white"/>
                                     <span className='dark:text-white'>Settings</span>
                                 </div>
                                 </Link>
                             </li>
-                            <li onClick={()=>{
-                                Logout()
-                                dispatch(reset())
-                                router.push('auth/login')                                
-                            }}>
+                            <li onClick={handleLogoutClick}>
                                 <div id='link'>
                                     <IoLogOutOutline className="text-[1.6rem] dark:text-white" />
                                     <span className='dark:text-white'>Logout</span>

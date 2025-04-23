@@ -69,7 +69,7 @@ const Page = () => {
             <div className="grid grid-cols-12 text-left lg:text-left">
             <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-8 px-6 md:p-10 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200">
     
-                <div className="max-w-screen-sm mx-auto mb-5 text-left text-3xl md:text-5xl font-bold">
+                <div className="max-w-screen-sm mx-auto mb-5 text-left text-3xl md:text-4xl font-bold">
                     <h1 className="leading-tight">
                         Registrarse 
                     </h1>
