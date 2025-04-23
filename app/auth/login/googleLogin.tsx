@@ -9,7 +9,7 @@ const LoginWithGoogle = () => {
   const dispatch = useAppDispatch();
 
   async function loginGoogleUser(){
-      dispatch(loginGoogle)
+      dispatch(loginGoogle());
   }
 
   return (

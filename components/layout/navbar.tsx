@@ -215,7 +215,7 @@ export const Navbar = () => {
                       <span onClick={()=>{
                           Logout()
                           dispatch(reset())
-                          router.push('auth/login')                                
+                          router.push('/')                                
                       }}>
                           <div id='link'>
                               <IoLogOutOutline className="text-[1.6rem] dark:text-white" />

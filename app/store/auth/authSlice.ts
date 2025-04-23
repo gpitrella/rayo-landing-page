@@ -56,6 +56,20 @@ export const authSlice = createSlice({
       state.loading = false,
       state.error = action.payload;
     });
+    builder.addCase(loginGoogle.pending, (state) => {
+      state.loading = true;
+      state.error = "";
+    });    
+    builder.addCase(loginGoogle.fulfilled, (state, action) => {
+      state.loading = false;
+      state.status = true;
+      state.authToken = action.payload.accessToken;
+      state.uid = action.payload.uid;
+    });    
+    builder.addCase(loginGoogle.rejected, (state, action: PayloadAction<any>) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
   },
 });
 
@@ -81,22 +95,21 @@ export const login = createAsyncThunk(
 );
 
 export const loginGoogle = createAsyncThunk(
-  "auth-login",
-  async (formData: {}, thunkAPI) => {
+  "auth-google-login",
+  async (_, thunkAPI) => {
     try {
-        const response = await Auth.handleGoogleLogin()
-        if(!response){
-            return thunkAPI.rejectWithValue("Unknown error occurred");
-        }
-        const uid = response.uid
-        const accessToken = response.accessToken
-        return {
-            uid,
-            accessToken
-        };
+      const response = await Auth.handleGoogleLogin();
+      if (!response) {
+        return thunkAPI.rejectWithValue("Unknown error occurred");
+      }
+
+      return {
+        uid: response.uid,
+        accessToken: response.accessToken,
+      };
     } catch (error: any) {
-        const errorMessgae = handleError(error)
-        return thunkAPI.rejectWithValue(errorMessgae);
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
