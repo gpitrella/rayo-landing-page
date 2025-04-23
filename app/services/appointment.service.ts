@@ -33,9 +33,9 @@ async function getSingleAppointment(uid: string): Promise<unknown>{
 }
 
 
-async function getUpcomingAppointment(): Promise<unknown>{
+async function getUpcomingAppointment(uid: string): Promise<unknown>{
     const U: any = []
-    const q = query(collection(db, "appointments"), where("status", "==", 'ACTIVE'));
+    const q = query(collection(db, "appointments"), where("status", "==", 'ACTIVE'), where("user_id", "==", uid));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -44,9 +44,9 @@ async function getUpcomingAppointment(): Promise<unknown>{
     return U;
 }
 
-async function getAllAppointment(): Promise<unknown>{
+async function getAllAppointment(userEmail: string): Promise<unknown>{
     const U: any = []
-    const q = query(collection(db, "appointments"));
+    const q = query(collection(db, "appointments"), where("email", "==", userEmail));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {

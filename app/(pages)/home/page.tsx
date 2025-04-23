@@ -39,12 +39,13 @@ function Page() {
   const [createAppointmentBtn, setCreateAppointmentBtn] = React.useState<boolean>(false)
   const [data, setData] = React.useState<any>([])
   const [appointments, setAppointments] = React.useState<string>('')
-  const[fetchData, setFetchData] = React.useState<boolean>(true)
+  const [fetchData, setFetchData] = React.useState<boolean>(false); // Controla cuándo se busca data
+  const [userLoaded, setUserLoaded] = React.useState<boolean>(false); // Controla si el user está cargado
   const dispatch = useAppDispatch();
+
   const showCreateAppointmentComponent = () => {
     setCreateAppointmentBtn(!createAppointmentBtn)
   }
-
 
   const handleCreateAppointment = async(data: AppointmentRequest) => {
     try {
@@ -57,32 +58,38 @@ function Page() {
     }
   }
 
-
-
-  React.useEffect(()=>{
-
-    const fetchUpcomingAppointments = async()=> {
-      if(uid){        
-        const res = await getUpcomingAppointment()
-        const totalAppoinment = await getAllAppointment()
-        // console.log('TOTAL: ', totalAppoinment)
-        // setAppointments(totalAppoinment.length)
-        setData(res) 
+  // React.useEffect(() => {
+  //   // Fetch del usuario primero
+  //   if (!user && uid) {
+  //     dispatch(fetchUser(uid)).then(() => setUserLoaded(true));
+  //   }
+  // }, [dispatch, uid, user]);
+  React.useEffect(() => {
+    const fetchUpcomingAppointments = async () => {
+      if (uid) { 
+        const res = await getUpcomingAppointment(uid);
+        // const totalAppointment = await getAllAppointment(user.email);
+  
+        setData(res);
+        // setAppointments(totalAppointment.length);
         setFetchData(false);
       }
-    }
-    if(fetchData){
+    };
+  
+    // Ejecuta fetchUpcomingAppointments solo si el usuario está completamente cargado.
+    if (uid) {
       fetchUpcomingAppointments();
     }
-  },[fetchData, uid])
-
-  React.useEffect(()=>{
-    if(!user){
-      if(uid){
-        dispatch(fetchUser(uid))
+  }, [uid]);
+  
+  React.useEffect(() => {
+    // if (!user ) {
+    //   console.log('uid: ', uid)
+      if (uid){
+        dispatch(fetchUser(uid)); // 
       }
-    }
-  },[dispatch, uid, user])
+    // }
+  }, [dispatch, uid, user]);
 
   return (
     <>

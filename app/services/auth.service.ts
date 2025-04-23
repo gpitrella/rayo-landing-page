@@ -14,7 +14,6 @@ const providers = {
 async function Signup(email: string, password: string){
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
-        console.log('res: ', res)
         if(!res){
             return;
         }
@@ -31,6 +30,7 @@ async function Login(email: string, password: string): Promise<{uid: string, acc
         if(!res){
             throw ('Invalid Credentials');
         }
+
         const accessToken =  await res.user.getIdToken();
         const uid = res.user.uid;
         localStorage.setItem('atk', accessToken);
@@ -44,6 +44,7 @@ async function Login(email: string, password: string): Promise<{uid: string, acc
 }
 
 async function handleGoogleLogin (): Promise<{uid: string, accessToken: string} | undefined>{
+
     try {
         const res: UserCredential = await signInWithPopup(auth, providers.GOOGLE);
         if(!res){
@@ -57,10 +58,10 @@ async function handleGoogleLogin (): Promise<{uid: string, accessToken: string} 
             accessToken
         })
     } catch (error: any) {
+        console.error("Error en Google Login:", error);
         throw error.message;
     }
 };
-
 
 function checkUserLoggedIn(){
     const token = localStorage.getItem('atk');

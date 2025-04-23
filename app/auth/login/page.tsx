@@ -35,9 +35,9 @@ const Page = () => {
     },)
 
     useEffect(() => {
-    if (status == true) {
-      router.push("/home");
-    }
+      if (status == true) {
+        router.push("/home");
+      }
     }, [router, dispatch, status]);
 
     if(status == true){
@@ -90,12 +90,12 @@ const Page = () => {
                     <Form className="pb-4">
                         <div className="flex flex-col">
                             <label className="text-base font-medium mb-1 dark:text-white">Email</label>
-                            <Field name="email" placeholder="Enter your email" className="px-4 dark:text-black"/>
+                            <Field name="email" placeholder="Ingresar email" className="px-4 dark:text-black"/>
                             {errors.email && touched.email ? (<span className="text-[#ec4242] text-sm mt-1">{errors.email}</span>) : null}
                         </div>
                         <div className="flex flex-col mt-3">
                         <label className="text-base font-medium mb-1 dark:text-white">Password</label>
-                            <Field type='password' name="password" placeholder="Enter your password" className="px-4 dark:text-black"/>
+                            <Field type='password' name="password" placeholder="Ingresar password" className="px-4 dark:text-black"/>
                             {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                         </div>
                         <Link href={"/forgot-password"}><p className="font-medium text-lightblue text-right mt-2">Olvidaste el password?</p></Link>
