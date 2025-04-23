@@ -123,14 +123,14 @@ export const Navbar = () => {
         setDropDown(false);
       }
 
-    useEffect(()=>{
-      if(isAuthenticated){
-        router.push('/home')
-      }
-      else{
-        router.push('/auth/login')
-      }
-    })
+    // useEffect(()=>{
+    //   if(isAuthenticated){
+    //     router.push('/home')
+    //   }
+    //   else{
+    //     router.push('/auth/login')
+    //   }
+    // })
 
   return (
     <header className="h-[68px] shadow-inner bg-opacity-50 w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-0 px-6 bg-card">
