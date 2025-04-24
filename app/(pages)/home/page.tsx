@@ -80,7 +80,7 @@ function Page() {
     if (uid) {
       fetchUpcomingAppointments();
     }
-  }, [uid]);
+  }, [uid, fetchData]);
   
   React.useEffect(() => {
     // if (!user ) {

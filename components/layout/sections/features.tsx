@@ -75,7 +75,7 @@ export const FeaturesSection = () => {
   }, []);
 
   return (
-    <section id="features" className="w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto mt-10 pt-28 pb-12 sm:py-32">
+    <section id="features" className="w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto mt-10 pt-10 pb-12 sm:py-32">
       <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
         Beneficios
       </h2>

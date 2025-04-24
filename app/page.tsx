@@ -64,9 +64,8 @@ export default function Home() {
     <>
       <CommunitySection />
       <Banner />
-      
-      <FeaturesSection />
       <Process />
+      <FeaturesSection />      
       <HeroSection />      
       <SponsorsSection />
       {/* <BenefitsSection />

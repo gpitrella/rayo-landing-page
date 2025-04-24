@@ -70,6 +70,20 @@ export const authSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
+    builder.addCase(loginFacebook.pending, (state) => {
+      state.loading = true;
+      state.error = "";
+    });    
+    builder.addCase(loginFacebook.fulfilled, (state, action) => {
+      state.loading = false;
+      state.status = true;
+      state.authToken = action.payload.accessToken;
+      state.uid = action.payload.uid;
+    });    
+    builder.addCase(loginFacebook.rejected, (state, action: PayloadAction<any>) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
   },
 });
 
@@ -99,6 +113,26 @@ export const loginGoogle = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await Auth.handleGoogleLogin();
+      if (!response) {
+        return thunkAPI.rejectWithValue("Unknown error occurred");
+      }
+
+      return {
+        uid: response.uid,
+        accessToken: response.accessToken,
+      };
+    } catch (error: any) {
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const loginFacebook = createAsyncThunk(
+  "auth-facebook-login",
+  async (_, thunkAPI) => {
+    try {
+      const response = await Auth.handleFacebookLogin();
       if (!response) {
         return thunkAPI.rejectWithValue("Unknown error occurred");
       }

@@ -1,4 +1,4 @@
-import { getAuth, sendPasswordResetEmail, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential, signOut, ProviderId, signInWithPopup } from "firebase/auth";
+import { getAuth, sendPasswordResetEmail, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential, signOut, ProviderId, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../config/firebase";
 import jwtDecode, { JwtPayload } from "jwt-decode";
@@ -9,6 +9,7 @@ const auth = getAuth();
 
 const providers = {
   GOOGLE: new GoogleAuthProvider(),
+  FACEBOOK: new FacebookAuthProvider()
 };
 
 async function Signup(email: string, password: string){
@@ -63,6 +64,26 @@ async function handleGoogleLogin (): Promise<{uid: string, accessToken: string} 
     }
 };
 
+async function handleFacebookLogin (): Promise<{uid: string, accessToken: string} | undefined>{
+
+    try {
+        const res: UserCredential = await signInWithPopup(auth, providers.FACEBOOK);
+        if(!res){
+            throw ('Invalid Credentials');
+        }
+        const accessToken =  await res.user.getIdToken();
+        const uid = res.user.uid;
+        localStorage.setItem('atk', accessToken);
+        return ({
+            uid,
+            accessToken
+        })
+    } catch (error: any) {
+        console.error("Error en Facebook Login:", error);
+        throw error.message;
+    }
+};
+
 
 async function resetPasswordUser(email: string): Promise<void> {
     
@@ -97,4 +118,4 @@ async function Logout(){
     localStorage.removeItem('atk')
 }
 
-export {Signup, Login, Logout, checkUserLoggedIn, handleGoogleLogin, resetPasswordUser}
+export {Signup, Login, Logout, checkUserLoggedIn, handleGoogleLogin, handleFacebookLogin, resetPasswordUser}

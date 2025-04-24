@@ -8,6 +8,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import '../../styles/auth.css';
 import LoginWithGoogle from './googleLogin';
+import LoginWithFacebook from './facebookLogin';
 import Error from "@/components/error";
 import { RootState, useAppDispatch } from "@/app/store/store";
 import { login, loginGoogle, reset } from "@/app/store/auth/authSlice";
@@ -113,7 +114,7 @@ const Page = () => {
                     <span className="border-b-2 border-b-zinc-200 w-full block mb-[14px]"></span>                        
                 </div> 
                 <LoginWithGoogle/>
-                
+                <LoginWithFacebook/>
                 <div className="mt-3">
                     <p className="text-center text-dark mt-2 text-base ">No tienes una cuenta? <Link href={"/auth/signup"}><span className="font-semibold text-lightblue ">Registrarse</span></Link></p>
                 </div>     
