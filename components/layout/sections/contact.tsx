@@ -89,7 +89,7 @@ export const ContactSection = () => {
                 <div className="font-bold">Número</div>
               </div>
 
-              <div>+54 (261) 460-7020</div>
+              <div><a href="tel:5491124730269" target="_blank">+54 9 11 2473-0269</a></div>
             </div>
 
             <div>
@@ -98,7 +98,7 @@ export const ContactSection = () => {
                 <div className="font-bold">Mail</div>
               </div>
 
-              <div>info@rayolavados.com</div>
+              <div><a href="mailto:info@rayolavados.com" target="_blank">info@rayolavados.com</a></div>
             </div>
 
             {/* <div>

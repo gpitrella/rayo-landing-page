@@ -52,7 +52,6 @@ const Page = () => {
 
     const handleSubmit = async(value: SignupProp) =>{
         const {email, password, firstName, lastName} = value;
-        console.log('value:', value)
         dispatch(register({email, password, firstName, lastName}));
     }
    
@@ -92,7 +91,7 @@ const Page = () => {
                         <div className="flex w-full gap-3">
                             <div className="flex flex-col w-full">
                                 <label className="text-base font-medium mb-1 dark:text-white">Nombre</label>
-                                <Field name="Nombre" type="text" placeholder="Firstname" className="px-4 dark:text-black"/>
+                                <Field name="firstName" type="text" placeholder="Nombre" className="px-4 dark:text-black"/>
                                 {errors.firstName && touched.firstName ? (<span className="text-[#ec4242] text-sm mt-1">{errors.firstName}</span>) : null}
                             </div>
                             <div className="flex flex-col w-full">
