@@ -16,47 +16,47 @@ export const FooterSection = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">About</h3>
+            <h3 className="font-bold text-base">About</h3>
             <div>
-              <Link href="/about/privacypolicies" className="opacity-60 hover:opacity-100">
+              <Link href="/about/privacypolicies" className="opacity-60 hover:opacity-100 text-sm">
+                Política de Privacidad
+              </Link>
+            </div>
+            <div>
+              <Link href="/about/terms" className="opacity-60 hover:opacity-100 text-sm">
                 Terminos y Condiciones
               </Link>
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Plataformas</h3>
+            <h3 className="font-bold text-base">Plataformas</h3>
             <div>
-              <Link href="https://www.instagram.com/rayo.ok?igsh=MXRwcmJhbzllN290cQ==" className="opacity-60 hover:opacity-100">
+              <Link href="https://www.instagram.com/rayo.ok?igsh=MXRwcmJhbzllN290cQ==" className="opacity-60 hover:opacity-100 text-sm" target="_blank" >
                 Instagram
               </Link>
             </div>
             <div>
-              <Link href="/" className="opacity-60 hover:opacity-100">
+              <Link href="/" className="opacity-60 hover:opacity-100 text-sm">
                 Web
               </Link>
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Help</h3>
+            <h3 className="font-bold text-base">Help</h3>
             <div>
-              <Link href="/#contact" className="opacity-60 hover:opacity-100">
+              <Link href="/#contact" className="opacity-60 hover:opacity-100 text-sm">
                 Contact Us
               </Link>
             </div>
 
             <div>
-              <Link href="/#faq" className="opacity-60 hover:opacity-100">
+              <Link href="/#faq" className="opacity-60 hover:opacity-100 text-sm">
                 FAQ
               </Link>
             </div>
 
-            {/* <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Feedback
-              </Link>
-            </div> */}
           </div>
 {/* 
           <div className="flex flex-col gap-2">
