@@ -25,14 +25,14 @@ export default function RootLayout({
     <html lang="pt-br" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className)}>
       <ThemeProvider>
-        <Toaster
+        <Toaster           
           position="top-center"
           reverseOrder={false}
           gutter={8}
           containerClassName=""
           containerStyle={{}}
           toastOptions={{
-            // Define default options
+            // Define default options            
             className: '',
             duration: 3000,
             style: {

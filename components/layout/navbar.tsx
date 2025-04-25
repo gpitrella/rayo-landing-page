@@ -97,6 +97,7 @@ export const Navbar = () => {
       useEffect(()=> {
           if(user != null){
               const User = user as User
+              console.log('USER: ', User)
               const shortName = User.firstName.charAt(0) + User.lastName.charAt(0)
               setShortUsername(shortName.toUpperCase());
               setDropDown(false);              

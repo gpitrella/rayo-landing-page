@@ -16,22 +16,10 @@ export const FooterSection = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Contact</h3>
-            {/* <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Github
-              </Link>
-            </div>
-
+            <h3 className="font-bold text-lg">About</h3>
             <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Twitter
-              </Link>
-            </div> */}
-
-            <div>
-              <Link href="https://www.instagram.com/rayo.ok?igsh=MXRwcmJhbzllN290cQ==" className="opacity-60 hover:opacity-100">
-                Instagram
+              <Link href="/about/privacypolicies" className="opacity-60 hover:opacity-100">
+                Terminos y Condiciones
               </Link>
             </div>
           </div>
@@ -39,17 +27,10 @@ export const FooterSection = () => {
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg">Plataformas</h3>
             <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                iOS
+              <Link href="https://www.instagram.com/rayo.ok?igsh=MXRwcmJhbzllN290cQ==" className="opacity-60 hover:opacity-100">
+                Instagram
               </Link>
             </div>
-
-            <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Android
-              </Link>
-            </div>
-
             <div>
               <Link href="/" className="opacity-60 hover:opacity-100">
                 Web
@@ -60,13 +41,13 @@ export const FooterSection = () => {
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg">Help</h3>
             <div>
-              <Link href="#contact" className="opacity-60 hover:opacity-100">
+              <Link href="/#contact" className="opacity-60 hover:opacity-100">
                 Contact Us
               </Link>
             </div>
 
             <div>
-              <Link href="#faq" className="opacity-60 hover:opacity-100">
+              <Link href="/#faq" className="opacity-60 hover:opacity-100">
                 FAQ
               </Link>
             </div>
