@@ -12,12 +12,12 @@ const Page = () => {
   <article className="document">
     <ol className="list">
       <li className="item">
-        <p className="font-bold">TERMINOS Y CONDICIONES GENERAL</p>
+        <h1 className="font-black align-center text-2xl">TERMINOS Y CONDICIONES GENERAL</h1>
         <p className="text">
           A continuación, se encuentran los Términos y Condiciones (en adelante, los
-          “Términos y Condiciones”) sobre los cuales se basará la relación entre
-          Rayo Lavados (en adelante, “Rayo Lavados”) y toda persona que utilice los
-          servicios de Rayo Lavados (en adelante, el “Usuario”).
+          Términos y Condiciones) sobre los cuales se basará la relación entre
+          Rayo Lavados (en adelante, Rayo Lavados) y toda persona que utilice los
+          servicios de Rayo Lavados (en adelante, el Usuario).
         </p>
         <p className="text">
           Cualquier persona que no acepte estos Términos y Condiciones, los cuales
@@ -40,23 +40,23 @@ const Page = () => {
       <li className="item">
         <p className="font-bold">DEFINICIONES</p>
         <p className="text">
-          <strong>"Sitio Web"</strong>, hace referencia al sitio web “Rayo Lavados”
+          <strong>Sitio Web</strong>, hace referencia al sitio web Rayo Lavados
           disponible para las tecnologías móviles.
         </p>
         <p className="text">
-          <strong>"Bienes"</strong>, son los bienes, productos o servicios que pueden
+          <strong>Bienes</strong>, son los bienes, productos o servicios que pueden
           llegar a ser ofrecidos por los Oferentes a través del Portal e integran el
           Pedido del Usuario. Los Bienes son suministrados por los Oferentes, siendo
           responsables de los mismos ante los Usuarios.
         </p>
         <p className="text">
-          <strong>"Nosotros"</strong>, <strong>"Nuestro"</strong>, y
-          <strong>"Rayo Lavados"</strong>, siempre que se haga referencia a los vocablos,
+          <strong>Nosotros</strong>, <strong>Nuestro</strong>, y
+          <strong>Rayo Lavados</strong>, siempre que se haga referencia a los vocablos,
           se está haciendo referencia directa a la sociedad Rayo Lavados, con domicilio en Ciudad Autonoma de Buenos Aires, Ciudad de Buenos Aires, República Argentina y
           sus sociedades vinculadas
         </p>
         <p className="text">
-          <strong>"Oferente"</strong>, se refiere a agentes externos y/o terceros ajenos
+          <strong>Oferente</strong>, se refiere a agentes externos y/o terceros ajenos
           a Rayo Lavados, que previamente han contratado con Rayo Lavados sus servicios de
           intermediación, aportando toda la información de los Bienes que se exhiben
           a través del Portal (precio, características, y en general todas sus
@@ -66,26 +66,26 @@ const Page = () => {
           el Portal.
         </p>
         <p className="text">
-          <strong>"Pedido"</strong> hace referencia a la solicitud del Usuario a través
+          <strong>Pedido</strong> hace referencia a la solicitud del Usuario a través
           del Portal de los Bienes de Oferentes.
         </p>
         <p className="text">
-          <strong>“Portal”</strong> hace referencia nuestro Sitio Web
+          <strong>Portal</strong> hace referencia nuestro Sitio Web
           a través de las cuales, en calidad de intermediarios, facilitamos el
           contacto entre Oferentes, Usuarios y repartidores.
         </p>
         <p className="text">
-          <strong>"Usuario"</strong> hace referencia a todas las personas humanas o
+          <strong>Usuario</strong> hace referencia a todas las personas humanas o
           jurídicas que accedan a nuestro Portal y realizan Pedidos sea a través del
           Sitio Web.
         </p>
         <p className="text">
-          <strong>"Servicio"</strong> hace referencia al servicio de intermediación
+          <strong>Servicio</strong> hace referencia al servicio de intermediación
           solicitado por el Usuario a través del Portal.
         </p>
         <p className="text">
-          <strong>"Sitio Web"</strong> hace referencia al sitio web
-          <a href="https://www.Rayo Lavados.com.ar">www.Rayo Lavados.com.ar</a>.
+          <strong>Sitio Web</strong> hace referencia al sitio web
+          <a href="https://www.rayolavados.com.ar">www.rayolavados.com.ar</a>.
         </p>
         <p className="text">
           En caso de utilizarse alguna de estas palabras definidas en plural,
@@ -120,7 +120,7 @@ const Page = () => {
         <p className="text">
           El contenido del Portal, incluyendo, pero sin limitarse a los textos,
           gráficas, imágenes, logotipos, íconos, software y cualquier otro material,
-          al cual en adelante se hará referencia como el “Material”, está protegido
+          al cual en adelante se hará referencia como el Material, está protegido
           bajo las leyes aplicables de propiedad industrial y propiedad intelectual.
           Todo el Material es de propiedad de Rayo Lavados o de sus proveedores.
         </p>
@@ -177,10 +177,10 @@ const Page = () => {
         <p className="font-bold">CREACIÓN DE CUENTA</p>
         <p className="text">
           Para el uso del Portal, los Usuarios deberán crear una cuenta de usuario
-          (en adelante, la “Cuenta”) donde se le solicitarán ciertos datos
+          (en adelante, la Cuenta) donde se le solicitarán ciertos datos
           personales tales como: nombre y apellido, fecha de nacimiento, dirección,
           teléfono, correo electrónico y datos para procesar los pagos online (en
-          adelante, los “Datos”). Los Usuarios garantizan y responden, en cualquier
+          adelante, los Datos). Los Usuarios garantizan y responden, en cualquier
           caso, de la veracidad, exactitud, vigencia, autenticidad y actualización
           de sus Datos. En ningún caso Rayo Lavados se responsabiliza por la actualización y certeza de
           los Datos de los Usuarios.
@@ -200,7 +200,7 @@ const Page = () => {
           Para acceder a su Cuenta personal, el Usuario deberá ingresar su correo
           electrónico y una contraseña la cual deberá mantener siempre de manera
           confidencial. Si el Usuario olvida su contraseña, podrá restablecerla
-          haciendo clic en “Olvidé mi contraseña”.
+          haciendo clic en Olvidé mi contraseña.
         </p>
         <p className="text">
           La Cuenta es única e intransferible, estando prohibido que un Usuario
@@ -357,7 +357,7 @@ const Page = () => {
         <p className="text">
           La entrega del Pedido podrá realizarse con repartidores del Oferente u
           otros puestos a disposición por Rayo Lavados, los cuales en este último caso,
-          serán indicados en el Portal mediante la leyenda “ENTREGA POR Rayo Lavados”
+          serán indicados en el Portal mediante la leyenda ENTREGA POR Rayo Lavados
           según se indica en el Portal. El Usuario comprende y acepta que Rayo Lavados
           no se hará responsable ante el Usuario por demoras o falta de entrega del
           Pedido o en caso de que se viera alterado o perjudicado cuando el Oferente
@@ -397,7 +397,7 @@ const Page = () => {
         <p className="text">
           Rayo Lavados informa al Usuario que la utilización de los servicios del Portal, así como la compra de los Bienes
           que se comercializan a través de éste, implica el pago de los precios, cargos u otros costos, según
-          corresponda (los “Cargos”), los cuales siempre le serán informados en el Portal de manera previa a la
+          corresponda (los Cargos), los cuales siempre le serán informados en el Portal de manera previa a la
           autogeneración del Pedido y del pago de éste y de los servicios. Los Cargos que se cobran al Usuario
           corresponden a:
         </p>
@@ -418,7 +418,7 @@ const Page = () => {
           </li>
           <li>
             <p className="text">
-              Envío prioritario: en los supuestos de “alta demanda” de órdenes en la zona, el usuario podrá optar por
+              Envío prioritario: en los supuestos de alta demanda de órdenes en la zona, el usuario podrá optar por
               seleccionar dicho servicio diferencial a cambio del pago de una tarifa adicional que será informada al
               momento del check out.
             </p>
@@ -440,8 +440,8 @@ const Page = () => {
           
           <a href="mailto:contacto.ar@Rayo Lavados.com">contacto.ar@Rayo Lavados.com</a>.
           
-          En el caso de las transacciones efectuadas a través del Sitio Web, por medio de la opción de “Ayuda en
-          Línea”.
+          En el caso de las transacciones efectuadas a través del Sitio Web, por medio de la opción de Ayuda en
+          Línea.
         </p>
       </li>
       <li className="item">
@@ -539,8 +539,8 @@ const Page = () => {
         <p className="text">
           Rayo Lavados no designa ninguna parte de su pago como propina o
           gratificación al repartidor. Cualquier manifestación por parte de
-          Rayo Lavados en el sentido de que dar una propina es “voluntario” y/o “no
-          requerido” en los pagos que realiza para los Servicios o Bienes, no
+          Rayo Lavados en el sentido de que dar una propina es voluntario y/o no
+          requerido en los pagos que realiza para los Servicios o Bienes, no
           pretende sugerir que Rayo Lavados proporciona importes adicionales al
           repartidor. El Usuario es libre de proporcionar un pago adicional como
           gratificación al repartidor que entregue su Pedido.
@@ -600,10 +600,10 @@ const Page = () => {
           Los cupones son vouchers o vales electrónicos que pueden ser utilizados por los Usuarios de Rayo Lavados cuya
           cuenta como usuario se encuentre vigente, activa y habilitada de conformidad con los presentes Términos y
           Condiciones, como medio de pago en el Portal, en los comercios que permitan su utilización al momento del pago
-          en la compra realizada por el Usuario en la República Argentina (en adelante, el “Cupón” o los “Cupones”)
+          en la compra realizada por el Usuario en la República Argentina (en adelante, el Cupón o los Cupones)
           dentro de los plazos y las condiciones que se informan para éstos. Los Usuarios podrán identificar a los
-          comercios que aceptan Cupones al momento de realizar la compra seleccionando la opción “Agregar Cupón” en el Sitio Web. Asimismo, los Usuarios podrán identificar los Cupones que posean y tengan disponibles para su uso,
-          seleccionando la opción “Mis Cupones” dentro del menú de opciones del Sitio Web.
+          comercios que aceptan Cupones al momento de realizar la compra seleccionando la opción Agregar Cupón en el Sitio Web. Asimismo, los Usuarios podrán identificar los Cupones que posean y tengan disponibles para su uso,
+          seleccionando la opción Mis Cupones dentro del menú de opciones del Sitio Web.
         </p>
         <p className="text">
           Los Cupones contienen códigos únicos que los identifican y no podrán ser canjeables por dinero en efectivo ni
@@ -631,10 +631,10 @@ const Page = () => {
           <li>
             <p className="text">
               Una vez que el Usuario cuente con un Cupón o Cupones individuales (apartado b) de la presente cláusula),
-              éstos se disponibilizarán automáticamente en la sección “Mis Cupones” del Sitio Web, o en el último
+              éstos se disponibilizarán automáticamente en la sección Mis Cupones del Sitio Web, o en el último
               paso de la compra, para agregarlo a su cuenta, al momento de abonarla. Respecto a los Cupones abiertos
-              (apartado a) de la presente cláusula) el Usuario deberá ingresar manualmente el código en la sección “Mis
-              Cupones” para poder utilizar el mismo en su pedido. Los Cupones contienen códigos únicos que los
+              (apartado a) de la presente cláusula) el Usuario deberá ingresar manualmente el código en la sección Mis
+              Cupones para poder utilizar el mismo en su pedido. Los Cupones contienen códigos únicos que los
               identifican y personalizan para uso exclusivo del Usuario. Además, están concebidos para un solo uso.
             </p>
           </li>
@@ -805,9 +805,9 @@ const Page = () => {
         <p className="text">
           Los usuarios de Rayo Lavados podrán ser invitados en función de sus preferencias
           de compras o búsquedas, a participar desafíos particulares y dirigidos de modo
-          individual que serán comunicados en la app (los “Desafíos”). Los Desafíos indicarán
+          individual que serán comunicados en la app (los Desafíos). Los Desafíos indicarán
           un desafío o consigna a cumplir a cambio de un beneficio que será informado y que
-          podrá consistir en un descuento, edición especial de productos, etc. (el “Beneficio”).
+          podrá consistir en un descuento, edición especial de productos, etc. (el Beneficio).
         </p>
         <p className="text">
           Los Desafíos son personales de los usuarios que lo reciban y no podrán ser cedidos
@@ -1018,8 +1018,8 @@ const Page = () => {
         <p className="text">
           Por su parte, en cualquier momento de la relación, el Usuario podrá dar de
           baja su cuenta registrada, para cual para gestionar y/o eliminar sus datos
-          personales el Usuario podrá en el Portal dirigirse a “Menú” -&gt; “Ayuda en
-          Línea” -&gt; “Mi cuenta” y allí gestionar el pedido de baja gratuito de su
+          personales el Usuario podrá en el Portal dirigirse a Menú -&gt; Ayuda en
+          Línea -&gt; Mi cuenta y allí gestionar el pedido de baja gratuito de su
           cuenta o la actualización de sus datos personales.
         </p>
       </li>

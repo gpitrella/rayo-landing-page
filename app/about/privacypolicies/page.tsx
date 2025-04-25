@@ -16,12 +16,12 @@ const Page = () => {
                 <p>
                     Al utilizar Rayo Lavados, usted, como usuario, nos confía su información.
                     Mediante la presente política de privacidad (en adelante, la
-                    “Política”), informamos a nuestros usuarios cómo tratamos su información
+                    Política), informamos a nuestros usuarios cómo tratamos su información
                     personal.
                 </p>
                 <p>
                     Si nuestra página web (<a href="https://www.rayolavados.com">www.rayolavados.com</a>)
-                    (en adelante, el "Portal") contiene enlaces que conducen a la página web de otro proveedor, nuestra
+                    (en adelante, el Portal) contiene enlaces que conducen a la página web de otro proveedor, nuestra
                     Política no se aplica a la página web a la que se le remite.
                 </p>
                 <p>
@@ -33,7 +33,7 @@ const Page = () => {
                     de sus datos personales por nuestra parte, de conformidad con la
                     normativa vigente en Argentina y en particular con la Ley 25.326 de
                     Protección de Datos, así como cualquier norma que la reglamente,
-                    modifique o reemplace (en adelante, la “Normativa”).
+                    modifique o reemplace (en adelante, la Normativa).
                 </p>
                 <p>
                     Los usuarios garantizan y responden, en cualquier caso, sobre la
@@ -55,7 +55,7 @@ const Page = () => {
                 <p className="font-bold">PRINCIPIOS QUE ORIENTAN LA POLÍTICA</p>
                 <p>
                     Rayo Lavados y sus sociedades vinculadas o relacionadas (en adelante las
-                    "Sociedades Vinculadas") respeta y respetará sus derechos, aplicando y
+                    Sociedades Vinculadas) respeta y respetará sus derechos, aplicando y
                     garantizando los siguientes principios orientadores de la Política:
                 </p>
                 <ol className="sublist" type="a">
@@ -882,7 +882,7 @@ const Page = () => {
                 </p>
                 <p>
                     Puedes gestionar y solicitar la eliminación de tus datos personales tú
-                    mismo, desde las entradas “Mi Cuenta” y “Ayuda en línea” de la
+                    mismo, desde las entradas Mi Cuenta y Ayuda en línea de la
                     aplicación.
                 </p>
                 <p>
@@ -937,8 +937,7 @@ const Page = () => {
                 <p>
                     Las políticas de privacidad de Google se encuentran disponibles
                     en:
-                    <a href="https://www.google.com/url?q=http://www.google.com/privacypolicy.html&amp;sa=D&amp;ust=1582828667922000">
-                    http://www.google.com/privacypolicy.html
+                    <a href="https://www.google.com/url?q=http://www.google.com/privacypolicy.html">
                     </a>
                 </p>
                 <p>
