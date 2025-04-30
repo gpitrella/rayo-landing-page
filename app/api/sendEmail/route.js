@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import sendgrid from "@sendgrid/mail";
+<<<<<<< HEAD
 // import { PiCornersOutLight } from "react-icons/pi";
+=======
+>>>>>>> d49ed4b (Eliminando clave secreta de SendGrid)
 
 sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
 
@@ -12,7 +15,7 @@ export async function POST(req, res) {
 
     const msg = {
       to: email,
-      template_id:'d-552c8faabdc44c4e8a35e15621965592',
+      template_id: process.env.NEXT_PUBLIC_TEMPLATE_EMAIL_CLIENT,
       from: process.env.NEXT_PUBLIC_SENDGRID_FROM_EMAIL,
       dynamic_template_data: {
         subject: subject, // Usa los datos dinámicos definidos en SendGrid
@@ -23,7 +26,7 @@ export async function POST(req, res) {
 
     const msgRayo = {
       to: 'info@rayolavados.com',
-      template_id:'d-82e058dbae084168b907e6bcc55f6351',
+      template_id: process.env.NEXT_PUBLIC_TEMPLATE_EMAIL_RAYO,
       from: process.env.NEXT_PUBLIC_SENDGRID_FROM_EMAIL,
       dynamic_template_data: {
         subject: subject, // Usa los datos dinámicos definidos en SendGrid

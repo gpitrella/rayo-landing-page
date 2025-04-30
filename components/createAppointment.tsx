@@ -21,9 +21,6 @@ import {
   } from "@/components/ui/select";
 // import { PiPlaceholderFill } from 'react-icons/pi'
 
-
-
-
 function CreateAppointment(props: any) {
     const { loading, status } = useSelector((state: RootState) => state.auth);
     const { uid } = useSelector((state: RootState) => state.auth);
@@ -85,26 +82,7 @@ function CreateAppointment(props: any) {
             console.log("Respuesta del servidor:", result);
           } catch (error) {
             console.error("Error enviando solicitud:", error);
-          }
-
-          // try {
-          //   const response = await fetch("/api/sendwhatsapp", {
-          //     method: "POST",              
-          //     headers: { "Content-Type": "application/json" },
-          //     body: JSON.stringify({ phone }),
-          //   });
-      
-          //   if (!response.ok) {
-          //     throw new Error("Failed to send message");
-          //   }
-      
-          //   const data = await response.json();
-          //   console.log("Success:", data);
-          // } catch (error) {
-          //   console.error("Error sending WhatsApp message:", error);
-          // }
-      
-        
+          }            
       
       }
    
