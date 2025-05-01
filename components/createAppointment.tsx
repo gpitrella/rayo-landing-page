@@ -145,7 +145,7 @@ function CreateAppointment(props: any) {
                        <div className="flex flex-col mt-3">
                            <label className="text-[0.9rem] font-medium mb-1 dark:text-white">Seleccionar Estacionamiento *</label>
                           <Select onValueChange={(value) => setPlace(value)}>
-                              <SelectTrigger className="w-full z-[1100] h-[40px] border-[1px] border-[#b9b9b9] outline-none px-3 py-[23px] text-base rounded-md bg-gray-200 dark:text-white dark: bg-black">
+                              <SelectTrigger className="w-full z-[1100] h-[40px] border-[1px] border-[#b9b9b9] outline-none px-3 py-[23px] text-base rounded-md bg-gray-200 dark:text-white dark:bg-black">
                                   <SelectValue placeholder="Seleccionar opción" className="text-gray-600"/>
                               </SelectTrigger>
                               <SelectContent className="z-[1100]">
