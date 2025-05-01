@@ -12,7 +12,7 @@ import {
 
 export const CommunitySection = () => {
   return (
-    <section id="community" className="py-12 ">      
+    <section id="community" className="py-12 ">
       <div className="container py-20 sm:py-20">
         <div className="lg:w-[70%] mx-auto">
           <Card className="bg-background border-none shadow-none text-center flex flex-col items-center justify-center">
@@ -32,7 +32,7 @@ export const CommunitySection = () => {
 
             <CardFooter>
               <Button className="w-auto font-bold group/arrow py-4 px-7 h-12 text-lg"> 
-                <Link href='/home'>                                       
+                <Link href='/home' >                                       
                       <span>Agendar Lavado</span>                  
                 </Link>                
                 <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
@@ -40,7 +40,7 @@ export const CommunitySection = () => {
             </CardFooter>
           </Card>
         </div>
-      </div>      
+      </div>
     </section>
   );
 };

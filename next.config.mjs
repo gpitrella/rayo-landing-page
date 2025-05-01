@@ -45,7 +45,10 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    // if (!isServer) {
+    //   config.resolve.fallback = { fs: false };
+    // }
     config.experiments = {
       ...config.experiments,
       topLevelAwait: true, // Soporte para await en el nivel superior

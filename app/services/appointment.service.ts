@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../config/firebase";
 import { AppointmentModel, AppointmentRequest } from "../models/appointment.model";
 import generateRandomString from "../utils/generateRandomChar";
+import { NextResponse } from "next/server";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -69,9 +70,7 @@ async function createAppointment(data: AppointmentRequest) : Promise<void>{
     } catch (error) {
         console.error('error creating appointment', error)
         throw error;
-    }
-    
-       
+    }       
 
 }
 

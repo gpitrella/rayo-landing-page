@@ -6,7 +6,7 @@ import '../../styles/auth.css';
 const Page = () => {
    
     return (
-    <section id="privacypolicies" className="py-12 ">      
+    <div id="privacypolicies" className="py-12 ">      
       <div className="container py-20 sm:py-30 max-w-6xl">
       <div className="lg:w-[70%] mx-auto">
         <h1 className="font-black align-center text-2xl">POLÍTICA DE PRIVACIDAD ARGENTINA</h1>
@@ -1043,7 +1043,7 @@ const Page = () => {
             </ol>
         </div>
         </div>
-        </section>      
+        </div>      
         
 
 
