@@ -4,7 +4,7 @@ import * as React from 'react'
 import { BiCalendarPlus } from 'react-icons/bi'
 import Table from '@/components/table'
 import CreateAppointment from '../../../components/createAppointment'
-import { getUpcomingAppointment, getAllAppointment } from '@/app/services/appointment.service'
+import { getUpcomingAppointment } from '@/app/services/appointment.service'
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from '@/app/store/store'
 import routeGuard from '@/app/guard/routeGuard'
@@ -93,7 +93,6 @@ function Page() {
 
   return (
     <>
-      {/* <Navbar /> */}
       <div className='w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-0 top-5 mx-auto z-40 py-0 px-0 mt-12'>
       { createAppointmentBtn && <CreateAppointment showCreateAppt={showCreateAppointmentComponent} loading={isLoading} createAppt={handleCreateAppointment} /> }
       <div className="container mx-auto px-0 w-full mt-[20px]">        

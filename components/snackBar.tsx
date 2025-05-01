@@ -16,7 +16,7 @@ function SnackBar(props: any) {
     });
 
     const action = (
-      <React.Fragment>
+      <>
         <IconButton
           size="small"
           aria-label="close"
@@ -25,7 +25,7 @@ function SnackBar(props: any) {
         >
           <CloseIcon fontSize="small" />
         </IconButton>
-      </React.Fragment>
+      </>
   );
   return (
     <div>

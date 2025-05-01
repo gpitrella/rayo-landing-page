@@ -32,7 +32,7 @@ export const Banner = () => {
             </p>
 
             <div className="max-w-screen-sm mx-auto">
-            <Link href="#process" passHref legacyBehavior> 
+            <Link href="#process" passHref > 
               <Button className="w-auto font-bold group/arrow" > 
                 Empezar
                 <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />

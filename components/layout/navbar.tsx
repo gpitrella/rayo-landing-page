@@ -40,6 +40,8 @@ import MobileNav from '../../components/mobileNav';
 import DesktopNav from '../../components/desktopNav';
 import { User } from '../../app/models/user.model';
 import { RootState } from '../../app/store/store';
+import { NextApiRequest, NextApiResponse } from "next";
+import sgMail from "@sendgrid/mail";
 
 interface RouteProps {
   href: string;
@@ -82,7 +84,7 @@ const featureList: FeatureProps[] = [
   }
 ];
 
-export const Navbar = () => {
+export const Navbar: React.FC = () => {
   const pathname = usePathname()
   const dispatch= useAppDispatch();
   const [isOpen, setIsOpen] = React.useState(false);  
@@ -95,16 +97,16 @@ export const Navbar = () => {
   const isAuthenticated = checkUserLoggedIn();
   
       useEffect(()=> {
+        
           if(user != null){
-              const User = user as User
-              console.log('USER: ', User)
+              const User = user as User              
               const shortName = User.firstName.charAt(0) + User.lastName.charAt(0)
               setShortUsername(shortName.toUpperCase());
               setDropDown(false);              
           }          
           setDropDown(false);
       },[])
-  
+      
       useEffect(()=>{
           function checkWindowWidth() {
               const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -124,219 +126,216 @@ export const Navbar = () => {
         setDropDown(false);
       }
 
-    // useEffect(()=>{
-    //   if(isAuthenticated){
-    //     router.push('/home')
-    //   }
-    //   else{
-    //     router.push('/auth/login')
-    //   }
-    // })
+   return (
+     <header className="h-[68px] shadow-inner bg-opacity-50 w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-0 px-6 bg-card">
+       <Link
+         href="/"
+         className="font-black text-2xl flex items-center italic"
+         >
+         <Image
+           width={35}
+           height={35}
+           src={theme === 'light' ? '/LogoRayoBlack.png' : '/LogoRayoWhite.png'}
+           alt={theme === 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
+           className="relative inset-0 ml-auto object-cover object-center"
+         /> 
+       </Link>
+       {/* <!-- Mobile --> */}
+       <div className="flex items-center lg:hidden">
+         <Sheet open={isOpen} onOpenChange={setIsOpen}>
+           <SheetTrigger asChild>
+             <div>
+               { !isAuthenticated && width < 720 ? 
+                 <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base mr-3'>
+                   Login
+                 </Button> : null}
+                 { isAuthenticated && width < 720 ? 
+                   <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
+                         <div className='notification mr-2 rounded-[50%] bg-lightgrey w-auto h-12 flex justify-center items-center'>
+                             <span className='font-medium'>{shortUsername}</span>                            
+                         </div>
+                   </div>    
+                 : null}              
+               <Menu
+                 onClick={() => setIsOpen(!isOpen)}
+                 className="cursor-pointer lg:hidden"
+               />
+             </div>
+           </SheetTrigger>
 
-  return (
-    <header className="h-[68px] shadow-inner bg-opacity-50 w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-0 px-6 bg-card">
-      <Link href="/" className="font-black text-2xl flex items-center italic">
-        <Image
-          width={35}
-          height={35}
-          src={theme === 'light' ? '/LogoRayoBlack.png' : '/LogoRayoWhite.png'}
-          alt={theme === 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
-          className="relative inset-0 ml-auto object-cover object-center"
-        /> 
-      </Link>
+           <SheetContent
+             side="left"
+             className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary"
+           >
+             <div>
+             { isAuthenticated ? <>
+               <SheetHeader className="mb-4 ml-4">
+                 <SheetTitle className="flex items-center">                                                         
+                      <h3 className='font-semibold text-lg'>{user?.firstName} {user?.lastName}</h3>            
+                 </SheetTitle>
+               </SheetHeader> 
 
-      {/* <!-- Mobile --> */}
-      <div className="flex items-center lg:hidden">
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <>
-              { !isAuthenticated && (width < 720) ? 
-                <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base mr-3'>
-                  Login
-                </Button> : <></>}
-                { isAuthenticated && (width < 720) ? 
-                  <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
-                        <div className='notification mr-2 rounded-[50%] bg-lightgrey w-auto h-12 flex justify-center items-center'>
-                            <span className='font-medium'>{shortUsername}</span>                            
-                        </div>
-                  </div>    
-                : <></>}              
-              <Menu
-                onClick={() => setIsOpen(!isOpen)}
-                className="cursor-pointer lg:hidden"
-              />
-            </>
-          </SheetTrigger>
+               <Separator className="mb-2" />
+               <div className="flex flex-col gap-2">
+                   <Button
+                       key='home'
+                       onClick={() => setIsOpen(false)}
+                       asChild
+                       variant="ghost"
+                       className="justify-start text-base">
+                     <Link
+                       className={`${pathname === '/home' ? 'active' : ''}`}
+                       href='/home'
+                       >
+                       <div id='link'>
+                           <PiCalendarBlank className="text-[1.4rem] dark:text-white" />
+                           <span className='dark:text-white'>Lavados Reservados</span>
+                       </div>
+                     </Link>
+                   </Button>
+                   <Button
+                       key='profile'
+                       onClick={() => setIsOpen(false)}
+                       asChild
+                       variant="ghost"
+                       className="justify-start text-base">
+                       <Link
+                         className={`${pathname === '/settings/profile' ? 'active' : ''}`}
+                         href='/settings/profile'
+                         >
+                         <div id='link'>
+                             <IoSettingsOutline className="text-[1.4rem] dark:text-white"/>
+                             <span className='dark:text-white'>Settings</span>
+                         </div>
+                       </Link>
+                     </Button>
+                     <Button
+                       key='profile'
+                       // onClick={() => setIsOpen(false)}
+                       asChild
+                       variant="ghost"
+                       className="justify-start text-base">
+                       <span onClick={()=>{
+                           setDropDown(false);
+                           Logout();                          
+                           dispatch(reset())
+                           // router.push('/')                                
+                       }}>
+                           <div id='link'>
+                               <IoLogOutOutline className="text-[1.6rem] dark:text-white" />
+                               <span className='dark:text-white'>Logout</span>
+                           </div>
+                           
+                       </span>
+                     </Button>
+                 </div>
+                 <Separator className="mb-2 mt-2" />
+                 </> : null}
+               
+               <div className="flex flex-col gap-2">
+                 <Button
+                     key='home'
+                     onClick={() => setIsOpen(false)}
+                     asChild
+                     variant="ghost"
+                     className="justify-start text-base"
+                   >
+                     <Link href="/">Home</Link>
+                   </Button>
+                 {routeList.map(({ href, label }) => (
+                   <Button
+                     key={href}
+                     onClick={() => setIsOpen(false)}
+                     asChild
+                     variant="ghost"
+                     className="justify-start text-base"
+                   >
+                     <Link href={href} >{label}</Link>
+                   </Button>
+                 ))}
+               </div>
+             </div>
 
-          <SheetContent
-            side="left"
-            className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary"
-          >
-            <div>
-            { isAuthenticated ? <>
-              <SheetHeader className="mb-4 ml-4">
-                <SheetTitle className="flex items-center">                                                         
-                     <h3 className='font-semibold text-lg'>{user?.firstName} {user?.lastName}</h3>            
-                </SheetTitle>
-              </SheetHeader> 
+             <SheetFooter className="flex-col sm:flex-col justify-start items-start">
+               <Separator className="mb-2" />
+               <ToggleTheme />
+             </SheetFooter>
+           </SheetContent>
+         </Sheet>
+       </div>
+       {/* <!-- Desktop --> */}
+       <NavigationMenu className="hidden lg:block mx-auto">
+         <NavigationMenuList>
 
-              <Separator className="mb-2" />
-              <div className="flex flex-col gap-2">
-                  <Button
-                      key='home'
-                      onClick={() => setIsOpen(false)}
-                      asChild
-                      variant="ghost"
-                      className="justify-start text-base">
-                    <Link className={`${pathname === '/home' ? 'active' : ''}`} href='/home' >
-                      <div id='link'>
-                          <PiCalendarBlank className="text-[1.4rem] dark:text-white" />
-                          <span className='dark:text-white'>Lavados Reservados</span>
-                      </div>
-                    </Link>
-                  </Button>
-                  <Button
-                      key='profile'
-                      onClick={() => setIsOpen(false)}
-                      asChild
-                      variant="ghost"
-                      className="justify-start text-base">
-                      <Link className={`${pathname === '/settings/profile' ? 'active' : ''}`} href='/settings/profile' >
-                        <div id='link'>
-                            <IoSettingsOutline className="text-[1.4rem] dark:text-white"/>
-                            <span className='dark:text-white'>Settings</span>
-                        </div>
-                      </Link>
-                    </Button>
-                    <Button
-                      key='profile'
-                      // onClick={() => setIsOpen(false)}
-                      asChild
-                      variant="ghost"
-                      className="justify-start text-base">
-                      <span onClick={()=>{
-                          setDropDown(false);
-                          Logout();                          
-                          dispatch(reset())
-                          // router.push('/')                                
-                      }}>
-                          <div id='link'>
-                              <IoLogOutOutline className="text-[1.6rem] dark:text-white" />
-                              <span className='dark:text-white'>Logout</span>
-                          </div>
-                          
-                      </span>
-                    </Button>
-                </div>
-                <Separator className="mb-2 mt-2" />
-                </> : <></>}
+           <NavigationMenuItem>
+             {routeList.map(({ href, label }) => (
+               <NavigationMenuLink key={href} asChild>
+                 <Link href={href} className="text-base px-2" >
+                   {label}
+                 </Link>
+               </NavigationMenuLink>
+             ))}
+           </NavigationMenuItem>
+
+           <NavigationMenuItem>
+             <NavigationMenuTrigger className="bg-card text-base">
+               Misión
+             </NavigationMenuTrigger>
+             <NavigationMenuContent>
+               <div className="grid w-[650px] grid-cols-2 gap-5 p-4">
+                 <Image
+                   src={theme === 'light' ? '/LogoNegativo.png' : '/LogoPositivo.png'}
+                   alt={theme === 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
+                   className="h-full w-full rounded-md object-cover p-14"
+                   width={150}
+                   height={150}
+                 />
+                 <ul className="flex flex-col gap-2">
+                   {featureList.map(({ title, description }) => (
+                     <li
+                       key={title}
+                       className="rounded-md p-3 text-sm hover:bg-muted h-auto"
+                     >
+                       <p className="mb-1 font-semibold leading-none text-foreground">
+                         {title}
+                       </p>
+                       <p className="text-muted-foreground">
+                         {description}
+                       </p>
+                     </li>
+                   ))}
+                 </ul>
+               </div>
+             </NavigationMenuContent>
+           </NavigationMenuItem>
+
+         </NavigationMenuList>
+       </NavigationMenu>
+       <div className="hidden lg:flex items-center">         
+
+         { !isAuthenticated ? 
+           <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base'>
+             Login
+           </Button> 
+           : <>
+               <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
+                 <button onClick={()=> setDropDown(!dropDown)} className='flex justify-start items-center hover:bg-darkSecondary rounded-[7px] cursor-pointer px-4 transition-all ease-in-out'>
+                     <div className='notification mr-4 rounded-[50%] bg-lightgrey w-12 h-12 flex justify-center items-center'>
+                         <span className='font-medium'>{shortUsername}</span>
+                     </div>
+                     <div className='flex justify-start items-center'>
+                         <span className='mr-2 w-max sm:invisible sm:hidden lg:block lg:visible '>{user?.firstName} {user?.lastName}</span>
+                         <IoIosArrowDown />
+                     </div>
+                 </button>
+               </div>            
+               {/* {dropDown && (width > 720) && <MobileNav user={user} closeDropDown={closeDropDown} />  } */}
+               {dropDown && (width > 720) && <DesktopNav user={user} closeDropDown={closeDropDown} />  }
+             </>
+           }
+         <ToggleTheme />
               
-              <div className="flex flex-col gap-2">
-                <Button
-                    key='home'
-                    onClick={() => setIsOpen(false)}
-                    asChild
-                    variant="ghost"
-                    className="justify-start text-base"
-                  >
-                    <Link href="/">Home</Link>
-                  </Button>
-                {routeList.map(({ href, label }) => (
-                  <Button
-                    key={href}
-                    onClick={() => setIsOpen(false)}
-                    asChild
-                    variant="ghost"
-                    className="justify-start text-base"
-                  >
-                    <Link href={href}>{label}</Link>
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <SheetFooter className="flex-col sm:flex-col justify-start items-start">
-              <Separator className="mb-2" />
-              <ToggleTheme />
-            </SheetFooter>
-          </SheetContent>
-        </Sheet>
-      </div>
-
-      {/* <!-- Desktop --> */}
-      <NavigationMenu className="hidden lg:block mx-auto">
-        <NavigationMenuList>
-
-          <NavigationMenuItem>
-            {routeList.map(({ href, label }) => (
-              <NavigationMenuLink key={href} asChild>
-                <Link href={href} className="text-base px-2">
-                  {label}
-                </Link>
-              </NavigationMenuLink>
-            ))}
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="bg-card text-base">
-              Misión
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <div className="grid w-[650px] grid-cols-2 gap-5 p-4">
-                <Image
-                  src={theme === 'light' ? '/LogoNegativo.png' : '/LogoPositivo.png'}
-                  alt={theme === 'light' ? "Logo Rayo Black" : "Logo Rayo White"}
-                  className="h-full w-full rounded-md object-cover p-14"
-                  width={150}
-                  height={150}
-                />
-                <ul className="flex flex-col gap-2">
-                  {featureList.map(({ title, description }) => (
-                    <li
-                      key={title}
-                      className="rounded-md p-3 text-sm hover:bg-muted h-auto"
-                    >
-                      <p className="mb-1 font-semibold leading-none text-foreground">
-                        {title}
-                      </p>
-                      <p className="text-muted-foreground">
-                        {description}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-        </NavigationMenuList>
-      </NavigationMenu>
-
-      <div className="hidden lg:flex items-center">         
-
-        { !isAuthenticated ? 
-          <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base'>
-            Login
-          </Button> 
-          : <>
-              <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
-                <button onClick={()=> setDropDown(!dropDown)} className='flex justify-start items-center hover:bg-darkSecondary rounded-[7px] cursor-pointer px-4 transition-all ease-in-out'>
-                    <div className='notification mr-4 rounded-[50%] bg-lightgrey w-12 h-12 flex justify-center items-center'>
-                        <span className='font-medium'>{shortUsername}</span>
-                    </div>
-                    <div className='flex justify-start items-center'>
-                        <span className='mr-2 w-max sm:invisible sm:hidden lg:block lg:visible '>{user?.firstName} {user?.lastName}</span>
-                        <IoIosArrowDown />
-                    </div>
-                </button>
-              </div>            
-              {/* {dropDown && (width > 720) && <MobileNav user={user} closeDropDown={closeDropDown} />  } */}
-              {dropDown && (width > 720) && <DesktopNav user={user} closeDropDown={closeDropDown} />  }
-            </>
-          }
-        <ToggleTheme />
-             
-      </div>
-    </header>
-  );
+       </div>
+     </header>
+   );
 };
