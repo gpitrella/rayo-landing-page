@@ -10,6 +10,7 @@ import { RootState } from '../app/store/store'
 import dayjs, { Dayjs } from 'dayjs';
 import "dayjs/locale/es";
 import BtnLoader from './btnLoader';
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
     Select,
@@ -24,7 +25,7 @@ import {
 
 
 function CreateAppointment(props: any) {
-
+    const { loading, status } = useSelector((state: RootState) => state.auth);
     const { uid } = useSelector((state: RootState) => state.auth);
     const { user } = useSelector((state: RootState) => state.user);
     const[modelo, setModelo] = React.useState<string | null>(null)
@@ -165,8 +166,14 @@ function CreateAppointment(props: any) {
                               Acepto los <a href="/terms" className="text-blue-500 underline">Términos y Condiciones</a> del servicio de lavado RAYO.
                           </label>
                       </div>
-
-                      <Button className='button w-auto font-bold group/arrow mt-4'>{ props.isLoading ? <BtnLoader /> : 'Book Appointment' }</Button>
+                    <Button
+                        className={loading ? 'button-disabled w-full font-bold group/arrow mt-5' : 'button w-full font-bold group/arrow mt-5'}
+                        disabled={loading}
+                    >
+                        {loading ? <BtnLoader /> : 'Agendar Lavado'}
+                        {!loading && <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />}
+                    </Button>       
+                      {/* <Button className='button w-auto font-bold group/arrow mt-4'>{ props.isLoading ? <BtnLoader /> : 'Book Appointment' }</Button> */}
                   </form>
               </div>
           </div>
