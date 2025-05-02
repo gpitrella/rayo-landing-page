@@ -1,9 +1,9 @@
 import { getFirestore, doc, setDoc, getDoc, DocumentData } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../config/firebase";
+import { app } from "../config/firebase";
 import { User } from "../models/user.model";
 
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
