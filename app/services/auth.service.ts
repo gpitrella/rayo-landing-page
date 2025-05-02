@@ -1,10 +1,10 @@
 import { getAuth, sendPasswordResetEmail, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential, signOut, ProviderId, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../config/firebase";
+import { app } from "../config/firebase";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { GoogleAuthProvider } from "firebase/auth";
 
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 const providers = {

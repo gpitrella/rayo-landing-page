@@ -7,6 +7,8 @@ import { FooterSection } from "@/components/layout/sections/footer";
 import { Providers } from "@/app/store/provider";
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { analytics } from "../app/config/firebase";
+import { logEvent } from "firebase/analytics";
 import 'leaflet/dist/leaflet.css';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,11 +18,17 @@ export const metadata: Metadata = {
   description: "Website Rayo",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  if (analytics) {
+    logEvent(analytics, "page_view");
+  }
+
   return (
     <html lang="pt-br" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className)}>

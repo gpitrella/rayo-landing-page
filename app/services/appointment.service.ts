@@ -1,11 +1,11 @@
 import { DocumentData, deleteDoc, addDoc, collection, doc, getDoc, getDocs, getFirestore, query, setDoc, where } from "firebase/firestore"
 import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../config/firebase";
+import { app } from "../config/firebase";
 import { AppointmentModel, AppointmentRequest } from "../models/appointment.model";
 import generateRandomString from "../utils/generateRandomChar";
 import { NextResponse } from "next/server";
 
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 async function getAppointments(uid: string): Promise<AppointmentModel[]>{
