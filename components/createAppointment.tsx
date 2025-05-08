@@ -31,7 +31,7 @@ function CreateAppointment(props: any) {
     const[modelo, setModelo] = React.useState<string | null>(null)
     const[color, setColor] = React.useState<string | null>(null)
     const[patente, setPatente] = React.useState<string | null>(null)
-    const[telefono, setTelefono] = React.useState<string | null>(null)
+    const[phone, setPhone] = React.useState<string | null>(null)
     const[place, setPlace] = React.useState<string | null>(null)
     const[terms, setTerms] = React.useState<boolean | false>(false)
     const[time, setTime] = React.useState<string | null>(null)
@@ -52,14 +52,14 @@ function CreateAppointment(props: any) {
     
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
-        if(date === null || time === null || modelo === null || color === null || patente === null || telefono === null || place === null || terms === false) return;
+        if(date === null || time === null || modelo === null || color === null || patente === null || phone === null || place === null || terms === false) return;
         const request = {
             user_id: uid,
             modelo,
             color,
             patente,
             place,
-            telefono,
+            phone,
             terms,
             date,
             time,
@@ -84,6 +84,23 @@ function CreateAppointment(props: any) {
             console.log("Respuesta del servidor:", result);
           } catch (error) {
             console.error("Error enviando solicitud:", error);
+          }
+
+          try {
+            const response = await fetch("/api/sendwhatsapp", {
+              method: "POST",              
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ phone }),
+            });
+      
+            if (!response.ok) {
+              throw new Error("Failed to send message");
+            }
+      
+            const data = await response.json();
+            console.log("Success:", data);
+          } catch (error) {
+            console.error("Error sending WhatsApp message:", error);
           }
       
         
@@ -135,7 +152,7 @@ function CreateAppointment(props: any) {
                                   onChange={(e) => {
                                       const regex = /^[0-9]*$/; // Solo letras, espacios y caracteres en español
                                       if (regex.test(e.target.value)) {
-                                        setTelefono(e.target.value); // Actualiza solo si pasa el regex
+                                        setPhone(e.target.value); // Actualiza solo si pasa el regex
                                         setError('');
                                       } else { setError('Solo se permiten números en el campo TELEFONO.') }
                                     }}                              

@@ -26,7 +26,7 @@ function DesktopNav(props: any) {
         dispatch(reset()); 
         props.closeDropDown(event); 
         Logout();
-        // router.push('/')                     
+        router.push('/')                     
     };      
 
  

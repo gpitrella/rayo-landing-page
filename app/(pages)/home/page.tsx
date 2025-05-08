@@ -25,7 +25,7 @@ function Page() {
     modelo: string;
     patente: string;
     color: string;
-    telefono: string,
+    phone: string,
     place: string;
     terms: boolean;
     date: string;

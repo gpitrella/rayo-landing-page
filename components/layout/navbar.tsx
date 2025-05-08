@@ -219,7 +219,7 @@ export const Navbar: React.FC = () => {
                            setDropDown(false);
                            Logout();                          
                            dispatch(reset())
-                           // router.push('/')                                
+                           router.push('/')                                
                        }}>
                            <div id='link'>
                                <IoLogOutOutline className="text-[1.6rem] dark:text-white" />
