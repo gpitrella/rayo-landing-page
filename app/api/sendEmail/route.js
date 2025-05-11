@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import sendgrid from "@sendgrid/mail";
-import { PiCornersOutLight } from "react-icons/pi";
+// import { PiCornersOutLight } from "react-icons/pi";
 
 sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
 
-export async function POST(req) {
-  // console.log('req: ', req)
+export async function POST(req, res) {
+
   try {
     const body = await req.json();
     const { email, subject, message } = body;
@@ -17,6 +17,7 @@ export async function POST(req) {
       dynamic_template_data: {
         subject: subject, // Usa los datos dinámicos definidos en SendGrid
         message: message.text,
+        email: email
       }, 
     };
 

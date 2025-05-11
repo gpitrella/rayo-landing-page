@@ -97,7 +97,7 @@ export const Navbar: React.FC = () => {
   const isAuthenticated = checkUserLoggedIn();
   
       useEffect(()=> {
-        
+          setShortUsername('')
           if(user != null){
               const User = user as User              
               const shortName = User.firstName.charAt(0) + User.lastName.charAt(0)

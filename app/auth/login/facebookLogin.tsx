@@ -10,6 +10,7 @@ const LoginWithFacebook = () => {
 
   async function loginFacebookUser(){
       dispatch(loginFacebook());
+      
   }
 
   return (

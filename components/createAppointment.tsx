@@ -52,6 +52,7 @@ function CreateAppointment(props: any) {
     
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
+        console.log('user: ', user)
         if(date === null || time === null || modelo === null || color === null || patente === null || phone === null || place === null || terms === false) return;
         const request = {
             user_id: uid,
@@ -68,7 +69,7 @@ function CreateAppointment(props: any) {
         props.createAppt(request);   
 
         const emailPayload = {
-            email: "gabrielpitrella@gmail.com",
+            email: user.email,
             subject: `Reserva Lavado: ${modelo || "Sin modelo"}, ${color || "Sin color"}, ${patente || "Sin patente"}`,
             message: { text: "Detalles del cliente:" }, // Cambia a un objeto para evitar errores
           };
@@ -86,22 +87,22 @@ function CreateAppointment(props: any) {
             console.error("Error enviando solicitud:", error);
           }
 
-          try {
-            const response = await fetch("/api/sendwhatsapp", {
-              method: "POST",              
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ phone }),
-            });
+          // try {
+          //   const response = await fetch("/api/sendwhatsapp", {
+          //     method: "POST",              
+          //     headers: { "Content-Type": "application/json" },
+          //     body: JSON.stringify({ phone }),
+          //   });
       
-            if (!response.ok) {
-              throw new Error("Failed to send message");
-            }
+          //   if (!response.ok) {
+          //     throw new Error("Failed to send message");
+          //   }
       
-            const data = await response.json();
-            console.log("Success:", data);
-          } catch (error) {
-            console.error("Error sending WhatsApp message:", error);
-          }
+          //   const data = await response.json();
+          //   console.log("Success:", data);
+          // } catch (error) {
+          //   console.error("Error sending WhatsApp message:", error);
+          // }
       
         
       
