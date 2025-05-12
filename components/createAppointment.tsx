@@ -49,7 +49,7 @@ function CreateAppointment(props: any) {
     
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
-        console.log('user: ', user)
+        
         if(date === null || time === null || modelo === null || color === null || patente === null || phone === null || place === null || terms === false) return;
         const request = {
             user_id: uid,
@@ -67,8 +67,9 @@ function CreateAppointment(props: any) {
 
         const emailPayload = {
             email: user.email,
-            subject: `Reserva Lavado: ${modelo || "Sin modelo"}, ${color || "Sin color"}, ${patente || "Sin patente"}`,
+            subject: `Reserva de Lavado - Modelo vehículo ${modelo || "Sin modelo"}, Color: ${color || "Sin color"}, Patente: ${patente || "Sin patente"}`,
             message: { text: "Detalles del cliente:" }, // Cambia a un objeto para evitar errores
+            phone: phone.replace(/\s+/g, "")
           };
           
           try {
