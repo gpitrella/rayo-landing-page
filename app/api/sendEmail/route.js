@@ -1,32 +1,34 @@
 import { NextResponse } from "next/server";
 import sendgrid from "@sendgrid/mail";
-import { PiCornersOutLight } from "react-icons/pi";
+// import { PiCornersOutLight } from "react-icons/pi";
 
 sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
 
 export async function POST(req) {
-  // console.log('req: ', req)
+
   try {
     const body = await req.json();
-    const { email, subject, message } = body;
+    const { email, subject, message, phone } = body;
 
     const msg = {
       to: email,
-      template_id:'d-552c8faabdc44c4e8a35e15621965592',
+      template_id: process.env.NEXT_PUBLIC_TEMPLATE_EMAIL_CLIENT,
       from: process.env.NEXT_PUBLIC_SENDGRID_FROM_EMAIL,
       dynamic_template_data: {
         subject: subject, // Usa los datos dinámicos definidos en SendGrid
         message: message.text,
+        email: email
       }, 
     };
 
     const msgRayo = {
       to: 'info@rayolavados.com',
-      template_id:'d-82e058dbae084168b907e6bcc55f6351',
+      template_id: process.env.NEXT_PUBLIC_TEMPLATE_EMAIL_RAYO,
       from: process.env.NEXT_PUBLIC_SENDGRID_FROM_EMAIL,
       dynamic_template_data: {
         subject: subject, // Usa los datos dinámicos definidos en SendGrid
         message: message.text,
+        phone: phone
       }, 
     };
     

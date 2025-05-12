@@ -21,9 +21,6 @@ import {
   } from "@/components/ui/select";
 // import { PiPlaceholderFill } from 'react-icons/pi'
 
-
-
-
 function CreateAppointment(props: any) {
     const { loading, status } = useSelector((state: RootState) => state.auth);
     const { uid } = useSelector((state: RootState) => state.auth);
@@ -52,6 +49,7 @@ function CreateAppointment(props: any) {
     
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
+        
         if(date === null || time === null || modelo === null || color === null || patente === null || phone === null || place === null || terms === false) return;
         const request = {
             user_id: uid,
@@ -68,9 +66,10 @@ function CreateAppointment(props: any) {
         props.createAppt(request);   
 
         const emailPayload = {
-            email: "gabrielpitrella@gmail.com",
-            subject: `Reserva Lavado: ${modelo || "Sin modelo"}, ${color || "Sin color"}, ${patente || "Sin patente"}`,
+            email: user.email,
+            subject: `Reserva de Lavado - Modelo vehículo ${modelo || "Sin modelo"}, Color: ${color || "Sin color"}, Patente: ${patente || "Sin patente"}`,
             message: { text: "Detalles del cliente:" }, // Cambia a un objeto para evitar errores
+            phone: phone.replace(/\s+/g, "")
           };
           
           try {
@@ -84,26 +83,7 @@ function CreateAppointment(props: any) {
             console.log("Respuesta del servidor:", result);
           } catch (error) {
             console.error("Error enviando solicitud:", error);
-          }
-
-          try {
-            const response = await fetch("/api/sendwhatsapp", {
-              method: "POST",              
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ phone }),
-            });
-      
-            if (!response.ok) {
-              throw new Error("Failed to send message");
-            }
-      
-            const data = await response.json();
-            console.log("Success:", data);
-          } catch (error) {
-            console.error("Error sending WhatsApp message:", error);
-          }
-      
-        
+          }            
       
       }
    

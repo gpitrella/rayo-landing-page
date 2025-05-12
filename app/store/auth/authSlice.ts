@@ -3,7 +3,6 @@ import * as Auth from '@/app/services/auth.service'
 import handleError from "@/app/utils/errorhandler";
 import { createUser } from "@/app/services/user.service";
 
-
 export interface AuthState {
   authToken: string | null;
   status: boolean,
@@ -11,7 +10,6 @@ export interface AuthState {
   loading: boolean;
   error: string
 }
-
 
 const initalState: AuthState = {
   authToken: null,
@@ -110,16 +108,19 @@ export const login = createAsyncThunk(
 
 export const loginGoogle = createAsyncThunk(
   "auth-google-login",
-  async (_, thunkAPI) => {
+  async (_, thunkAPI) => {    
     try {
       const response = await Auth.handleGoogleLogin();
       if (!response) {
         return thunkAPI.rejectWithValue("Unknown error occurred");
       }
-
       return {
         uid: response.uid,
         accessToken: response.accessToken,
+        email: response.email, 
+        password: response.password, 
+        firstName: response.firstName, 
+        lastName: response.lastName
       };
     } catch (error: any) {
       const errorMessage = handleError(error);
@@ -165,9 +166,12 @@ export const resetPassword = createAsyncThunk(
 export const register = createAsyncThunk(
   "auth-register",
   async (formData: {email: string, password: string, firstName: string, lastName: string}, thunkAPI) => {
+    console.log('data', formData)
     try {
         const response = await Auth.Signup(formData.email, formData.password)
+        console.log('response', response)
         if(!response){
+            console.log('response error', response)
             return thunkAPI.rejectWithValue("Unknown error occurred");
         }
         const User = {
@@ -178,6 +182,7 @@ export const register = createAsyncThunk(
             updatedAt: new Date().toISOString(),
             createdAt: new Date().toISOString()
         }
+        console.log('USER', User)
         await createUser(User)
         return null;
     } catch (error: any) {
