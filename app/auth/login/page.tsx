@@ -120,7 +120,7 @@ const Page = () => {
                             <span className="border-b-2 border-b-zinc-200 w-full block mb-[14px]"></span>
                         </div>
                         <LoginWithGoogle />
-                        <LoginWithFacebook />
+                        {/* <LoginWithFacebook />  */}
                         <div className="mt-3">
                             <p className="text-center text-dark mt-2 text-base">
                                 ¿No tienes una cuenta?{" "}
