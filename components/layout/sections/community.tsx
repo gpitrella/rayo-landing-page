@@ -27,7 +27,7 @@ export const CommunitySection = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="lg:w-[80%] text-xl text-muted-foreground">
-                Simplifica el lavado de tu vehículo de manera cómoda, eficiente y ecológica.
+                Vamos donde este tu vehículo, sin necesidad de tu presencia, mientras vos seguís con tus actividades. Simplifica el lavado de tu vehículo de manera cómoda, eficiente y ecológica. Vamos donde este tu vehículo m
             </CardContent>
 
             <CardFooter>
