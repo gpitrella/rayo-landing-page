@@ -7,8 +7,8 @@ import L from "leaflet";
 
 const customMarkerIcon = L.icon({
   iconUrl: "/pin-car.svg",
-  iconSize: [40, 65], 
-  iconAnchor: [20, 65],
+  iconSize: [40, 55], 
+  iconAnchor: [40, 55],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
 });
@@ -31,11 +31,12 @@ function MapComponent () {
     <MapContainer 
       center={[-34.603722, -58.381592]} // Buenos Aires como punto inicial
       zoom={14} 
-      style={{ height: "400px", width: "100%" }}
+      style={{ height: "500px", width: "100%" }}
     >
-      <TileLayer 
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
-      />
+      <TileLayer url="https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
+      {/* <TileLayer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png" /> */}
+      {/* <TileLayer url="https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" /> */}
+
       <LocationMarker />
     </MapContainer>
   );

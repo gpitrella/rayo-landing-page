@@ -23,7 +23,7 @@ export const metadata = {
   description: "RAYO landing page",
   openGraph: {
     type: "website",
-    url: "https://github.com/gpitrella",
+    url: "https://rayolavados.com",
     title: "Rayo - Landing template",
     description: "Rayo - Landing template",
     images: [
@@ -37,9 +37,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Shadcn - Landing template",
-    description: "Free Shadcn landing page for developers",
+    site: "https://rayolavados.com",
+    title: "Rayo Lavados - Page",
+    description: "Rayo lavados landing page for developers",
     images: [
       "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
     ],
@@ -71,9 +71,9 @@ export default function Home() {
       {/* <BenefitsSection />
       <ServicesSection /> */}
       {/* <TestimonialSection />
-      <TeamSection />
+      <TeamSection />*/}
       
-      <PricingSection /> */}
+      <PricingSection /> 
       <ContactSection />
       <FAQSection />
     </>

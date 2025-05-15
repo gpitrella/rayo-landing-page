@@ -55,8 +55,8 @@ interface FeatureProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "/auth/login",
-    label: "Reservar Lavado",
+    href: "/#whoweare",
+    label: "¿Quienes somos?",
   },
   {
     href: "/#process",
@@ -68,7 +68,7 @@ const routeList: RouteProps[] = [
   },
   {
     href: "/#faq",
-    label: "FAQ",
+    label: "Consultas",
   },
 ];
 

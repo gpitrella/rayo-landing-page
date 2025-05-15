@@ -8,13 +8,13 @@ import Image from "next/image";
 export const Banner = () => {
   
   return (
-    <div className="relative !flex h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
+    <div id="whoweare" className="relative !flex h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
       <Image
         width={1200}
         height={1200}
-        src="/BG_Rayo.png"
+        src="/man-clean-car.jpg"
         alt="bg-img"
-        className="absolute inset-0 ml-auto w-[770px] h-[380px] rounded-[50px] object-cover object-center"
+        className="absolute inset-0 ml-auto w-[770px] h-[580px] rounded-[50px] object-cover object-center"
       />
       <div className="container mx-auto px-0 w-full mt-[20px]">
         <div className="grid grid-cols-12 text-left lg:text-left">
@@ -27,8 +27,12 @@ export const Banner = () => {
             </div>
 
             <p className="max-w-screen-sm mx-auto text-lg mb-8 text-muted-foreground">
-              {`¿No crees que el lavado de tu vehículo debería ser una experiencia más cómoda y sin complicaciones? 
-              Simplifica el lavado de manera eficiente, cómoda y ecológica usando la app RAYO.`}
+              {`En Rayo, sabemos que tu tiempo es un recurso valioso y el agua también. Por eso, 
+              ofrecemos un servicio de lavado a domicilio que combina comodidad, eficiencia y sustentabilidad. 
+              Olvídate de los lavaderos tradicionales y las largas esperas, nosotros vamos a donde estés, sin 
+              necesidad de trasladarte ni desperdiciar agua. Utilizamos productos biodegradables y técnicas 
+              especializadas que garantizan un lavado excelente, acabado encerado y protegiendo la pintura de 
+              tu vehículo mientras cuidamos el planeta. Además, puedes programar tu lavado en minutos.`}
             </p>
 
             <div className="max-w-screen-sm mx-auto">
