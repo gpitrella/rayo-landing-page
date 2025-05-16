@@ -8,7 +8,7 @@ import Image from "next/image";
 export const Banner = () => {
   
   return (
-    <div id="whoweare" className="relative !flex h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-6 lg:max-w-screen-xl mx-auto items-center justify-between">
+    <div id="whoweare" className="relative !flex h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-6 mb-[220px] lg:max-w-screen-xl mx-auto items-center justify-between">
       <Image
         width={1200}
         height={1200}
@@ -16,7 +16,7 @@ export const Banner = () => {
         alt="bg-img"
         className="absolute inset-0 ml-auto w-[770px] h-[580px] rounded-[50px] object-cover object-center"
       />
-      <div className="container mx-auto px-0 w-full mt-[20px]">
+      <div className="container mx-auto px-0 w-full mt-[20px] mb-30">
         <div className="grid grid-cols-12 text-left lg:text-left">
           <div className="col-span-full rounded-xl border border-white bg-white/90 dark:bg-card dark:border-zinc-800 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">
 

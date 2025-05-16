@@ -47,7 +47,7 @@ export const Process = () => {
       imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1739970846/qhrivdgrszwacnm41uzq.png",
       firstName: "Selecciona el lugar",
       lastName: "",
-      positions: ["Busca en la app RAYO el lugar donde se encuentra tu vehículo para que realicemos el lavado"],
+      positions: ["Defini el lugar donde se encuentra tu vehículo para que realicemos el lavado"],
       socialNetworks: [
         {
           name: "LinkedIn",
@@ -92,7 +92,7 @@ export const Process = () => {
       <div className="text-center mb-8">
 
         <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-          Servicios de RAYO      
+          ¿Cómo reservar un lavado?     
         </h2>
         <h3 className="md:w-3/2 mx-auto text-xl text-center text-muted-foreground mb-8">
           Realiza el lavado de tu vehículo en tres simples pasos:
