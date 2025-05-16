@@ -17,6 +17,7 @@ enum PopularPlan {
 
 interface PlanProps {
   title: string;
+  subtitle: string;
   popular: PopularPlan;
   price: number;
   description: string;
@@ -28,7 +29,8 @@ interface PlanProps {
 
 const plans: PlanProps[] = [
   {
-    title: "Auto chico (HATCHBACK)",
+    title: "Auto chico ",
+    subtitle: "(HATCHBACK)",
     popular: 1,
     price: 9900,
     description:
@@ -46,7 +48,8 @@ const plans: PlanProps[] = [
     imgsize: '230'
   },
   {
-    title: "Auto Mediano (SEDÁN O SUV)",
+    title: "Auto Mediano",
+    subtitle: "(SEDÁN O SUV)",
     popular: 1,
     price: 12900,
     description:
@@ -64,7 +67,8 @@ const plans: PlanProps[] = [
     imgsize: '270'
   },
   {
-    title: "Camioneta (4x4 o PICK UP)",
+    title: "Camioneta",
+    subtitle: "(4x4 o PICK UP)",
     popular: 1,
     price: 15900,
     description:
@@ -100,7 +104,7 @@ export const PricingSection = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
         {plans.map(
-          ({ title, popular, price, description, buttonText, benefitList, imageSrc, imgsize}) => (
+          ({ title, subtitle, popular, price, description, buttonText, benefitList, imageSrc, imgsize}) => (
             <Card
               key={title}
               className={
@@ -113,7 +117,7 @@ export const PricingSection = () => {
                 <span className="min-h-[155px]">
                   <img src={imageSrc} alt={title} style={{ width: `${imgsize}px` }}  className="h-auto object-cover m-auto mb-5" loading="lazy"/>
                 </span>
-                <CardTitle className="pb-2 m-auto">{title}</CardTitle>
+                <CardTitle className="pb-2 m-auto text-center">{title}<br></br>{subtitle}</CardTitle>
 
                 <CardDescription className="pb-4 text-center">
                   {description}
