@@ -143,19 +143,19 @@ export const Navbar: React.FC = () => {
        {/* <!-- Mobile --> */}
        <div className="flex items-center lg:hidden">
          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            { !isAuthenticated && width < 720 ? 
+            <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base mr-3'>
+              Login
+            </Button> : null}
+            { isAuthenticated && width < 720 ? 
+              <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
+                    <div className='notification mr-2 rounded-[50%] bg-lightgrey w-auto h-12 flex justify-center items-center'>
+                        <span className='font-medium'>{shortUsername}</span>                            
+                    </div>
+              </div>    
+            : null}  
            <SheetTrigger asChild>
-             <div>
-               { !isAuthenticated && width < 720 ? 
-                 <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base mr-3'>
-                   Login
-                 </Button> : null}
-                 { isAuthenticated && width < 720 ? 
-                   <div className='flex justify-start items-center sm:mr-0 lg:mr-4'>
-                         <div className='notification mr-2 rounded-[50%] bg-lightgrey w-auto h-12 flex justify-center items-center'>
-                             <span className='font-medium'>{shortUsername}</span>                            
-                         </div>
-                   </div>    
-                 : null}              
+             <div>            
                <Menu
                  onClick={() => setIsOpen(!isOpen)}
                  className="cursor-pointer lg:hidden"
