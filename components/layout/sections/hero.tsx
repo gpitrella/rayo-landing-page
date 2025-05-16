@@ -10,7 +10,7 @@ export const HeroSection = () => {
   // const { theme } = useTheme();
   return (
     
-    <section className="w-screen m-auto mt-10 pt-20 bg-[#282929]">
+    <section className="w-screen m-auto mt-10 pt-20 bg-[#000000]">
       <div className="grid place-items-center lg:max-w-screen-x2 gap-8 mx-auto pt-2 pb-0 md:pt-4 md:pb-0 mb-24">
         <div className="text-center space-y-8 mb-10 sm:mb-24">
 
@@ -20,14 +20,14 @@ export const HeroSection = () => {
               <span className="px-2 font-black italic bg-clip-text text-[#fff]">
                 RAYO
               </span> 
-              es la primera superapp de lavado a domicilio.
+              es la primer sistema de lavado a domicilio.
             </h2>
 
           </div>
 
-          <p className="max-w-screen-sm mx-auto text-xl text-[#fff]">
-            {`Queremos simplificar la vida de las personas, mediante una plataforma para el mantenimiento del vehículo 
-            de manera eficiente, cómoda y ecológica. Revolucionando la forma en que las personas cuidan su vehículo.`}
+          <p className="max-w-screen-sm mx-auto text-3x1 text-[#fff]">
+            Queremos simplificar la vida de las personas, mediante una plataforma para el mantenimiento del vehículo 
+            de manera eficiente, cómoda y ecológica. Revolucionando la forma en que las personas cuidan su vehículo.
           </p>
 
           {/* <div className="space-y-4 md:space-y-0 md:space-x-4">

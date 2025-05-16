@@ -5,7 +5,7 @@ import Link from "next/link";
 export const FooterSection = () => {
   return (
     <footer id="footer" className=" w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto py-24 sm:py-32">
-      <div className="shadow-inner p-2 bg-card border border-secondary rounded-2xl">
+      <div className="shadow-inner p-8 bg-card border border-secondary rounded-2xl">
         <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5 gap-x-12 gap-y-8">
           <div className="col-span-full xl:col-span-2">
             <Link href="#" className="flex font-black italic items-center" >
@@ -50,13 +50,13 @@ export const FooterSection = () => {
             <h3 className="font-bold text-base">Help</h3>
             <div>
               <Link href="/#contact" className="opacity-60 hover:opacity-100 text-sm">
-                Contact Us
+                Contactanos
               </Link>
             </div>
 
             <div>
               <Link href="/#faq" className="opacity-60 hover:opacity-100 text-sm">
-                FAQ
+                Consultas
               </Link>
             </div>
 

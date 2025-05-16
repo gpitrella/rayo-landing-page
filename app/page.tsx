@@ -74,8 +74,8 @@ export default function Home() {
       <TeamSection />*/}
       
       <PricingSection /> 
-      <ContactSection />
       <FAQSection />
+      <ContactSection />      
     </>
   );
 }
