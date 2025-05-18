@@ -70,20 +70,20 @@ function CreateAppointment(props: any) {
             subject: `Reserva de Lavado - Modelo vehículo ${modelo || "Sin modelo"}, Color: ${color || "Sin color"}, Patente: ${patente || "Sin patente"}`,
             message: { text: "Detalles del cliente:" }, // Cambia a un objeto para evitar errores
             phone: phone.replace(/\s+/g, "")
-          };
-          
-          try {
+        };
+        
+        try {
             const response = await fetch("/api/sendEmail", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(emailPayload),
-            });
-      
-            const result = await response.json();
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(emailPayload),
+        });
+    
+        const result = await response.json();
             console.log("Respuesta del servidor:", result);
-          } catch (error) {
+        } catch (error) {
             console.error("Error enviando solicitud:", error);
-          }            
+        }            
       
       }
    

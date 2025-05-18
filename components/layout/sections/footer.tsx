@@ -47,9 +47,9 @@ export const FooterSection = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-base">Help</h3>
+            <h3 className="font-bold text-base">Ayuda</h3>
             <div>
-              <Link href="/#contact" className="opacity-60 hover:opacity-100 text-sm">
+              <Link href="/contact" className="opacity-60 hover:opacity-100 text-sm">
                 Contactanos
               </Link>
             </div>
