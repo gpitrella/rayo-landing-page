@@ -39,7 +39,8 @@ const formSchema = z.object({
 });
 
 export const ContactSection = () => {
-  const [sent, setSent] = useState<any>(false)
+  const [sent, setSent] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,12 +53,13 @@ export const ContactSection = () => {
   });
 
   useEffect(() => {
-    setSent(false)
+    setSent(false);
+    setLoading(false);
   }, []);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const { firstName, lastName, email, subject, message } = values;
-
+        setLoading(true);
         const emailPayload = {
             email: email,
             subject: `Nueva consulta de ${firstName}, ${lastName}`,
@@ -139,11 +141,15 @@ export const ContactSection = () => {
         <Card className="bg-muted/60 dark:bg-card">
           <CardHeader className="text-primary text-2xl"> </CardHeader>
            <CardContent>
-            { sent ? 
-              <p className="mb-8 text-muted-foreground lg:w-5/6">
-                Tu consulta a sido enviada, en breve nuestro equipo se pondrá en 
-                contacto para responder tu consulta. Gracias por su consulta.
-              </p>
+            { sent ?
+                <p className="mb-8 text-muted-foreground lg:w-5/6">
+                  Tu consulta a sido enviada, en breve nuestro equipo se pondrá en 
+                  contacto para responder tu consulta. Gracias por su consulta.
+                </p>
+              : loading ? 
+                <p className="mb-8 text-muted-foreground lg:w-5/6">
+                  Enviando ...
+                </p>
               :
             <Form {...form}>
               <form
