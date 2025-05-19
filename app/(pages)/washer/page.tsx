@@ -18,34 +18,6 @@ import { Banner } from "@/components/layout/sections/banner";
 import { Process } from "@/components/layout/sections/process";
 import dynamic from 'next/dynamic';
 
-export const metadata = {
-  title: "Rayo - Landing template",
-  description: "RAYO landing page",
-  openGraph: {
-    type: "website",
-    url: "https://rayolavados.com",
-    title: "Rayo - Landing template",
-    description: "Rayo - Landing template",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Shadcn - Landing template",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "https://rayolavados.com",
-    title: "Rayo Lavados - Page",
-    description: "Rayo lavados landing page for developers",
-    images: [
-      "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
-    ],
-  },
-};
-
 export default function Home() {
 
   return (
@@ -55,14 +27,15 @@ export default function Home() {
       <Process />
       <FeaturesSection />      
       <HeroSection />      
-      {/* <SponsorsSection /> */}
-      {/* <BenefitsSection />
-      <ServicesSection /> */}      
-      {/* <TeamSection />*/}      
-      <PricingSection /> 
+      {/* <SponsorsSection />  */}
+      <BenefitsSection />
+      <ServicesSection /> 
       <TestimonialSection />
+      <TeamSection />
+      
+      <PricingSection /> 
       <FAQSection />
-      {/* <ContactSection />       */}
+      <ContactSection />     
     </>
   );
 }
