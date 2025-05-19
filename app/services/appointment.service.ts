@@ -67,6 +67,26 @@ async function createAppointment(data: AppointmentRequest) : Promise<void>{
     }
     try {
         await addDoc(collection(db, "appointments"), body)
+        // console.log('body: ', body)
+        const emailPayload = {
+            email: body.email,
+            subject: `Reserva de Lavado - Modelo vehículo ${body.modelo || "Sin modelo"}, Color: ${body.color || "Sin color"}, Patente: ${body.patente || "Sin patente"}`,
+            message: { text: `Ubicación: ${body.location.address}` }, 
+            phone: body.phone.replace(/\s+/g, "")
+        };
+        
+        try {
+            const response = await fetch("/api/sendEmail", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(emailPayload),
+        });
+    
+        const result = await response.json();
+            console.log("Respuesta del servidor:", result);
+        } catch (error) {
+            console.error("Error enviando solicitud:", error);
+        }  
     } catch (error) {
         console.error('error creating appointment', error)
         throw error;

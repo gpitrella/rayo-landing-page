@@ -1,6 +1,9 @@
 "use client"
 
+import * as React from 'react'
 import { useState, useEffect } from "react"
+import { useSelector } from 'react-redux'
+import { RootState, useAppDispatch } from '@/app/store/store'
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,12 +17,17 @@ import { MapPin, Car, Phone, Calendar, Clock, FileText, Search } from "lucide-re
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 import { useDispatch } from "react-redux"
+import { fetchUser } from '@/app/store/user/userSlice'
 import { createAppointmentEffect } from '@/app/store/appointment/appointmentActions'
-// import { createAppointmentEffect } from "@/app/store/slices/appointmentSlice" // Asumiendo que existe este slice
+import type { AppDispatch } from "@/app/store/store"
+import { useRouter } from "next/navigation";
+import { checkUserLoggedIn } from "@/app/services/auth.service";
+
 
 // Tipo para la solicitud de cita
 interface AppointmentRequest {
   user_id: string
+  email: string
   modelo: string
   patente: string
   tipo_vehiculo: string
@@ -37,8 +45,8 @@ interface AppointmentRequest {
   date: string
   time: string
   description: string
-  created_at: any
-  status: string
+  createdAt: string
+  status: 'ACTIVE' | 'PENDING' | 'CANCELED'
 }
 
 // Componente para seleccionar ubicación en el mapa
@@ -72,8 +80,12 @@ function LocationMarker({ position, setPosition, setAddress, customIcon }: any) 
 }
 
 export default function ReservarLavadoPage() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
 
+  const { user } = useSelector((state: RootState) => state.user);
+  const { uid } = useSelector((state: RootState) => state.auth);
+  
   // Estados para el formulario
   const [position, setPosition] = useState<any>(null)
   const [address, setAddress] = useState<any>({
@@ -98,6 +110,8 @@ export default function ReservarLavadoPage() {
   const [carModels, setCarModels] = useState<string[]>([])
   const [searchTerm, setSearchTerm] = useState("")
   const [customIcon, setCustomIcon] = useState<any>(null)
+  const [userLoaded, setUserLoaded] = React.useState<boolean>(false); // Controla si el user está cargado
+  
 
   // Cargar marcas de vehículos al iniciar
   useEffect(() => {
@@ -141,6 +155,14 @@ export default function ReservarLavadoPage() {
     }
   }, [])
 
+  // Chequea que este logeado.
+    useEffect(() => {
+        const isAuthenticated = checkUserLoggedIn();
+        if (!isAuthenticated) {
+            router.push('/auth/login');
+        }
+    }, [router]); // Evitar actualizaciones no controladas del router
+
   // Configurar icono personalizado para el marcador
   useEffect(() => {
     setCustomIcon(
@@ -158,48 +180,73 @@ export default function ReservarLavadoPage() {
     .filter((brand) => brand.toLowerCase().includes(searchTerm.toLowerCase()))
     .slice(0, 10) // Limitar a 10 resultados para no sobrecargar la UI
 
+  React.useEffect(() => {
+      if (uid){
+        dispatch(fetchUser(uid)); // 
+      }
+    // }
+  }, [dispatch, uid, user]);
+
   // Función para guardar la cita
-  const handleCreateAppointment = async () => {
-    if (!position) {
-      toast.error("Por favor selecciona la ubicación de tu vehículo en el mapa!")
-      return
-    }
 
-    if (!modelo || !patente || !tipoVehiculo || !color || !phone || !date || !time || !terms) {
-      toast.error("Por favor completa todos los campos requeridos")
-      return
-    }
-
-    try {
-      setLoading(true)
-
-      const appointmentData: AppointmentRequest = {
-        user_id: "user_id", 
-        modelo,
-        patente,
-        tipo_vehiculo: tipoVehiculo,
-        color,
-        phone,
-        location: {
-          lat: position.lat,
-          lng: position.lng,
-          address: address.full,
-          street: address.street,
-          number: address.number,
-          city: address.city,
-        },
-        terms,
-        date,
-        time,
-        description,
-        created_at: new Date().toISOString(),
-        status: 'ACTIVE',
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (!position) {
+        toast.error("Por favor selecciona la ubicación de tu vehículo en el mapa!")
+        return
       }
 
+      if (!modelo || !patente || !tipoVehiculo || !color || !phone || !date || !time || !terms) {
+        toast.error("Por favor completa todos los campos requeridos")
+        return
+      }
+
+      try {
+        setLoading(true);
+
+        const appointmentData: AppointmentRequest = {
+          user_id: uid, 
+          email: user.email,
+          modelo,
+          patente,
+          tipo_vehiculo: tipoVehiculo,
+          color,
+          phone,
+          location: {
+            lat: position.lat,
+            lng: position.lng,
+            address: address.full,
+            street: address.street,
+            number: address.number,
+            city: address.city,
+          },
+          terms,
+          date,
+          time,
+          description,
+          createdAt: new Date().toISOString(),
+          status: 'ACTIVE',
+        }
+
+        handleCreateAppointment(appointmentData);
+    } catch (error) {
+        console.error("Error al agendar lavado:", error)
+        toast.error("Error al agendar un lavado!")
+    }
+  }
+  React.useEffect(() => {
+    // Fetch del usuario primero
+    if (!user && uid) {
+      dispatch(fetchUser(uid)).then(() => setUserLoaded(true));
+    }
+  }, [dispatch, uid, user]);
+
+  const handleCreateAppointment = async(appointmentData: AppointmentRequest) => {
+
+    try {
       // Usar dispatch como se solicita
-      // await dispatch(createAppointmentEffect(appointmentData)); 
       await dispatch(createAppointmentEffect(appointmentData) as any)
       toast.success("Lavado agendado!")
+      router.push('/home');
 
       // Resetear formulario
       setModelo("")
@@ -278,7 +325,7 @@ export default function ReservarLavadoPage() {
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="brand">Marca del Vehículo</Label>
+                  <Label htmlFor="brand">Marca del Vehículo *</Label>
                   <div className="relative">
                     <div className="flex items-center">
                       <Input
@@ -311,7 +358,7 @@ export default function ReservarLavadoPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="modelo">Modelo del Vehículo</Label>
+                  <Label htmlFor="modelo">Modelo del Vehículo *</Label>
                   {carModels.length > 0 ? (
                     <Select value={modelo} onValueChange={setModelo}>
                       <SelectTrigger id="modelo">
@@ -338,7 +385,7 @@ export default function ReservarLavadoPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="patente">Patente</Label>
+                  <Label htmlFor="patente">Patente *</Label>
                   <Input
                     id="patente"
                     placeholder="Ej: ABC123"
@@ -348,17 +395,15 @@ export default function ReservarLavadoPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="tipo-vehiculo">Tipo de Vehículo</Label>
+                  <Label htmlFor="tipo-vehiculo">Tipo de Vehículo *</Label>
                   <Select value={tipoVehiculo} onValueChange={setTipoVehiculo}>
                     <SelectTrigger id="tipo-vehiculo">
                       <SelectValue placeholder="Seleccionar tipo" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="sedan">Sedán</SelectItem>
-                      <SelectItem value="suv">SUV</SelectItem>
-                      <SelectItem value="pickup">Pickup</SelectItem>
                       <SelectItem value="hatchback">Hatchback</SelectItem>
-                      <SelectItem value="otro">Otro</SelectItem>
+                      <SelectItem value="sedan">Sedán</SelectItem>
+                      <SelectItem value="pickup">Pickup</SelectItem>                                        
                     </SelectContent>
                   </Select>
                 </div>
@@ -366,18 +411,18 @@ export default function ReservarLavadoPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="color">Color</Label>
+                  <Label htmlFor="color">Color *</Label>
                   <Input id="color" placeholder="Ej: Rojo" value={color} onChange={(e) => setColor(e.target.value)} />
                 </div>
 
                 <div>
                   <Label htmlFor="phone" className="flex items-center gap-2">
                     <Phone className="h-4 w-4" />
-                    Teléfono de Contacto
+                    Teléfono de Contacto * 
                   </Label>
                   <Input
                     id="phone"
-                    placeholder="Ej: +54 9 11 1234-5678"
+                    placeholder="Ej: +54 9 11 1234 5678"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
@@ -388,7 +433,7 @@ export default function ReservarLavadoPage() {
                 <div>
                   <Label htmlFor="date" className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
-                    Fecha
+                    Fecha *
                   </Label>
                   <Input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
                 </div>
@@ -396,7 +441,7 @@ export default function ReservarLavadoPage() {
                 <div>
                   <Label htmlFor="time" className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
-                    Hora
+                    Hora *
                   </Label>
                   <Input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} />
                 </div>
@@ -426,11 +471,11 @@ export default function ReservarLavadoPage() {
                   className="h-4 w-4"
                 />
                 <label htmlFor="terms" className="text-sm font-medium leading-none">
-                  Acepto los términos y condiciones del servicio
+                  Acepto los términos y condiciones del servicio *
                 </label>
               </div>
 
-              <Button className="w-full mt-4" onClick={handleCreateAppointment} disabled={loading}>
+              <Button className="w-full mt-4" onClick={handleClick} disabled={loading}>
                 {loading ? "Procesando..." : "Solicitar Servicio"}
               </Button>
             </div>

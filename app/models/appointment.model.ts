@@ -1,6 +1,7 @@
 export interface AppointmentModel {
   user_id: string;
   appointment_id: string;
+  email:string;
   modelo: string;
   patente: string;
   tipo_vehiculo: string; 
@@ -18,14 +19,15 @@ export interface AppointmentModel {
   date: string;
   time: string;
   description: string;
-  created_at: string; 
+  createdAt: string; 
   updatedAt: string;
-  status: string;
+  status: 'ACTIVE' | 'PENDING' | 'CANCELED';
 }
 
 
 export interface AppointmentRequest {
   user_id: string;
+  email: string
   modelo: string;
   patente: string;
   tipo_vehiculo: string; 
@@ -43,6 +45,6 @@ export interface AppointmentRequest {
   date: string;
   time: string;
   description: string;
-  created_at: string; 
-  status: string;
+  createdAt: string; 
+  status: 'ACTIVE' | 'PENDING' | 'CANCELED';
 }

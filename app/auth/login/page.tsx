@@ -27,14 +27,14 @@ const Page = () => {
     useEffect(() => {
         const isAuthenticated = checkUserLoggedIn();
         if (isAuthenticated) {
-            router.push('/home');
+            router.push('/reserva');
         }
     }, [router]); // Evitar actualizaciones no controladas del router
 
     // Redirigir si el estado de autenticación cambia a `true`
     useEffect(() => {
         if (status === true) {
-            router.push('/home');
+            router.push('/reserva');
         }
     }, [status, router]);
 

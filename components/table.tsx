@@ -60,7 +60,7 @@ const Table: React.FC<DocumentData> = (props): JSX.Element  => {
                  <span> Color: {appt.color} </span>
                  <span> Patente: {appt.patente} </span>                 
                  <span> Fecha/Hora: {appt.date} - {appt.time} </span>
-                 <span> Lugar: {appt.place} </span>
+                 <span> Lugar: {appt.location.address} </span>
                  <span> Estado: {appt.status} </span>
                  <span> Descripción: {appt.description} </span>
                  <span> ID Lavado: {appt.appointment_id} </span>
