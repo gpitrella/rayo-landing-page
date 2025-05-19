@@ -1,5 +1,3 @@
-"use client"
-
 import { ContactSection } from "@/components/layout/sections/contact";
 export default function ReservarLavadoPage() {  
 
