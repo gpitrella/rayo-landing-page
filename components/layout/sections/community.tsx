@@ -32,8 +32,8 @@ export const CommunitySection = () => {
 
             <CardFooter>
               <Button className="w-auto font-bold group/arrow py-4 px-7 h-12 text-lg"> 
-                <Link href='/home' >                                       
-                      <span>Agendar Lavado</span>                  
+                <Link href='/auth/login' >                                       
+                    <span>Agendar Lavado</span>                  
                 </Link>                
                 <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
               </Button>

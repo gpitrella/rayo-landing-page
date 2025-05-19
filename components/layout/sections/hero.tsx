@@ -25,7 +25,7 @@ export const HeroSection = () => {
 
           </div>
 
-          <p className="max-w-screen-sm mx-auto text-3x1 text-[#fff]">
+          <p className="mx-auto text-3x1 text-[#fff] max-w-[400px]">
             Queremos simplificar la vida de las personas, mediante una plataforma para el mantenimiento del vehículo 
             de manera eficiente, cómoda y ecológica. Revolucionando la forma en que las personas cuidan su vehículo.
           </p>

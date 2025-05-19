@@ -75,7 +75,7 @@ export default function Home() {
       
       <PricingSection /> 
       <FAQSection />
-      <ContactSection />      
+      {/* <ContactSection />       */}
     </>
   );
 }

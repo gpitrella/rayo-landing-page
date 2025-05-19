@@ -59,6 +59,7 @@ const store = configureStore({
 // Configuración del persistor
 const persistor = persistStore(store);
 
+
 export { store, persistor };
 
 // Tipos auxiliares para Redux

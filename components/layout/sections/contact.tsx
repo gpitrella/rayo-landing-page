@@ -1,4 +1,6 @@
 "use client";
+
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -37,6 +39,8 @@ const formSchema = z.object({
 });
 
 export const ContactSection = () => {
+  const [sent, setSent] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,17 +52,37 @@ export const ContactSection = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  useEffect(() => {
+    setSent(false);
+    setLoading(false);
+  }, []);
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const { firstName, lastName, email, subject, message } = values;
-    console.log(values);
-
-    const mailToLink = `mailto:leomirandadev@gmail.com?subject=${subject}&body=Hello I am ${firstName} ${lastName}, my Email is ${email}. %0D%0A${message}`;
-
-    window.location.href = mailToLink;
+        setLoading(true);
+        const emailPayload = {
+            email: email,
+            subject: `Nueva consulta de ${firstName}, ${lastName}`,
+            message: { text: `Email de la consulta ${email}, Consulta: ${subject}, Mensaje: ${message}` },            
+        };
+        
+        try {
+            const response = await fetch("/api/sendContact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(emailPayload),
+        });
+    
+            const result = await response.json();
+            console.log("Respuesta del servidor:", result);
+            setSent(true)
+        } catch (error) {
+            console.error("Error enviando solicitud:", error);
+        }  
   }
 
   return (
-    <section id="contact" className="w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl m-auto py-24 sm:py-32">
+    <section id="contact" className="w-[100%] md:w-[100%] lg:w-[85%] lg:max-w-screen-xl m-auto py-24 px-5 sm:py-32">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <div className="mb-4">
@@ -66,11 +90,10 @@ export const ContactSection = () => {
               Customer Services
             </h2>
 
-            <h2 className="text-3xl md:text-4xl font-bold">Contactanos</h2>
           </div>
           <p className="mb-8 text-muted-foreground lg:w-5/6">
-          Estamos aquí para ayudarte! Explora nuestras preguntas frecuentes 
-          o contáctanos si tienes alguna duda o necesitas asistencia.
+            Estamos aquí para ayudarte! Explora nuestras preguntas frecuentes 
+            o contáctanos si tienes alguna duda o necesitas asistencia.
           </p>
 
           <div className="flex flex-col gap-4">
@@ -80,7 +103,7 @@ export const ContactSection = () => {
                 <div className="font-bold">Encontranos</div>
               </div>
 
-              <div>Villa Urquiza, Ciudad Autonoma de Buenos Aires</div>
+              <div>Vicente Lopez, Ciudad Autonoma de Buenos Aires</div>
             </div>
 
             <div>
@@ -117,7 +140,17 @@ export const ContactSection = () => {
 
         <Card className="bg-muted/60 dark:bg-card">
           <CardHeader className="text-primary text-2xl"> </CardHeader>
-          <CardContent>
+           <CardContent>
+            { sent ?
+                <p className="mb-8 text-muted-foreground lg:w-5/6">
+                  Tu consulta a sido enviada, en breve nuestro equipo se pondrá en 
+                  contacto para responder tu consulta. Gracias por su consulta.
+                </p>
+              : loading ? 
+                <p className="mb-8 text-muted-foreground lg:w-5/6">
+                  Enviando ...
+                </p>
+              :
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -189,17 +222,14 @@ export const ContactSection = () => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="Web Development">
-                              Customer Services
+                            <SelectItem value="Asistencia al cliente">
+                              Asistencia al cliente
                             </SelectItem>
-                            <SelectItem value="Mobile Development">
+                            <SelectItem value="Servicio Washer">
+                              Servicio Washer 
+                            </SelectItem>
+                            <SelectItem value="Servicios Coorporativos">
                               Servicios Coorporativos
-                            </SelectItem>
-                            <SelectItem value="Figma Design">
-                              Legal 
-                            </SelectItem>
-                            <SelectItem value="FullStack Project">
-                              Washer Services
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -233,8 +263,8 @@ export const ContactSection = () => {
 
                 <Button className="mt-4">Enviar Mensaje</Button>
               </form>
-            </Form>
-          </CardContent>
+            </Form>}
+          </CardContent> 
 
           <CardFooter></CardFooter>
         </Card>

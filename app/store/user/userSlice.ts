@@ -49,4 +49,5 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async(uid: string, t
 })
 
 
-export default userSlice.reducer
+export default userSlice.reducer;
+
