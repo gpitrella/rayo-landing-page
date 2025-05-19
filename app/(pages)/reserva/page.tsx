@@ -138,23 +138,24 @@ function ReservarLavadoPage() {
     }
   }, [selectedBrand])
 
-  // Solicitar ubicación del usuario
+
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
+    if ("geolocation" in navigator) {
+      const watchId = navigator.geolocation.watchPosition(
+        (position: GeolocationPosition) => {
           setInitialPosition({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
-          })
+          });
         },
-        (error) => {
-          console.log("Error obteniendo ubicación:", error)
-          // Usar Buenos Aires como posición por defecto (ya está configurado)
+        (error: GeolocationPositionError) => {
+          console.error("Error obteniendo ubicación:", error);
         },
-      )
+        { enableHighAccuracy: true }
+      );      
+      return () => navigator.geolocation.clearWatch(watchId); // Limpieza al desmontar
     }
-  }, [])
+  }, [dispatch]);
 
   // Configurar icono personalizado para el marcador
   useEffect(() => {
@@ -178,7 +179,7 @@ function ReservarLavadoPage() {
         dispatch(fetchUser(uid)).then(() => setUserLoaded(true)); // 
       }
     // }
-  }, [dispatch, uid, user]);
+  }, [dispatch, uid, user, ]);
 
   // Función para guardar la cita
 
@@ -257,7 +258,7 @@ function ReservarLavadoPage() {
   }
 
   return (
-    <div className="w-[85%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-0 top-5 mx-auto z-40 py-0 px-0 mt-12">
+    <div className="w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-0 top-5 mx-auto z-40 py-0 px-0 mt-12">
       <h1 className="text-2xl font-bold mb-6 text-center">Reservar Servicio de Lavado a Domicilio</h1>
 
       <Card className="mb-6">
