@@ -16,8 +16,6 @@ import { BsFillCalendarMinusFill } from 'react-icons/bs'
 // import toast from 'react-hot-toast'
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { useRouter } from "next/navigation";
-import { checkUserLoggedIn } from "@/app/services/auth.service";
 
 function Page() {
 
@@ -30,7 +28,6 @@ function Page() {
   const [fetchData, setFetchData] = React.useState<boolean>(false); // Controla cuándo se busca data
   const [userLoaded, setUserLoaded] = React.useState<boolean>(false); // Controla si el user está cargado
   const dispatch = useAppDispatch();
-  const router = useRouter();
 
 
   React.useEffect(() => {
@@ -39,14 +36,6 @@ function Page() {
       dispatch(fetchUser(uid)).then(() => setUserLoaded(true));
     }
   }, [dispatch, uid, user]);
-
-    // Chequea que este logeado.
-      React.useEffect(() => {
-          const isAuthenticated = checkUserLoggedIn();
-          if (!isAuthenticated) {
-              router.push('/auth/login');
-          }
-      }, [router]); // Evitar actualizaciones no controladas del router
 
   React.useEffect(() => {
     const fetchUpcomingAppointments = async () => {
@@ -66,13 +55,13 @@ function Page() {
     }
   }, [uid, fetchData]);
   
-  React.useEffect(() => {
+  // React.useEffect(() => {
 
-      if (uid){
-        dispatch(fetchUser(uid)); // 
-      }
-    // }
-  }, [dispatch, uid, user]);
+  //     if (uid){
+  //       dispatch(fetchUser(uid)); // 
+  //     }
+  //   // }
+  // }, [dispatch, uid, user]);
 
   return (
     <>

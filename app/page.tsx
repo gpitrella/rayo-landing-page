@@ -47,18 +47,6 @@ export const metadata = {
 };
 
 export default function Home() {
-  // const router = useRouter();
-
-  // useEffect(()=>{
-  //   const isAuthenticated = checkUserLoggedIn();
-  //   if(isAuthenticated){
-  //     router.push('/home')
-  //   }
-  //   else{
-  //     router.push('/auth/login')
-  //   }
-  // })
-
 
   return (
     <>

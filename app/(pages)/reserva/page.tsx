@@ -8,6 +8,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import routeGuard from '@/app/guard/routeGuard'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
@@ -79,7 +80,7 @@ function LocationMarker({ position, setPosition, setAddress, customIcon }: any) 
   return position === null ? null : <Marker position={position} icon={customIcon} />
 }
 
-export default function ReservarLavadoPage() {
+function ReservarLavadoPage() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
@@ -155,14 +156,6 @@ export default function ReservarLavadoPage() {
     }
   }, [])
 
-  // Chequea que este logeado.
-    useEffect(() => {
-        const isAuthenticated = checkUserLoggedIn();
-        if (!isAuthenticated) {
-            router.push('/auth/login');
-        }
-    }, []); // Evitar actualizaciones no controladas del router
-
   // Configurar icono personalizado para el marcador
   useEffect(() => {
     setCustomIcon(
@@ -182,7 +175,7 @@ export default function ReservarLavadoPage() {
 
   React.useEffect(() => {
       if (uid){
-        dispatch(fetchUser(uid)); // 
+        dispatch(fetchUser(uid)).then(() => setUserLoaded(true)); // 
       }
     // }
   }, [dispatch, uid, user]);
@@ -190,6 +183,7 @@ export default function ReservarLavadoPage() {
   // Función para guardar la cita
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      
       if (!position) {
         toast.error("Por favor selecciona la ubicación de tu vehículo en el mapa!")
         return
@@ -233,15 +227,8 @@ export default function ReservarLavadoPage() {
         toast.error("Error al agendar un lavado!")
     }
   }
-  React.useEffect(() => {
-    // Fetch del usuario primero
-    if (!user && uid) {
-      dispatch(fetchUser(uid)).then(() => setUserLoaded(true));
-    }
-  }, [dispatch, uid, user]);
 
   const handleCreateAppointment = async(appointmentData: AppointmentRequest) => {
-
     try {
       // Usar dispatch como se solicita
       await dispatch(createAppointmentEffect(appointmentData) as any)
@@ -338,7 +325,7 @@ export default function ReservarLavadoPage() {
                       <Search className="absolute right-3 h-4 w-4 text-muted-foreground" />
                     </div>
                     {searchTerm && (
-                      <div className="absolute z-10 w-full bg-white border rounded-md shadow-lg max-h-60 overflow-y-auto">
+                      <div className="absolute z-10 w-full bg-white border rounded-md max-h-60 overflow-y-auto">
                         {filteredBrands.map((brand) => (
                           <div
                             key={brand}
@@ -486,3 +473,4 @@ export default function ReservarLavadoPage() {
   )
 }
 
+export default routeGuard(ReservarLavadoPage);
