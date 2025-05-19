@@ -161,7 +161,7 @@ export default function ReservarLavadoPage() {
         if (!isAuthenticated) {
             router.push('/auth/login');
         }
-    }, [router]); // Evitar actualizaciones no controladas del router
+    }, []); // Evitar actualizaciones no controladas del router
 
   // Configurar icono personalizado para el marcador
   useEffect(() => {
