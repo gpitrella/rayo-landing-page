@@ -127,7 +127,7 @@ export const Navbar: React.FC = () => {
       }
 
    return (
-     <header className="h-[68px] shadow-inner bg-opacity-50 w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-40 rounded-xl flex justify-between items-center py-0 px-6 bg-card">
+     <header className="h-[68px] shadow-inner bg-opacity-50 w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-8 top-5 mx-auto sticky border border-secondary z-[1000] rounded-xl flex justify-between items-center py-0 px-6 bg-card">
        <Link
          href="/"
          className="font-black text-2xl flex items-center italic"
@@ -141,7 +141,7 @@ export const Navbar: React.FC = () => {
          /> 
        </Link>
        {/* <!-- Mobile --> */}
-       <div className="flex items-center lg:hidden">
+       <div className="flex items-center lg:hidden z-[1000]">
          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             { !isAuthenticated && width < 720 ? 
             <Button onClick={()=> router.push('/auth/login')} className='justify-start text-base mr-3'>
@@ -158,14 +158,14 @@ export const Navbar: React.FC = () => {
              <div>            
                <Menu
                  onClick={() => setIsOpen(!isOpen)}
-                 className="cursor-pointer lg:hidden"
+                 className="cursor-pointer lg:hidden z-[1000]"
                />
              </div>
            </SheetTrigger>
 
            <SheetContent
              side="left"
-             className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary"
+             className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary z-[1000]"
            >
              <div>
              { isAuthenticated ? <>
