@@ -8,47 +8,49 @@ interface BenefitsProps {
   description: string;
 }
 
+
 const benefitList: BenefitsProps[] = [
   {
     icon: "Blocks",
-    title: "Build Brand Trust",
+    title: "Sin sistema de turnos",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+      "Elegí cuándo y dónde conectarte dentro de nuestras zonas habilitadas. Trabajá con total libertad y organizá tu tiempo a tu manera.",
   },
   {
     icon: "LineChart",
-    title: "More Leads",
+    title: "Ganancias semanales",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, natus consectetur.",
+      "Recibí tus pagos todas las semanas y aprovechá los bonos diarios disponibles para aumentar tus ingresos.",
   },
   {
     icon: "Wallet",
-    title: "Higher Conversions",
+    title: "Club de beneficios",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus consectetur. A odio velit cum aliquam",
+      "Accedé a descuentos exclusivos y financiación en productos seleccionados para que disfrutes más ventajas mientras trabajás. ",
   },
   {
     icon: "Sparkle",
-    title: "Test Marketing Ideas",
+    title: "Flexibilidad total",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+      "Trabajá según tu disponibilidad sin horarios fijos ni compromisos rígidos. Vos decidís cómo y cuándo generar ingresos.",
   },
 ];
 
 export const BenefitsSection = () => {
   return (
-    <section id="benefits" className="container py-24 sm:py-32">
+    <section id="benefits" className="relative !flex h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-20 mb-[120px] lg:max-w-screen-xl mx-auto items-center justify-between">
       <div className="grid lg:grid-cols-2 place-items-center lg:gap-24">
         <div>
-          <h2 className="text-lg text-primary mb-2 tracking-wider">Benefits</h2>
+          <h2 className="text-lg text-primary mb-2 tracking-wider">Beneficios</h2>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Your Shortcut to Success
+            Beneficios con Rayo
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
-            ducimus reprehenderit architecto rerum similique facere odit
-            deleniti necessitatibus quo quae.
+              Trabajá con total libertad, sin turnos fijos, eligiendo cuándo y dónde operar. 
+              Recibí pagos semanales con bonos diarios para aumentar tus ingresos. Además, disfrutá descuentos y 
+              financiación exclusiva con nuestro club de beneficios.  
+              Si querés aún más concisión o un ajuste de tono, decime y lo refinamos.
           </p>
         </div>
 
