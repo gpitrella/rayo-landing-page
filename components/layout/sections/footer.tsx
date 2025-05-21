@@ -16,6 +16,11 @@ export const FooterSection = () => {
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-base">About</h3>
             <div>
+              <Link href="/about/mission" className="opacity-60 hover:opacity-100 text-sm">
+                Misión y Visión
+              </Link>
+            </div>
+            <div>
               <Link href="/about/privacypolicies" className="opacity-60 hover:opacity-100 text-sm">
                 Política de Privacidad
               </Link>

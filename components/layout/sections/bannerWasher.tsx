@@ -8,7 +8,7 @@ import Image from "next/image";
 export const BannerWasher = () => {
   
   return (
-    <div id="whoweare" className="relative !flex h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-6 mb-[220px] lg:max-w-screen-xl mx-auto items-center justify-between">
+    <div id="whoweare" className="relative !flex h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-20 mb-[220px] lg:max-w-screen-xl mx-auto items-center justify-between">
       <Image
         width={1200}
         height={1200}
