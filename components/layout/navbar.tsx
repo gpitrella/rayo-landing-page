@@ -68,7 +68,7 @@ const routeList: RouteProps[] = [
   },
   {
     href: "/contact",
-    label: "Contact",
+    label: "Contacto",
   },
   {
     href: "/#faq",
@@ -76,17 +76,17 @@ const routeList: RouteProps[] = [
   },
 ];
 
-const featureList: FeatureProps[] = [
-  {
-    title: "Misión",
-    description: 'Simplificar la vida de las personas, mediante una plataforma para el mantenimiento del vehículo de manera eficiente, cómoda y ecológica. Revolucionando la forma en que las personas cuidan su vehículo.',
-  },
-  {
-    title: "Visión",
-    description:
-      "Ser la plataforma de cuidado del vehículo mas grande y confiable del mundo, operando en todas las ciudades y ofreciendo una amplia gama de servicios de mantenimiento automotor.",
-  }
-];
+// const featureList: FeatureProps[] = [
+//   {
+//     title: "Misión",
+//     description: 'Simplificar la vida de las personas, mediante una plataforma para el mantenimiento del vehículo de manera eficiente, cómoda y ecológica. Revolucionando la forma en que las personas cuidan su vehículo.',
+//   },
+//   {
+//     title: "Visión",
+//     description:
+//       "Ser la plataforma de cuidado del vehículo mas grande y confiable del mundo, operando en todas las ciudades y ofreciendo una amplia gama de servicios de mantenimiento automotor.",
+//   }
+// ];
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname()
@@ -280,7 +280,7 @@ export const Navbar: React.FC = () => {
                </NavigationMenuLink>
              ))}
            </NavigationMenuItem>
-
+{/* 
            <NavigationMenuItem>
              <NavigationMenuTrigger className="bg-card text-base">
                Misión
@@ -311,7 +311,7 @@ export const Navbar: React.FC = () => {
                  </ul>
                </div>
              </NavigationMenuContent>
-           </NavigationMenuItem>
+           </NavigationMenuItem> */}
 
          </NavigationMenuList>
        </NavigationMenu>

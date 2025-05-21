@@ -72,7 +72,7 @@ const plans: PlanProps[] = [
     popular: 1,
     price: 15900,
     description:
-      "Un servicio pensado para camionetas robustas, servicio de lavado exterior completo, dejandolo impecable con aplicación de cera con brillo duradero.",
+      "Un servicio pensado para camionetas, servicio de lavado exterior completo, dejandolo impecable con aplicación de cera con brillo duradero.",
     buttonText: "Reservar",
     benefitList: [
       "Lavado exterior completo",
