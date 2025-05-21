@@ -2,6 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import * as Auth from '@/app/services/auth.service'
 import handleError from "@/app/utils/errorhandler";
 import { createUser } from "@/app/services/user.service";
+import { createWasher } from "@/app/services/user.service";
 
 export interface AuthState {
   authToken: string | null;
@@ -184,6 +185,36 @@ export const register = createAsyncThunk(
         }
         console.log('USER', User)
         await createUser(User)
+        return null;
+    } catch (error: any) {
+        const errorMessgae = handleError(error)
+        return thunkAPI.rejectWithValue(errorMessgae);
+    }
+  }
+);
+
+export const registerWasher = createAsyncThunk(
+  "auth-register-washer",
+  async (formData: {email: string, password: string, firstName: string, lastName: string, statusWasher: string}, thunkAPI) => {
+   
+    try {
+        const response = await Auth.Signup(formData.email, formData.password)
+        console.log('response', response)
+        if(!response){
+            console.log('response error', response)
+            return thunkAPI.rejectWithValue("Unknown error occurred");
+        }
+        const Washer = {
+            washer_id: response.user.uid,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: response.user.email,
+            updatedAt: new Date().toISOString(),
+            createdAt: new Date().toISOString(),
+            statusWasher: "PENDING"
+        }
+        console.log('Washer', Washer)
+        await createWasher(Washer)
         return null;
     } catch (error: any) {
         const errorMessgae = handleError(error)

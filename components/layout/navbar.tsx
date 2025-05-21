@@ -59,6 +59,10 @@ const routeList: RouteProps[] = [
     label: "¿Quienes somos?",
   },
   {
+    href: "/washer",
+    label: "Lavar",
+  },
+  {
     href: "/#process",
     label: "Servicio",
   },

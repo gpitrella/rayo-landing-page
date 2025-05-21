@@ -5,7 +5,6 @@ import jwtDecode, { JwtPayload } from "jwt-decode";
 import { GoogleAuthProvider } from "firebase/auth";
 import { PiCornersOutLight } from "react-icons/pi";
 
-
 // const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const providers = {
