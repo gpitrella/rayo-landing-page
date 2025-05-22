@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from 'react'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from '@/app/store/store'
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet"
@@ -112,7 +112,15 @@ function ReservarLavadoPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [customIcon, setCustomIcon] = useState<any>(null)
   const [userLoaded, setUserLoaded] = React.useState<boolean>(false); // Controla si el user está cargado
+  const [permissionDenied, setPermissionDenied] = useState(false);
+  const mapRef = useRef<L.Map | null>(null);
+
   
+  useEffect(() => {
+    if (!position) {
+      setPosition(initialPosition);
+    }
+  }, [initialPosition]);
 
   // Cargar marcas de vehículos al iniciar
   useEffect(() => {
@@ -147,6 +155,13 @@ function ReservarLavadoPage() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
+          const newPosition = { lat: position.coords.latitude, lng: position.coords.longitude };
+          setPosition(newPosition);
+                    // Mueve el mapa a la nueva posición
+          if (mapRef.current) {
+            mapRef.current.flyTo(newPosition, 15, { duration: 1.5 });
+          }
+
         },
         (error: GeolocationPositionError) => {
           console.error("Error obteniendo ubicación:", error);
@@ -155,7 +170,7 @@ function ReservarLavadoPage() {
       );      
       return () => navigator.geolocation.clearWatch(watchId); // Limpieza al desmontar
     }
-  }, [dispatch]);
+  }, []);
 
   // Configurar icono personalizado para el marcador
   useEffect(() => {
@@ -257,16 +272,52 @@ function ReservarLavadoPage() {
     }
   }
 
+  const requestLocationAccess = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+          setInitialPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude })
+          setPermissionDenied(false); // Reinicia el estado si se otorga acceso
+          const newPosition = { lat: position.coords.latitude, lng: position.coords.longitude };
+          // Mueve el mapa a la nueva posición
+          if (mapRef.current) {
+            mapRef.current.flyTo(newPosition, 15, { duration: 1.5 });
+          }
+        },
+        (error) => {
+          if (error.code === error.PERMISSION_DENIED) {
+            setPermissionDenied(true);
+            alert("Se necesita permiso para acceder a la ubicación.");
+          } else {
+            console.error("Error obteniendo ubicación:", error);
+          }
+        },
+        { enableHighAccuracy: true }
+      );
+    } else {
+      alert("La geolocalización no está soportada en este navegador.");
+    }
+  };
+
+
   return (
     <div className="w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-0 top-5 mx-auto z-40 py-0 px-0 mt-12">
       <h1 className="text-2xl font-bold mb-6 text-center">Reservar Servicio de Lavado a Domicilio</h1>
-
+                      <Button
+                onClick={requestLocationAccess}
+                className="bottom-4 left-4 bg-black text-white px-4 py-2 rounded-md shadow-md"
+              >
+                Usar mi ubicación
+              </Button>
       <Card className="mb-6">
+
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Car className="h-5 w-5" />
             Reserva de Lavado de Auto
           </CardTitle>
+
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -291,20 +342,22 @@ function ReservarLavadoPage() {
                 <div className="h-[420px] w-full rounded-md overflow-hidden border z-0">
                   {customIcon && (
                     <MapContainer
-                      center={initialPosition}
+                      center={initialPosition ?? { lat: -34.6037, lng: -58.3816 }}
                       zoom={15}
                       scrollWheelZoom={true}
                       style={{ height: "100%", width: "100%" }}
+                      // whenCreated={(map: any) => (mapRef.current = map)}
                     >
                       <TileLayer url="https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
                       <LocationMarker
-                        position={position}
+                        position={position ?? initialPosition}
                         setPosition={setPosition}
                         setAddress={setAddress}
                         customIcon={customIcon}
                       />
                     </MapContainer>
                   )}
+
                 </div>
               </div>
             </div>
