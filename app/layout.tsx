@@ -14,8 +14,27 @@ import 'leaflet/dist/leaflet.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rayo",
-  description: "Website Rayo",
+  title: "Rayo Lavados | Lavado de autos a domicilio",
+  description:
+    "Lava tu vehículo donde y cuando quieras con RAYO. Vamos donde este tu vehículo, sin necesidad de tu presencia, mientras vos seguís con tus actividades. Simplifica el lavado de tu vehículo de manera cómoda, eficiente y ecológica.",
+  keywords: ["lavado a domicilio de auto", "lavado de autos", "comodidad", "innovación", "lavado de autos", "auto", "simplificar la vida"],
+  authors: [{ name: "Rayo Lavados", url: "https://rayolavados.com" }],
+  openGraph: {
+    title: "Rayo Lavados | Lavado de autos a domicilio",
+    description:
+      "Lava tu vehículo donde y cuando quieras con RAYO. Vamos donde este tu vehículo, sin necesidad de tu presencia, mientras vos seguís con tus actividades. Simplifica el lavado de tu vehículo de manera cómoda, eficiente y ecológica.",
+    url: "https://rayolavados.com",
+    siteName: "Rayo",
+    images: [{ url: "/LogoPositivo.png", width: 640, height: 630, alt: "Rayo lavados" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rayo Lavados | Lavado de autos a domicilio",
+    description:
+      "Lava tu vehículo donde y cuando quieras con RAYO. Vamos donde este tu vehículo, sin necesidad de tu presencia, mientras vos seguís con tus actividades. Simplifica el lavado de tu vehículo de manera cómoda, eficiente y ecológica.",
+    images: ["/LogoPositivo.png"],
+  },
 };
 
 
