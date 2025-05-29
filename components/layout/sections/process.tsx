@@ -24,7 +24,7 @@ interface SocialNetworkProps {
 export const Process = () => {
   const teamList: TeamProps[] = [
     {
-      imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1739960501/qt9mj2okggyt8lrmos3j.jpg",
+      imageUrl: "/girlwithmobile.jpg",
       firstName: "Decidí el momento",
       lastName: "",
       positions: ["Definí en que momento realizar el lavado de tu vehículo"],
@@ -44,7 +44,7 @@ export const Process = () => {
       ],
     },
     {
-      imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1739970846/qhrivdgrszwacnm41uzq.png",
+      imageUrl: "/mobilelocation.png",
       firstName: "Selecciona el lugar",
       lastName: "",
       positions: ["Defini el lugar donde se encuentra tu vehículo para que realicemos el lavado"],
@@ -60,7 +60,7 @@ export const Process = () => {
       ],
     },
     {
-      imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1739961415/dgrgtyysmgsot4uqsayo.jpg",
+      imageUrl: "/cleaningcar.jpg",
       firstName: "Disfruta del lavado",
       lastName: "",
       positions: ["Segui con tus actividades mientras el washer realiza el lavado de tu vehículo"],

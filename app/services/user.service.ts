@@ -30,7 +30,7 @@ const createUser = async(user: User) =>{
 }
 
 const createWasher = async(washer: Washer) =>{
-    const res = await setDoc(doc(db, "washer", washer.washer_id), washer);
+    const res = await setDoc(doc(db, "washers", washer.washer_id), washer);
 }
 
 export {

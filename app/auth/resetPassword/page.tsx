@@ -55,9 +55,9 @@ const Page = () => {
     async function resetPasswordUser(email: string): Promise<void> {
       try {
         await dispatch(resetPassword(email)).unwrap();
-        toast.success("Se ha enviado un correo de recuperación.");
+        toast.success("Se ha enviado un correo de recuperación.",{ duration: 4000});
       } catch (error) {
-        toast.error(`Error: ${error}`);
+        toast.error(`Error: ${error}`,{ duration: 4000});
       }
     }
    

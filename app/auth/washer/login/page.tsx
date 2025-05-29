@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { checkUserLoggedIn } from "@/app/services/auth.service";
+import { checkWasherLoggedIn } from "@/app/services/auth.service";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import '../../../styles/auth.css';
@@ -25,16 +25,16 @@ const Page = () => {
 
     // Redirección al inicio si el usuario ya está autenticado
     useEffect(() => {
-        const isAuthenticated = checkUserLoggedIn();
+        const isAuthenticated = checkWasherLoggedIn();
         if (isAuthenticated) {
-            router.push('/reserva');
+            router.push('/washer/doc');
         }
     }, [router]); // Evitar actualizaciones no controladas del router
 
     // Redirigir si el estado de autenticación cambia a `true`
     useEffect(() => {
         if (status === true) {
-            router.push('/reserva');
+            router.push('/washer/doc');
         }
     }, [status, router]);
 

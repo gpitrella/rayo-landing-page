@@ -4,7 +4,7 @@ import React, { FormEvent, useEffect } from 'react'
 import '@/app/styles/createAppointment.css'
 import Datepicker from './datepicker'
 import { MdOutlineCancel } from 'react-icons/md'
-import { User } from '../app/models/user.model'
+// import { User } from '../app/models/user.model'
 import { useSelector } from 'react-redux'
 import { RootState } from '../app/store/store'
 import dayjs, { Dayjs } from 'dayjs';
