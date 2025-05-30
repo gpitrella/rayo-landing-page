@@ -155,6 +155,9 @@ export const PricingSection = () => {
           )
         )}
       </div>
+      <h4 className="md:w-1/2 mx-auto text-base text-center text-muted-foreground pt-8">
+        * Estamos trabajando para ofrecer lavado interior del vehículo.
+      </h4>
     </section>
   );
 };
