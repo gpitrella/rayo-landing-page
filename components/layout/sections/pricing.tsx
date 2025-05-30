@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import Link from 'next/link';
 import { Check } from "lucide-react";
-import { RiH4 } from "react-icons/ri";
 
 enum PopularPlan {
   NO = 0,
