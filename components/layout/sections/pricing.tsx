@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import Link from 'next/link';
 import { Check } from "lucide-react";
+import { RiH4 } from "react-icons/ri";
 
 enum PopularPlan {
   NO = 0,
@@ -155,6 +156,9 @@ export const PricingSection = () => {
           )
         )}
       </div>
+      <h4 className="md:w-1/2 mx-auto text-base text-center text-muted-foreground pt-8">
+        * Estamos trabajando para ofrecer lavado interior del vehículo.
+      </h4>
     </section>
   );
 };
