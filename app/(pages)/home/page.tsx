@@ -79,7 +79,7 @@ function Page() {
           <div className="text-left lg:text-left">
             <div className="col-span-full xl:col-span-7">        
               <h1 className='lg:text-2xl sm:text-lg font-medium mb-8 text-center'>Lavados Reservados</h1>
-
+              <h3 className='lg:text-base sm:text-base font-normal mb-8 text-left'>Estamos trabajando en el lavado de tu vehículo, en la tarjeta de abajo vas a poder encontrar todos los detalles de tu reserva.</h3>
               <div className='appt-container'>
                 {(data?.length === 0 ) && (
                   <div className='w-full bg-[white] px-8 py-16 mt-4 flex flex-col justify-center items-center dark:bg-[black]'>
