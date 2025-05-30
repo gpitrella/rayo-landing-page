@@ -199,7 +199,7 @@ export const registerWasher = createAsyncThunk(
    
     try {
         const response = await Auth.Signup(formData.email, formData.password)
-        console.log('response', response)
+        
         if(!response){
             console.log('response error', response)
             return thunkAPI.rejectWithValue("Unknown error occurred");
@@ -211,9 +211,19 @@ export const registerWasher = createAsyncThunk(
             email: response.user.email,
             updatedAt: new Date().toISOString(),
             createdAt: new Date().toISOString(),
-            statusWasher: "PENDING"
+            statusWasher: "PENDING",
+            doc: {
+              telefono: '-',
+              documento: null,
+              numberID: '-',
+              monotributo: null,
+              mayorEdad: false,
+              terminos: false
+            },
+            cap: false,
+            review: []
         }
-        console.log('Washer', Washer)
+
         await createWasher(Washer)
         return null;
     } catch (error: any) {

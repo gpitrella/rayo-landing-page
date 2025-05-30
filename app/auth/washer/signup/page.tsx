@@ -16,6 +16,7 @@ import toast from 'react-hot-toast';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { duration } from "@mui/material";
 
 export interface SignupProp {
     firstName: string,
@@ -33,9 +34,9 @@ const Page = () => {
 
 
     useEffect(() => {
-    if (status == true) {
-      router.push("/auth/washer/login");
-    }
+        if (status == true) {
+            router.push("/auth/washer/login");
+        }
     }, [router, dispatch, status]);
 
     let SignupSchema = Yup.object().shape({
@@ -50,10 +51,16 @@ const Page = () => {
     }
 
 
-
     const handleSubmit = async(value: SignupProp) =>{
         const {email, password, firstName, lastName} = value;
-        dispatch(registerWasher({email, password, firstName, lastName, statusWasher}));
+        const answer = await dispatch(registerWasher({email, password, firstName, lastName, statusWasher}));
+        if(answer.meta.requestStatus == 'fulfilled') {
+            toast.success('Washer registrado con exito', { duration: 4000})
+            router.push("/auth/washer/login");
+        } else {
+            toast.error('Error en el registro', { duration: 4000})
+        }        
+        
     }
    
     return (
@@ -111,7 +118,7 @@ const Page = () => {
                                 <Field name="password" type="password" placeholder="Password" className="px-4"/>
                                 {errors.password && touched.password ? (<span className="text-[#ec4242] text-sm mt-1">{errors.password}</span>) : null}
                             </div>
-                            <Button className={loading ? 'button-disabled w-full font-bold group/arrow mt-5' : 'button w-full font-bold group/arrow mt-5'} disabled={loading} >
+                            <Button type="submit" className={loading ? 'button-disabled w-full font-bold group/arrow mt-5' : 'button w-full font-bold group/arrow mt-5'} disabled={loading} >
                                 { loading ? <BtnLoader /> : 'Registrarse' }
                                 { !loading ? <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" /> : null}                        </Button>
                             {/* Removi el type="submit" del BUTTON estaba generando problemas de estilos*/}

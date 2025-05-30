@@ -132,9 +132,27 @@ function checkUserLoggedIn(){
     return true;
 }
 
+function checkWasherLoggedIn(){
+    const token = localStorage.getItem('atkw');
+    if(!token) return false;
+    const decodedToken = jwtDecode<JwtPayload>(token);
+    const expirationTime = decodedToken.exp
+    if(!expirationTime){
+        Logout()
+        return false;
+    }
+    const currentTime = new Date().getTime()
+    if ((expirationTime*1000) < currentTime) {
+        Logout();
+        return false;
+    };
+    return true;
+}
+
 async function Logout(){
     await signOut(auth)
     localStorage.removeItem('atk')
+    localStorage.removeItem('atkw')
 }
 
-export {Signup, Login, Logout, checkUserLoggedIn, handleGoogleLogin, handleFacebookLogin, resetPasswordUser}
+export {Signup, Login, Logout, checkUserLoggedIn, checkWasherLoggedIn, handleGoogleLogin, handleFacebookLogin, resetPasswordUser}

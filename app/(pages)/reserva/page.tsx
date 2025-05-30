@@ -280,12 +280,12 @@ function ReservarLavadoPage() {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (!position) {
-      toast.error("Por favor selecciona la ubicación de tu vehículo en el mapa!")
+      toast.error("Por favor selecciona la ubicación de tu vehículo en el mapa!",{ duration: 4000})
       return
     }
 
     if (!modelo || !patente || !tipoVehiculo || !color || !phone || !date || !time || !terms) {
-      toast.error("Por favor completa todos los campos requeridos")
+      toast.error("Por favor completa todos los campos requeridos",{ duration: 4000})
       return
     }
 
@@ -319,7 +319,7 @@ function ReservarLavadoPage() {
       handleCreateAppointment(appointmentData)
     } catch (error) {
       console.error("Error al agendar lavado:", error)
-      toast.error("Error al agendar un lavado!")
+      toast.error("Error al agendar un lavado!",{ duration: 4000})
     }
   }
 
@@ -327,7 +327,7 @@ function ReservarLavadoPage() {
     try {
       // Usar dispatch como se solicita
       await dispatch(createAppointmentEffect(appointmentData) as any)
-      toast.success("Lavado agendado!")
+      toast.success("Lavado agendado!",{ duration: 4000})
       router.push("/home")
 
       // Resetear formulario
@@ -345,7 +345,7 @@ function ReservarLavadoPage() {
       setSelectedBrand("")
     } catch (error) {
       console.error("Error al agendar lavado:", error)
-      toast.error("Error al agendar un lavado!")
+      toast.error("Error al agendar un lavado!",{ duration: 4000})
     } finally {
       setLoading(false)
     }

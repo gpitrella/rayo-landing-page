@@ -24,7 +24,7 @@ interface SocialNetworkProps {
 export const ProcessWasher = () => {
   const teamList: TeamProps[] = [
     {
-      imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1747862495/px55xayz0bnhy99fobde.jpg",
+      imageUrl: "/searchlocation.jpg",
       firstName: "Iniciá tu registro",
       lastName: "",
       positions: ["Completá el formulario con tus datos y cargá la documentación requerida."],
@@ -44,7 +44,7 @@ export const ProcessWasher = () => {
       ],
     },
     {
-      imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1747862495/rybnugihdarltgv6trdn.jpg",
+      imageUrl: "/reservation.jpg",
       firstName: "Sé un washer estrella",
       lastName: "",
       positions: ["Mirá los vídeos instructivos, participa de las capacitaciones para aprender a lavar."],
@@ -60,7 +60,7 @@ export const ProcessWasher = () => {
       ],
     },
     {
-      imageUrl: "https://res.cloudinary.com/djgghmpgh/image/upload/v1747862495/gkuahvtlnzgb2yxl778u.jpg",
+      imageUrl: "/clearcar.jpg",
       firstName: "Empeza a lavar con Rayo",
       lastName: "",
       positions: ["Esperá la confirmación del alta y ya estarás listo para hacer repartos."],

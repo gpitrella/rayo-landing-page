@@ -16,6 +16,7 @@ import { TeamSection } from "@/components/layout/sections/team";
 import { TestimonialSection } from "@/components/layout/sections/testimonial";
 import { Banner } from "@/components/layout/sections/banner";
 import { Process } from "@/components/layout/sections/process";
+// import { AnimatedNumbers } from"@/components/layout/sections/numbers";
 import dynamic from 'next/dynamic';
 
 export const metadata = {
@@ -52,6 +53,7 @@ export default function Home() {
     <>
       <CommunitySection />
       <Banner />
+      {/* <AnimatedNumbers /> */}
       <Process />
       <FeaturesSection />      
       <HeroSection />      

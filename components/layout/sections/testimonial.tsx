@@ -27,15 +27,15 @@ interface ReviewProps {
 const reviewList: ReviewProps[] = [
   {
     image: "https://github.com/shadcn.png",
-    name: "Valeria Ruiz",
+    name: "Valeria R.",
     userName: "Colegiales, CABA",
     comment:
-      "Quedé muy satisfecho con el servicio, mi auto está impecable y el personal fue muy amable. ¡Sin duda volveré a contratarlos, gracias por el excelente servicio!",
+      "Quedé muy satisfecho con el servicio, mi auto está impecable. ¡Sin duda volveré a contratarlos, gracias por el excelente servicio!",
     rating: 5.0,
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Martín Díaz",
+    name: "Martín D.",
     userName: "Villa Martelli, Bs As",
     comment:
       "Confío plenamente en este servicio, son profesionales y cuidan los autos. Siempre dejan mi auto impecable, ¡los recomiendo con total confianza!",
@@ -44,15 +44,15 @@ const reviewList: ReviewProps[] = [
 
   {
     image: "https://github.com/shadcn.png",
-    name: "Laura Fernández",
+    name: "Laura F.",
     userName: "Núñez, CABA",
     comment:
-      "El servicio fue rápido y eficiente, mi auto quedó como nuevo en poco tiempo. ¡Muy profesionales y cumplieron con los tiempos acordados!",
+      "El servicio fue rápido y eficiente, mi auto quedó como nuevo en poco tiempo. ¡Cumplieron con los tiempos acordados!",
     rating: 5,
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Luis González",
+    name: "Luis G.",
     userName: "Retiro, CABA",
     comment:
       "El lavado fue muy minucioso, mi auto quedó impecable por dentro y por fuera. ¡Gracias por el excelente trabajo y la atención al detalle!",
@@ -60,7 +60,7 @@ const reviewList: ReviewProps[] = [
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Sofía Martínez",
+    name: "Sofía M.",
     userName: "Puerto Madero, CABA",
     comment:
       "La reserva fue muy sencilla y la atención al cliente fue excelente, ¡muy amables! Recomiendo este servicio por su rapidez y la facilidad para reservar.",
@@ -68,7 +68,7 @@ const reviewList: ReviewProps[] = [
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Pedro Sánchez",
+    name: "Pedro S.",
     userName: "Avellaneda, Bs As",
     comment:
       "Excelente servicio a un precio razonable, ¡muy buena relación calidad-precio! Volveré a contratarlos sin duda, ¡quedé muy satisfecho!",

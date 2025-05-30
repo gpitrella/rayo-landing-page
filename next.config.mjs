@@ -28,8 +28,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        port: '', 
+        hostname: 'res.cloudinary.com', 
         pathname: '/**', 
       }
     ],
@@ -55,7 +54,5 @@ const nextConfig = {
       layers: true, // Habilita soporte para capas, necesario para algunos paquetes modernos
     };
     return config;
-  },
+  }
 };
-
-export default nextConfig;

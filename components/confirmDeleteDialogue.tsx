@@ -8,9 +8,9 @@ const ConfirmDialogueBox: React.FC<any> = (props) => {
     const handleDeleteAppointment = async () =>{
         try {
             await deleteAppointment(props.id);
-            toast.success('Successfully cancelled!')
+            toast.success('Successfully cancelled!',{ duration: 4000})
         } catch (error) {
-            toast.error('Error cancelling appointment!')
+            toast.error('Error cancelling appointment!',{ duration: 4000})
         }
     }
     
