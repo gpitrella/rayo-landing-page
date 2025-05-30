@@ -82,7 +82,7 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="w-[100%] md:w-[100%] lg:w-[85%] lg:max-w-screen-xl m-auto py-24 px-5 sm:py-32">
+    <section id="contact" className="w-full md:w-[100%] lg:w-[85%] lg:max-w-screen-xl m-auto py-20 px-0 sm:py-32">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <div className="mb-4">
