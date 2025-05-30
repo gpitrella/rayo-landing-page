@@ -22,6 +22,7 @@ import { fetchUser } from "@/app/store/user/userSlice"
 import { createAppointmentEffect } from "@/app/store/appointment/appointmentActions"
 import type { AppDispatch } from "@/app/store/store"
 import { useRouter } from "next/navigation"
+import StepIndicator from "@/components/stepIndicator"
 
 // Tipo para la solicitud de cita
 interface AppointmentRequest {
@@ -354,7 +355,7 @@ function ReservarLavadoPage() {
   return (
     <div className="w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-0 top-5 mx-auto z-40 py-0 px-0 mt-12">
       <h1 className="text-2xl font-bold mb-6 text-center">Reservar Servicio de Lavado a Domicilio</h1>
-
+      <StepIndicator />
       <Card className="mb-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 mb-4">
@@ -377,7 +378,7 @@ function ReservarLavadoPage() {
                   <MapPin className="h-4 w-4" />
                   Ubicación del Vehículo
                 </Label>
-                {position && (
+                {position && address.street && address.city && (
                   <div className="bg-muted p-3 rounded-md mt-2 mb-2">
                     <p className="font-medium">Dirección seleccionada:</p>
                     <p>
