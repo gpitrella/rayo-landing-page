@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -140,16 +141,12 @@ export const PricingSection = () => {
               </CardContent>
 
               <CardFooter>
-                <Button
-                  variant={
-                    popular === PopularPlan?.YES ? "default" : "secondary"
-                  }
-                  className="w-full"
-                >
-                  <Link href='/home' >                                       
-                    <span>{buttonText}</span>                  
-                  </Link>                   
-                </Button>
+              <Button className="w-auto font-bold group/arrow py-4 px-7 h-12 text-lg m-auto"> 
+                <Link href='/auth/login' >                                       
+                    <span>Agendar Lavado</span>                  
+                </Link>                
+                <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
+              </Button>
               </CardFooter>
             </Card>
           )
