@@ -355,6 +355,8 @@ function ReservarLavadoPage() {
   return (
     <div className="w-[90%] md:w-[85%] lg:w-[85%] lg:max-w-screen-xl sm:px-0 top-5 mx-auto z-40 py-0 px-0 mt-12">
       <h1 className="text-2xl font-bold mb-6 text-center">Reservar Servicio de Lavado a Domicilio</h1>
+      <h3 className='lg:text-base sm:text-base font-normal mb-8 text-center'>Seguí los siguientes pasos para agendar tu lavado.</h3>
+
       <StepIndicator />
       <Card className="mb-6">
         <CardHeader>
@@ -428,7 +430,7 @@ function ReservarLavadoPage() {
                     </div>
                     {searchTerm && (
                       <div className="absolute z-10 w-full bg-white border rounded-md max-h-60 overflow-y-auto">
-                        {filteredBrands.map((brand) => (
+                        {filteredBrands.sort((a, b) => a.localeCompare(b)).map((brand) => (
                           <div
                             key={brand}
                             className="px-3 py-2 hover:bg-muted cursor-pointer"
@@ -454,11 +456,14 @@ function ReservarLavadoPage() {
                         <SelectValue placeholder="Seleccionar modelo" />
                       </SelectTrigger>
                       <SelectContent>
-                        {carModels.map((model) => (
+                        {carModels.sort((a, b) => a.localeCompare(b)).map((model) => (
                           <SelectItem key={model} value={model}>
                             {model}
                           </SelectItem>
                         ))}
+                        <SelectItem key='Other' value='other'>
+                            Otro Modelo 
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   ) : (
@@ -474,7 +479,7 @@ function ReservarLavadoPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="patente">Patente *</Label>
+                  <Label htmlFor="patente">Patente del Vehículo *</Label>
                   <Input
                     id="patente"
                     placeholder="Ej: ABC123"
@@ -490,9 +495,9 @@ function ReservarLavadoPage() {
                       <SelectValue placeholder="Seleccionar tipo" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="hatchback">Hatchback</SelectItem>
-                      <SelectItem value="sedan">Sedán</SelectItem>
-                      <SelectItem value="pickup">Pickup</SelectItem>
+                      <SelectItem value="hatchback">Hatchback - Auto Chico</SelectItem>
+                      <SelectItem value="sedan">Sedán - Auto Mediano</SelectItem>
+                      <SelectItem value="pickup">Pickup - Camioneta</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -500,7 +505,7 @@ function ReservarLavadoPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="color">Color *</Label>
+                  <Label htmlFor="color">Color del vehículo *</Label>
                   <Input id="color" placeholder="Ej: Rojo" value={color} onChange={(e) => setColor(e.target.value)} />
                 </div>
 
@@ -518,21 +523,21 @@ function ReservarLavadoPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                 <div>
                   <Label htmlFor="date" className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
-                    Fecha *
+                    Seleccionar que Día quiere el lavado *
                   </Label>
-                  <Input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                  <Input className="w-full" id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
                 </div>
 
                 <div>
                   <Label htmlFor="time" className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
-                    Hora *
+                    Seleccionar a que Hora quiere el lavado *
                   </Label>
-                  <Input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+                  <Input className="w-full" id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} />
                 </div>
               </div>
 

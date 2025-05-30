@@ -197,7 +197,7 @@ export const Navbar: React.FC = () => {
                        </div>
                      </Link>
                    </Button>
-                   <Button
+                   {/* <Button
                        key='profile'
                        onClick={() => setIsOpen(false)}
                        asChild
@@ -212,7 +212,7 @@ export const Navbar: React.FC = () => {
                              <span className='dark:text-white'>Settings</span>
                          </div>
                        </Link>
-                     </Button>
+                     </Button> */}
                      <Button
                        key='profile'
                        // onClick={() => setIsOpen(false)}

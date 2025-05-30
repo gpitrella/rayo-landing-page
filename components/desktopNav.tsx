@@ -61,7 +61,7 @@ function DesktopNav(props: any) {
                       </div>
                       </Link>
                   </li>
-                  <li><Link
+                  {/* <li><Link
                       className={`${pathname === '/settings/profile' ? 'active' : ''}`}
                       href='/settings/profile'
                       onClick={(event) => props.closeDropDown(event)}
@@ -71,7 +71,7 @@ function DesktopNav(props: any) {
                           <span className='dark:text-white'>Settings</span>
                       </div>
                       </Link>
-                  </li>
+                  </li> */}
                   <li onClick={handleLogoutClick}>
                       <div id='link'>
                           <IoLogOutOutline className="text-[1.6rem] dark:text-white" />
