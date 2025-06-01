@@ -18,6 +18,7 @@ import { Banner } from "@/components/layout/sections/banner";
 import { Process } from "@/components/layout/sections/process";
 // import { AnimatedNumbers } from"@/components/layout/sections/numbers";
 import dynamic from 'next/dynamic';
+import { StoreImg } from "@/components/layout/sections/store";
 
 export const metadata = {
   title: "Rayo - Landing template",
@@ -56,14 +57,15 @@ export default function Home() {
       {/* <AnimatedNumbers /> */}
       <Process />
       <FeaturesSection />      
-      <HeroSection />      
-      {/* <SponsorsSection /> */}
+      <HeroSection />        
       {/* <BenefitsSection />
       <ServicesSection /> */}      
       {/* <TeamSection />*/}      
       <PricingSection /> 
+      <SponsorsSection />
       <TestimonialSection />
       <FAQSection />
+      <StoreImg />
       {/* <ContactSection />       */}
     </>
   );

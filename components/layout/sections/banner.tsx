@@ -14,7 +14,7 @@ export const Banner = () => {
         height={1200}
         src="/man-clean-car.jpg"
         alt="bg-img"
-        className="absolute inset-0 ml-auto w-[770px] h-[580px] rounded-[50px] object-cover object-center"
+        className="absolute inset-0 ml-auto w-[770px] h-[480px] rounded-[50px] object-cover object-center"
       />
       <div className="container mx-auto px-0 w-full mt-[20px] mb-30">
         <div className="grid grid-cols-12 text-left lg:text-left">
@@ -27,12 +27,10 @@ export const Banner = () => {
             </div>
 
             <p className="max-w-screen-sm mx-auto text-lg mb-8 text-muted-foreground">
-              {`En Rayo, sabemos que tu tiempo es un recurso valioso y el agua también. Por eso, 
-              ofrecemos un servicio de lavado a domicilio que combina comodidad, eficiencia y sustentabilidad. 
-              Olvídate de los lavaderos tradicionales y las largas esperas, nosotros vamos a donde estés, sin 
-              necesidad de trasladarte ni desperdiciar agua. Utilizamos productos biodegradables y técnicas 
-              especializadas que garantizan un lavado excelente, acabado encerado y protegiendo la pintura de 
-              tu vehículo mientras cuidamos el planeta. Además, puedes programar tu lavado en minutos.`}
+              {`En Rayo, tu tiempo es valioso, y por eso llevamos el lavado hasta donde estés. Sin desplazamientos, 
+              sin esperas, sin interrupciones. Mientras sigues con tu día, nosotros nos encargamos de dejar tu 
+              vehículo impecable con técnicas sustentables y productos biodegradables. Conveniencia total en minutos, 
+              sin perder tiempo.`}
             </p>
 
             <div className="max-w-screen-sm mx-auto">

@@ -90,7 +90,7 @@ const plans: PlanProps[] = [
 
 export const PricingSection = () => {
   return (
-    <section className="relative h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-6 mb-[220px] lg:max-w-screen-xl mx-auto">
+    <section className="relative h-auto w-[90%] md:w-[85%] lg:w-[85%] mt-6 mb-[110px] lg:max-w-screen-xl mx-auto">
       <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
         Mira todas las opciones disponibles
       </h2>
