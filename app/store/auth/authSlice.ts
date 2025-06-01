@@ -167,10 +167,8 @@ export const resetPassword = createAsyncThunk(
 export const register = createAsyncThunk(
   "auth-register",
   async (formData: {email: string, password: string, firstName: string, lastName: string}, thunkAPI) => {
-    console.log('data', formData)
     try {
         const response = await Auth.Signup(formData.email, formData.password)
-        console.log('response', response)
         if(!response){
             console.log('response error', response)
             return thunkAPI.rejectWithValue("Unknown error occurred");

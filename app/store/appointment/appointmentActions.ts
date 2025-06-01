@@ -14,7 +14,6 @@ export const fetchAppointments = createAsyncThunk('appointment/fetchAppointments
 
 export const createAppointmentEffect = createAsyncThunk('appointment/createAppointment', async(data: AppointmentRequest, thunkAPI) =>{
   try {
-    console.log('DATA: ', data)
     const response = await createAppointment(data)
     return response;
   } catch (error) {
