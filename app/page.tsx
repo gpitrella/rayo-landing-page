@@ -21,29 +21,29 @@ import dynamic from 'next/dynamic';
 import { StoreImg } from "@/components/layout/sections/store";
 
 export const metadata = {
-  title: "Rayo - Landing template",
-  description: "RAYO landing page",
+  title: "Rayo Lavados",
+  description: "Rayo  Lavados",
   openGraph: {
     type: "website",
     url: "https://rayolavados.com",
-    title: "Rayo - Landing template",
-    description: "Rayo - Landing template",
+    title: "Rayo Lavados",
+    description: "Rayo Lavados",
     images: [
       {
-        url: "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
+        url: "/LogoPositivo.png",
         width: 1200,
         height: 630,
-        alt: "Shadcn - Landing template",
+        alt: "Rayo Lavados",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     site: "https://rayolavados.com",
-    title: "Rayo Lavados - Page",
-    description: "Rayo lavados landing page for developers",
+    title: "Rayo Lavados",
+    description: "Rayo lavados",
     images: [
-      "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
+      "/LogoPositivo.png",
     ],
   },
 };
