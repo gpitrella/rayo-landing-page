@@ -344,6 +344,26 @@ function ReservarLavadoPage() {
       setDescription("")
       setTerms(false)
       setSelectedBrand("")
+      const emailPayload = {
+            email: user.email,
+            subject: `Reserva de Lavado - Modelo vehículo ${modelo || "Sin modelo"}, Color: ${color || "Sin color"}, Patente: ${patente || "Sin patente"}`,
+            message: { text: "Detalles del cliente:" }, // Cambia a un objeto para evitar errores
+            phone: phone.replace(/\s+/g, "")
+        };
+        
+        try {
+            const response = await fetch("/api/sendEmail", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(emailPayload),
+        });
+    
+        const result = await response.json();
+            console.log("Respuesta del servidor:", result);
+        } catch (error) {
+            console.error("Error enviando solicitud:", error);
+        }   
+
     } catch (error) {
       console.error("Error al agendar lavado:", error)
       toast.error("Error al agendar un lavado!",{ duration: 4000})

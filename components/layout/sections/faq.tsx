@@ -27,7 +27,7 @@ const FAQList: FAQProps[] = [
   {
     question: "¿Qué días y horarios están disponibles para el servicio a domicilio?",
     answer:
-      "Trabajamos de Lunes a Domingo de 9hs a 18hs. Estamos trabajando para estar disponibles las 24hs.",
+      "Trabajamos de Lunes a Domingo de 7hs a 23hs. Estamos trabajando para estar disponibles las 24hs.",
     value: "item-3",
   },  
   {
