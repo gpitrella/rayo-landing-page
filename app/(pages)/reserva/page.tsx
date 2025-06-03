@@ -352,10 +352,12 @@ function ReservarLavadoPage() {
         };
         
         try {
+          
             const response = await fetch("/api/sendEmail", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(emailPayload),
+
         });
     
         const result = await response.json();
