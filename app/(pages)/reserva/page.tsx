@@ -172,11 +172,17 @@ function ReservarLavadoPage() {
     // Actualizar el precio basado en el tipo de vehículo seleccionado
     if (tipoVehiculo === "hatchback") {
       setPrice(9900)
+    } else if (tipoVehiculo === "hatchback_completo") {
+      setPrice(12900)
     } else if (tipoVehiculo === "sedan") {
       setPrice(12900)
+    } else if (tipoVehiculo === "sedan_completo") {
+      setPrice(15900)
     } else if (tipoVehiculo === "pickup") {
       setPrice(15900)
-    } else {
+    } else if (tipoVehiculo === "pickup_completo") {
+      setPrice(18900)
+    }else {
       setPrice(null)
     }
   }, [tipoVehiculo])
@@ -517,9 +523,12 @@ function ReservarLavadoPage() {
                       <SelectValue placeholder="Seleccionar tipo" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="hatchback">Hatchback - Auto Chico</SelectItem>
-                      <SelectItem value="sedan">Sedán - Auto Mediano</SelectItem>
-                      <SelectItem value="pickup">Pickup - Camioneta</SelectItem>
+                      <SelectItem value="hatchback">Lavado EXTERIOR - Auto Chico / Hatchback</SelectItem>
+                      <SelectItem value="hatchback_completo">Lavado COMPLETO - Auto Chico - Hatchback</SelectItem>
+                      <SelectItem value="sedan">Lavado EXTERIOR - Auto Mediano / Sedan</SelectItem>
+                      <SelectItem value="sedan_completo">Lavado COMPLETO - Auto Mediano / Sedan</SelectItem>
+                      <SelectItem value="pickup">Lavado EXTERIOR - Pickup - Camioneta</SelectItem>
+                      <SelectItem value="pickup_completo">Lavado COMPLETO - Pickup - Camioneta</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
