@@ -156,7 +156,7 @@ const vehicleData: VehicleCardProps[] = [
           "Aspirado completo de interior",
           "Limpieza de alfombras y tapizados (superficial)",
           "Limpieza de plásticos y tablero",
-          "Aromatización"
+          "Aromatización",
         ],
         buttonText: "Reservar Completo",
       },
