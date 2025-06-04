@@ -604,9 +604,14 @@ function ReservarLavadoPage() {
                   <p className="text-center font-medium">
                     Precio del servicio: <span className="text-lg text-primary">${price.toLocaleString("es-AR")}</span>
                   </p>
-                  <p className="text-xs text-center text-muted-foreground mt-1">
-                    Precio final basado en el tipo de vehículo seleccionado
+                  <p className="text-sm text-center text-muted-foreground mt-1">
+                    El servicio se abona una vez finalizado el lavado. Precio final basado en el tipo de vehículo seleccionado
                   </p>
+                  {["hatchback", "sedan", "pickup"].includes(tipoVehiculo) && (
+                    <p className="text-sm text-center text-lime-600 mt-0 font-bold">
+                      NO ES NECESARIA TU PRESENCIA, NOS INDICAS DONDE ESTA EL VEHICULO Y NOSOTROS NOS ENCARGAMOS
+                    </p>
+                  )}
                 </div>
               )}
               <Button className="w-full mt-4" onClick={handleClick} disabled={loading}>
