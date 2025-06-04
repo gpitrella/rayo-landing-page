@@ -250,8 +250,8 @@ export const PricingSectionCopy = () => {
                   <h4 className="text-lg md:text-xl font-semibold text-primary mb-1">{service.name}</h4>
                   <div className="text-2xl md:text-3xl font-bold mb-2">${service.price}</div>
                   { service.name === "Lavado Exterior"  
-                    ? <p className="text-base font-extrabold md:text-base text-muted-foreground text-lime-600 mb-4">{service.strongDescription}</p>
-                    : <p className="text-base font-bold md:text-base text-muted-foreground text-amber-400 mb-4">{service.strongDescription}</p> }
+                    ? <p className="text-base font-extrabold md:text-base text-lime-600 mb-4">{service.strongDescription}</p>
+                    : <p className="text-base font-bold md:text-base text-amber-400 mb-4">{service.strongDescription}</p> }
                   <p className="text-xs md:text-sm text-muted-foreground mb-3">{service.description}</p>
                   <div className="space-y-1 mb-4 flex-grow">
                     {service.benefitList.map((benefit) => (
