@@ -46,7 +46,7 @@ const vehicleData: VehicleCardProps[] = [
       {
         name: "Lavado Exterior",
         price: 9900,
-        strongDescription: "NO ES NECESARIA TU PRESENCIA",        
+        strongDescription: "NO ES NECESARIA TU PRESENCIA, NOS INDICAS DONDE ESTA EL VEHICULO Y NOSOTROS NOS ENCARGAMOS",        
         description: "Servicio de lavado exterior completo, dejando tu auto impecable con aplicación de cera.",
         benefitList: [          
           "Lavado exterior completo",
@@ -60,7 +60,7 @@ const vehicleData: VehicleCardProps[] = [
       {
         name: "Lavado Completo",
         price: 12900,
-        strongDescription: "ES NECESARIA TU PRESENCIA",
+        strongDescription: "",
         description: "Lavado exterior e interior profundo para una limpieza total de tu vehículo.",
         benefitList: [
           "Lavado exterior completo",
@@ -88,7 +88,7 @@ const vehicleData: VehicleCardProps[] = [
       {
         name: "Lavado Exterior",
         price: 12900,
-        strongDescription: "NO ES NECESARIA TU PRESENCIA",
+        strongDescription: "NO ES NECESARIA TU PRESENCIA, NOS INDICAS DONDE ESTA EL VEHICULO Y NOSOTROS NOS ENCARGAMOS",
         description: "Perfecto para sedanes y SUVs, lavado exterior completo y encerado.",
         benefitList: [
           "Lavado exterior completo",
@@ -102,7 +102,7 @@ const vehicleData: VehicleCardProps[] = [
       {
         name: "Lavado Completo",
         price: 15900,
-        strongDescription: "ES NECESARIA TU PRESENCIA",
+        strongDescription: "",
         description: "Limpieza exhaustiva exterior e interior para tu sedán o SUV.",
         benefitList: [
           "Lavado exterior completo",
@@ -130,7 +130,7 @@ const vehicleData: VehicleCardProps[] = [
       {
         name: "Lavado Exterior",
         price: 15900,
-        strongDescription: "NO ES NECESARIA TU PRESENCIA",
+        strongDescription: "NO ES NECESARIA TU PRESENCIA, NOS INDICAS DONDE ESTA EL VEHICULO Y NOSOTROS NOS ENCARGAMOS",
         description: "Servicio robusto para camionetas, lavado exterior y encerado protector.",
         benefitList: [
           "Lavado exterior completo",
@@ -144,7 +144,7 @@ const vehicleData: VehicleCardProps[] = [
       {
         name: "Lavado Completo",
         price: 18900,
-        strongDescription: "ES NECESARIA TU PRESENCIA",
+        strongDescription: "",
         description: "El tratamiento más completo para tu camioneta, impecable por dentro y por fuera.",
         benefitList: [
           "Lavado exterior completo",
@@ -274,7 +274,7 @@ export const PricingSectionCopy = () => {
         )}
       </div>
       <h4 className="md:w-1/2 mx-auto text-base text-center text-muted-foreground pt-10">
-        * Los precios son referenciales y pueden estar sujetos a cambios. La limpieza de tapizados es superficial.
+        * Hace tu reserva el servicio se abona después de completado el lavado.
       </h4>
     </section>
   );
